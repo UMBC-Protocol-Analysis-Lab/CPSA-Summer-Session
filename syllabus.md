@@ -1,34 +1,38 @@
 # Preliminaries
-
+This is a workshop series on cryptography, proofs in cryptographic protocols, analysis of protocols, and adversarial thinking.
+This series does not cover cybersecurity in the conventional sense, we do not discuss implementations of protocols/coding or IT practices for cybersecurity, though those are equally important when considering secure systems.
+We use a programming language called [Cryptographic Protocols Shapes Analyzer (CPSA)](https://github.com/mitre/cpsa4) to model protcols.
+The goal of this workshop is to introduce participants to cybersecurity research, including the work done by the [UMBC Protocol Analysis Lab](https://github.com/UMBC-Protocol-Analysis-Lab).
+We introduce and discuss several real projects that the lab has worked on, many of which have resulted in publications at prestigious conferences and journals.
 
 
 # Instructors
 
 ### Michael Barthel
-##### Bio:
-
-##### Contact:
 
 ### DeMarko Fulcher
-##### Bio:
-
-##### Contact:
 
 ### Sai Matukumalli
-##### Bio:
+**BIO**:
+Sai Matukumalli has graduated from UMBC, with degrees in both computer science and mathematics.
+He mainly works on mathematical cryptography and algorithms.
+He has been a member of the Protocol Analysis Lab for approximately two years, and has previously led CPSA training sessions during the semester.
 
-##### Contact:
-Discord: saikmat
-Email: smatuku1@umbc.edu
+**Contact**: \
+Discord: saikmat \
+Email: smatuku1 at umbc dot edu
 
 ### Jeremy Romano
-##### Bio:
 
-##### Contact:
+# Workshop expectations
 
-# Class expectations
+The workshop is relatively intensive because we have limited time.
+We expect partipants to attend the majority of synchronous meetings (1 hour long), or at least to watch the recordings if they are unable to attend.
+Be prepared to spend between one and two hours to complete the homework assignments.
+If you have questions, please feel free to reach out to one of us over Discord or email, we are here to help!
 
-
+**AI Policy:** ChatGPT does not have enough training datato write CPSA code, and you are here to learn anyway, so you will not need to use AI.
+You are welcome to try and use AI, if you succeed please let us know, we're curious too!
 
 # Homework
 
@@ -95,7 +99,7 @@ Each week is generally separated into an introductory lecture on theory, and the
 
 ### Session 2
 - Maybe about the future of crypto, maybe post-quantum?
-- Assign Final project
+- Assign [Final project](final_project/final_project.md)
 
 ## Week 4
 
