@@ -5,6 +5,8 @@ We use a programming language called [Cryptographic Protocols Shapes Analyzer (C
 The goal of this workshop is to introduce participants to cybersecurity research, including the work done by the [UMBC Protocol Analysis Lab](https://github.com/UMBC-Protocol-Analysis-Lab).
 We introduce and discuss several real projects that the lab has worked on, many of which have resulted in publications at prestigious conferences and journals.
 
+# Learning Objectives
+1. 
 
 # Instructors
 
@@ -125,4 +127,3 @@ Each week is generally separated into an introductory lecture on theory, and the
 - Present final project
 
 
-# Other notes
