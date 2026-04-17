@@ -13,8 +13,8 @@ We introduce and discuss several real projects that the lab has worked on, many 
 Michael Barthel is a current undergraduate student from UMBC pursuing a dual degree in Computer Science and Accounting.
 He has been a member of the Protocol Analysis Lab for just under a year, during which he has both helped with CPSA training sessions in the lab and worked to become a co-author on PAL's most recent paper.
 
-**Contact**: 
-Discord: notthatpurevessel
+**Contact**: \
+Discord: notthatpurevessel \
 Email: mbarthe1 at umbc dot edu
 
 ### DeMarko Fulcher
@@ -22,8 +22,8 @@ Email: mbarthe1 at umbc dot edu
 DeMarko Fulcher has graduated from UMBC, with a B.S. in Mathematics, he is currently pursuing a M.S. in Computer Science at UMBC.
 He is a part of the ATOMS Lab, E-WiNS Lab and Protocol Analysis Lab where he focuses on formal methods, automated reasoning, and security research. Previously, he has assisted with the training sessions for learning Cryptography Protocol Shapes Analyzer (CPSA).
 
-**Contact**: 
-Discord: mark_math
+**Contact**: \
+Discord: mark_math \
 Email: demarkf1 at umbc dot edu
 
 ### Sai Matukumalli
@@ -45,7 +45,7 @@ We expect partipants to attend the majority of synchronous meetings (1 hour long
 Be prepared to spend between one and two hours to complete the homework assignments.
 If you have questions, please feel free to reach out to one of us over Discord or email, we are here to help!
 
-**AI Policy:** ChatGPT does not have enough training datato write CPSA code, and you are here to learn anyway, so you will not need to use AI.
+**AI Policy:** ChatGPT does not have enough training data to write CPSA code, and you are here to learn anyway, so you will not need to use AI.
 You are welcome to try and use AI, if you succeed please let us know, we're curious too!
 
 # Homework
@@ -95,13 +95,13 @@ Each week is generally separated into an introductory lecture on theory, and the
 - Model example program in CPSA
 - Maybe something other than PAKE-0? (PAKE unless good alternative)
 - [Homework 3](homeworks/homework3.md):
-  - Model a random classmate’s meeting protocol
   - Model several “known-bad” protocols that we design, and use CPSA to identify the flaw(s)
 
 ### Session 2
 - Diffie-Hellman Key Exchange
 - Assumptions in CPSA
-- [Homework 4](homeworks/homework4.md): SRP-3 (Maybe swap?)
+- [Homework 4](homeworks/homework4.md):
+  - FIDO
 
 ## Week 3
 
@@ -109,7 +109,6 @@ Each week is generally separated into an introductory lecture on theory, and the
 - Maybe talk about practical application, show a project like C2PA / secureDNA and all the work needed both within and outside of CPSA?
 - [Homework 5](homeworks/homework5.md):
   - Simplify SecureDNA and ask them to model that
-  - FIDO
 
 ### Session 2
 - Maybe about the future of crypto, maybe post-quantum?
