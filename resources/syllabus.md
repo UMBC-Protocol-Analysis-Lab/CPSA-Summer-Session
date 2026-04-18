@@ -12,6 +12,13 @@ By the end of the workshop, students should be able to
 3. Read and understand protocol specifications for real-world protocols;
 4. Understand and reason about mathematical formalism used by CPSA.
 
+# Methods
+
+Students will accomplish the learning objectives by:
+1. Attending synchronous training sessions twice per week for one hour
+2. Completing CPSA homework assignments relating to training sessions
+3. Reading and understanding protocol specifications during training sessions and as a part of the homeworks
+
 
 # Instructors
 
