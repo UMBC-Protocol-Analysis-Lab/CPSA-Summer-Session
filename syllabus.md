@@ -6,7 +6,12 @@ The goal of this workshop is to introduce participants to cybersecurity research
 We introduce and discuss several real projects that the lab has worked on, many of which have resulted in publications at prestigious conferences and journals.
 
 # Learning Objectives
-1. 
+By the end of the workshop, students should be able to
+1. Understand and reason about basic cryptographic concepts, including: strands, keys, encryption, decryption, hashing, messages, protocols, and who the adversary is.
+2. Use CPSA to model protocols based on specifications and identify problems;
+3. Read and understand protocol specifications for real-world protocols;
+4. Understand and reason about mathematical formalism used by CPSA.
+
 
 # Instructors
 
@@ -39,12 +44,21 @@ Discord: saikmat \
 Email: smatuku1 at umbc dot edu
 
 ### Jeremy Romano
+**BIO**:
+Jeremy Romano has graduated from UMBC with a degree in Computer Science.
+He has been a member of the Protocol Analysis Lab for approximately three years, and has previously led CPSA training sessions during the semester.
+He mainly works on secure system administration.
+
+**Contact**: \
+Discord: zasderjjrr123
+Email: jeremyr1 at umbc dot edu
 
 # Workshop expectations
 
 The workshop is relatively intensive because we have limited time.
-We expect partipants to attend the majority of synchronous meetings (1 hour long), or at least to watch the recordings if they are unable to attend.
-Be prepared to spend between one and two hours to complete the homework assignments.
+We expect partipants to attend the majority of synchronous meetings (1 hour long on **FILL IN DATE HERE**), or at least to watch the recordings if they are unable to attend.
+Be prepared to spend between one and three hours to complete the homework assignments.
+Tuesday assignments will be easier to complete, since there is less time to do them, thursday assigments will generally be more complicated.
 If you have questions, please feel free to reach out to one of us over Discord or email, we are here to help!
 
 **AI Policy:** ChatGPT does not have enough training data to write CPSA code, and you are here to learn anyway, so you will not need to use AI.
@@ -74,6 +88,8 @@ Each week is generally separated into an introductory lecture on theory, and the
 
 ## Week 1
 
+LO1: By the end of week 1, students should be able to understand and reason about basic cryptographic concepts, including: strands, keys, encryption, decryption, hashing, messages, protocols, and who the adversary is.
+
 ### Session 1
 - What is a protocol
 - Cryptography intro
@@ -91,32 +107,41 @@ Each week is generally separated into an introductory lecture on theory, and the
 
 ## Week 2
 
+LO2: By the end of Week 2, students will be able to use CPSA to model protocols based on simple specifications.
+Students will be able to use CPSA to find attacks in example protocols, and reason about how those attacks happened, and how to fix them.
+
 ### Session 1
 - Spotting attacks in CPSA
 - Fixing attacks in CPSA
 - Model example program in CPSA
 - Maybe something other than PAKE-0? (PAKE unless good alternative)
-- [Homework 3](homeworks/homework3.md):
-  - Model several “known-bad” protocols that we design, and use CPSA to identify the flaw(s)
+- [Homework 3](homeworks/homework3.md): Model several “known-bad” protocols that we design, and use CPSA to identify the flaw(s)
 
 ### Session 2
-- Diffie-Hellman Key Exchange
+- Needham-Schroeder Key Exchange
 - Assumptions in CPSA
+- Channels in CPSA
 - [Homework 4](homeworks/homework4.md):
   - FIDO
 
 ## Week 3
 
+LO3: By the end of Week 3, students will be able to read and understand protocol speciifcations for real-world protocols.
+Students will then take those protcols and turn them into CPSA models to find more subtle flaws.
+
 ### Session 1
-- Maybe talk about practical application, show a project like C2PA / secureDNA and all the work needed both within and outside of CPSA?
-- [Homework 5](homeworks/homework5.md):
-  - Simplify SecureDNA and ask them to model that
+- Diffie-Hellman Key Exchange
+- Practical application, show SecureDNA and all the work needed both within and outside of CPSA
+- [Homework 5](homeworks/homework5.md): Model simplified SecureDNA
 
 ### Session 2
 - Maybe about the future of crypto, maybe post-quantum?
 - Assign [Final project](final_project/final_project.md)
 
 ## Week 4
+
+LO4: By the end of Week 4, students will understand the mathematical formalism behind CPSA, including the use of discrete mathematics to describe protocols. \
+LO3: Students will also present their final project, including their own analyis of a real-world protcol that they have understood and modeled.
 
 ### Session 1
 - Mathematical crypto
