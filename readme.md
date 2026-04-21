@@ -16,10 +16,10 @@ UMBC’s Protocol Analysis Lab (PAL) specializes in formal program verification,
 4. Understand and reason about the mathematical formalism used by CPSA
 
 Over the past several years, PAL has published several high-profile papers, including:
-FIDO UAF
-SecureDNA
-C2PA
-And is currently in progress on multiple additional research projects.
+FIDO UAF,
+SecureDNA,
+C2PA,
+and is currently in progress on multiple additional research projects.
 
 ## Info
 [Indicate your availability here](https://timeful.app/e/3FDcE) \
