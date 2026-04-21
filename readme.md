@@ -22,7 +22,7 @@ C2PA
 And is currently in progress on multiple additional research projects.
 
 ## Info
-[Indicate your availability here](https://timeful.app/e/3FDcE)
+[Indicate your availability here](https://timeful.app/e/3FDcE) \
 [Sign-up form and Discord](https://forms.gle/NPvtVK6R2MmNa9sW8)
 
 ## Staff:
@@ -33,7 +33,7 @@ He has been a member of the Protocol Analysis Lab for approximately two years, a
 
 Contact:
 Discord: saikmat \
-Email: smatuku1 at umbc dot edu \
+Email: smatuku1 at umbc dot edu 
 
 
 DeMarko Fulcher has graduated from UMBC, with a B.S. in Mathematics, he is currently pursuing a M.S. in Computer Science at UMBC.
@@ -41,12 +41,12 @@ He is apart of the ATOMS Lab, E-WiNS Lab and Protocol Analysis Lab where he focu
 
 Contacts: 
 Discord: mark_math \
-Email: demarkf1 at umbc dot edu \
+Email: demarkf1 at umbc dot edu 
 
 
 Michael Barthel is a current undergraduate student from UMBC pursuing a dual degree in Computer Science and Accounting.
 He has been a member of the Protocol Analysis Lab for just under a year, during which he has both helped with CPSA training sessions in the lab and worked to become a co-author on PAL's most recent paper.
 
 Contacts: 
-Discord: notthatpurevessel \
+Discord: notthatpurevessel 
 
