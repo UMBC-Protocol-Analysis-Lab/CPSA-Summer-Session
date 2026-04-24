@@ -98,6 +98,8 @@ Each week is generally separated into an introductory lecture on theory, and the
 LO1: By the end of week 1, students should be able to understand and reason about basic cryptographic concepts, including: strands, keys, encryption, decryption, hashing, messages, protocols, and who the adversary is.
 
 ### Session 1
+LO 1a: By the end of the first session, students will be able to explain and understand protocol components
+
 - What is a protocol
 - Cryptography intro
 - Dolev-Yao adversary
@@ -106,6 +108,7 @@ LO1: By the end of week 1, students should be able to understand and reason abou
 - [Homework 1](homeworks/homework1.md): Design a protocol of your own (for another scenario)
 
 ### Session 2
+LO 1b: By the end of the second session, students will be able to reason about the assembly of protocol components into real protocols
 - Strand spaces
 - Needham-Schroeder protocol
 - Protocol analysis
@@ -118,6 +121,8 @@ LO2: By the end of Week 2, students will be able to use CPSA to model protocols 
 Students will be able to use CPSA to find attacks in example protocols, and reason about how those attacks happened, and how to fix them.
 
 ### Session 1
+LO 2a: By the end of the third session, students will be able to identify an attack that CPSA has identified.
+
 - Spotting attacks in CPSA
 - Fixing attacks in CPSA
 - Model example program in CPSA
@@ -125,6 +130,8 @@ Students will be able to use CPSA to find attacks in example protocols, and reas
 - [Homework 3](homeworks/homework3.md): Model several “known-bad” protocols that we design, and use CPSA to identify the flaw(s)
 
 ### Session 2
+LO 2b: By the end of the fourth session, students will be able to model simple protocols in CPSA and identify the components of CPSA shapes.
+
 - Needham-Schroeder Key Exchange
 - Assumptions in CPSA
 - Channels in CPSA
@@ -134,16 +141,23 @@ Students will be able to use CPSA to find attacks in example protocols, and reas
 ## Week 3
 
 LO3: By the end of Week 3, students will be able to read and understand protocol speciifcations for real-world protocols.
-Students will then take those protcols and turn them into CPSA models to find more subtle flaws.
+Students will then take those protcols and turn them into CPSA models to find more subtle flaws. \
+LO4: Students will understand the mathematical formalism behind CPSA, including the use of discrete mathematics to describe protocols.
 
 ### Session 1
+LO 3a: By the end of the fifth session, students will be able to model more complex protocols in CPSA, and understand what shapes mean when analyzing them
+
 - Diffie-Hellman Key Exchange
 - Practical application, show SecureDNA and all the work needed both within and outside of CPSA
 - [Homework 5](homeworks/homework5.md): Model simplified SecureDNA
 
 ### Session 2
-- Maybe about the future of crypto, maybe post-quantum?
-- Assign [Final project](final_project/final_project.md)
+LO 3b: By the end of the sixth session, students will understand the use of CPSA goals to model protocols with specified security goals
+
+- Mathematical crypto
+- Real proofs for CPSA
+- Assign [final project](final_project/final_project.md)
+
 
 ## Week 4
 
@@ -151,11 +165,14 @@ LO4: By the end of Week 4, students will understand the mathematical formalism b
 LO3: Students will also present their final project, including their own analyis of a real-world protcol that they have understood and modeled.
 
 ### Session 1
-- Mathematical crypto
-- Real proofs for CPSA
+LO 4a: By the end of the seventh session, students will be able to apply known computational theory to understand how protocols are broken mathematically
+- Maybe about the future of crypto, maybe post-quantum?
+- Assign [Final project](final_project/final_project.md)
 - Ask for help on final project
 
 ### Session 2
+LO 4b: By the end of the eighth session, students will be able to explain a general protocol given a specification, how they have modeled the protocol using CPSA, and what attacks CPSA has identified
+
 - Present final project
 
 
