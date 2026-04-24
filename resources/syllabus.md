@@ -167,7 +167,6 @@ LO3: Students will also present their final project, including their own analyis
 ### Session 1
 LO 4a: By the end of the seventh session, students will be able to apply known computational theory to understand how protocols are broken mathematically
 - Maybe about the future of crypto, maybe post-quantum?
-- Assign [Final project](final_project/final_project.md)
 - Ask for help on final project
 
 ### Session 2
