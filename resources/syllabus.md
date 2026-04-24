@@ -57,7 +57,7 @@ He has been a member of the Protocol Analysis Lab for approximately three years,
 He mainly works on secure system administration.
 
 **Contact**: \
-Discord: zasderjjrr123
+Discord: zasderjjrr123 \
 Email: jeremyr1 at umbc dot edu
 
 # Workshop expectations
