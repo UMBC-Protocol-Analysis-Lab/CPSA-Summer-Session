@@ -1,0 +1,5 @@
+This is the code for running the protocol analysis CTF.
+
+Requires uvicorn, fastapi, and cryptography
+
+Server requires SSL cert to run server 
