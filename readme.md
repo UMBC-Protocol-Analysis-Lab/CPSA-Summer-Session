@@ -2,9 +2,9 @@
 
 ## Sessions
 
-Series 1: May 26th - June 18th, Time TBD, Online and in person in ITE 228
+Series 1: May 26th - June 18th from 6PM to 7PM, Online and in person in ITE 228
 
-Series 2: July 14th - August 6th, Times TBD, Online and in person at ITE 228
+Series 2: July 14th - August 6th from 6PM to 7PM, Online and in person at ITE 228
 
 ## Background on UMBC Protocol Analysis Lab
 
