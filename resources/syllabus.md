@@ -89,7 +89,7 @@ Details on the final project can be found at the [Final project readme](final_pr
 # Schedule
 
 The workshop series will have synchronous meetings twice a week for 4 weeks, a total of 8 meetings.
-Meeting are on **FILL IN THE DATES AND TIME HERE**.
+Meeting run from May 26 to June 18, and occur on **Tuesdays and Thursdays from 6PM to 7PM**.
 The first several lectures include foundational cryptography concepts.
 Each week is generally separated into an introductory lecture on theory, and then a lecture on CPSA and applications.
 
@@ -98,7 +98,7 @@ Each week is generally separated into an introductory lecture on theory, and the
 LO1: By the end of week 1, students should be able to understand and reason about basic cryptographic concepts, including: strands, keys, encryption, decryption, hashing, messages, protocols, and who the adversary is.
 
 ### Session 1
-LO 1a: By the end of the first session, students will be able to explain and understand protocol components
+LO 1a: By the end of the first session, students will be able to explain and understand protocol concepts.
 
 - What is a protocol
 - Cryptography intro
@@ -108,7 +108,7 @@ LO 1a: By the end of the first session, students will be able to explain and und
 - [Homework 1](homeworks/homework1.md): Design a protocol of your own (for another scenario)
 
 ### Session 2
-LO 1b: By the end of the second session, students will be able to reason about the assembly of protocol components into real protocols
+LO 1b: By the end of the second session, students will be able to reason about the assembly of protocol concepts into real protocols.
 - Strand spaces
 - Needham-Schroeder protocol
 - Protocol analysis
