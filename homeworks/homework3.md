@@ -9,7 +9,7 @@ For each model, check if it is complete and complete it if not.
 Then run CPSA and take a look at the shapes file, `problem_n_shapes.xhtml`.
 In each shapes file, identify if the protocol is compromised, and what action(s) the adversary has taken to create the attack.
 
-The adversary can:
+Remember that the adversary can:
 1. Create a message
 2. Split apart messages
 3. Concatenate messages
@@ -20,4 +20,6 @@ The adversary can:
 
 ## Deliverable
 1. Models that were not complete before completed
-2. A list of whether the protocol is secure or not, and if not secure, what the adversary has done to create the attack.
+    1. No need to submit anything, for this part
+2. A writeup of whether each protocol is secure or not, and if not secure, what the adversary has done to create the attack.
+    1. Submit your brief writeup. Please use complete sentences?
