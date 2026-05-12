@@ -8,7 +8,7 @@ def m3_alice(state,message):
 def m3_bob(state,message):
     
     if state['bob']['state'] == 0:
-        message = models.parse_message(message,"t|n|t|n|t")
+        message = models.parse_message(message, "t|n|t|n|t")
         if (message[0] == "Hello" and 
            message[1] == "bob" and
            message[2] == "this is" and

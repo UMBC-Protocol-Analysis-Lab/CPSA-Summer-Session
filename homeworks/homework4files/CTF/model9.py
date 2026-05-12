@@ -17,12 +17,12 @@ def m9_alice(state,message):
 
     elif state['alice']['state'] == 1:
 
-        message = models.parse_message(message,f"k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}|d|n")
+        message = models.parse_message(message, f"k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}|d|n")
         
         if message[4] != state['alice']['my_name']:
             raise fastapi.HTTPException(status_code=400, detail="This message wasn't addressed to me")
 
-        if not models.verify_cert(message[0],message[1],message[2]):
+        if not models.verify_cert(message[0], message[1], message[2]):
             raise fastapi.HTTPException(status_code=403, detail="Invalid cert")
 
 
@@ -34,7 +34,7 @@ def m9_alice(state,message):
                 message[3],
                 )
         
-        message = models.parse_message(message,f"d|n")
+        message = models.parse_message(message, f"d|n")
         
         if message[1] != state['alice']['o_name']:
             raise fastapi.HTTPException(status_code=400, detail="Inner and outer names don't match")
@@ -72,9 +72,9 @@ def m9_bob(state,message):
 
     if state['bob']['state'] == 0:
 
-        message = models.parse_message(message,f"k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}")
+        message = models.parse_message(message, f"k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}")
 
-        if not models.verify_cert(message[0],message[1],message[2]):
+        if not models.verify_cert(message[0], message[1], message[2]):
             raise fastapi.HTTPException(status_code=403, detail="Invalid cert")
 
         if message[1] != "alice":
@@ -137,13 +137,13 @@ def m9_init_func():
 
     m9_init_dict["alice"]["my_p_key"] = p_key
     m9_init_dict["alice"]["my_s_key"] = s_key
-    m9_init_dict["alice"]["my_cert"] = models.get_cert(p_key,"alice")
+    m9_init_dict["alice"]["my_cert"] = models.get_cert(p_key, "alice")
 
     p_key,s_key = models.gen_rsa_key()
 
     m9_init_dict["bob"]["my_p_key"] = p_key
     m9_init_dict["bob"]["my_s_key"] = s_key
-    m9_init_dict["bob"]["my_cert"] = models.get_cert(p_key,"bob")
+    m9_init_dict["bob"]["my_cert"] = models.get_cert(p_key, "bob")
 
     return json.dumps(m9_init_dict)
 

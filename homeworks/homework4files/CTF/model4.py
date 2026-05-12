@@ -15,10 +15,10 @@ def m4_alice(state,message):
         nonce = state['alice']['my_nonce']
         return (state,{"content" : f"t:Hello|n:bob|t:this is|n:alice|t:send me the flag encrypted under this symetric key and nonce|k:{key}|d:{nonce}"})
     if state['alice']['state'] == 1:
-        message = models.parse_message(message,"t|d")
+        message = models.parse_message(message, "t|d")
         if message[0] == "here it is" and len(message[1]) == 88:
-            p = models.decrypt_message(message[1],state['alice']['my_key'],state['alice']['my_nonce'])
-            message_2 = models.parse_message(p,"t")
+            p = models.decrypt_message(message[1], state['alice']['my_key'], state['alice']['my_nonce'])
+            message_2 = models.parse_message(p, "t")
             if message_2[0] == "DawgCTF{N0T_S0_S3CR3T_K3Y}":
                 state['alice']['state'] = 2
                 return (state,{})
@@ -31,7 +31,7 @@ def m4_alice(state,message):
 def m4_bob(state,message):
     
     if state['bob']['state'] == 0:
-        message = models.parse_message(message,"t|n|t|n|t|k|d")
+        message = models.parse_message(message, "t|n|t|n|t|k|d")
         if (message[0] == "Hello" and 
            message[1] == "bob" and
            message[2] == "this is" and
@@ -40,7 +40,7 @@ def m4_bob(state,message):
            len(message[5]) == 64 and
            len(message[6]) == 24):
             try:
-                d = models.encrypt_message("t:DawgCTF{N0T_S0_S3CR3T_K3Y}",message[5],message[6])
+                d = models.encrypt_message("t:DawgCTF{N0T_S0_S3CR3T_K3Y}", message[5], message[6])
             except ValueError:
                 raise fastapi.HTTPException(status_code=400, detail="Invalid message")
             state['bob']['state'] = 2

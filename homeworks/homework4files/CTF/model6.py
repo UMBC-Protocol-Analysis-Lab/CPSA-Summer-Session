@@ -8,9 +8,9 @@ def m6_alice(state,message):
 
     if state['alice']['state'] == 0:
      
-        message = models.parse_message(message,f"k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}")
+        message = models.parse_message(message, f"k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}")
 
-        if not models.verify_cert(message[0],message[1],message[2]):
+        if not models.verify_cert(message[0], message[1], message[2]):
             raise fastapi.HTTPException(status_code=403, detail="Invalid cert")
 
         state['alice']['o_name'] = message[1]
@@ -32,18 +32,18 @@ def m6_alice(state,message):
 
     elif state['alice']['state'] == 1:
 
-        message = models.parse_message(message,"d")
+        message = models.parse_message(message, "d")
 
-        message = models.asym_decrypt(state['alice']['my_s_key'],message[0])
+        message = models.asym_decrypt(state['alice']['my_s_key'], message[0])
 
-        message = models.parse_message(message,"d:64|d:64")
+        message = models.parse_message(message, "d:64|d:64")
 
         if message[0] != state['alice']['my_nonce']:
             raise fastapi.HTTPException(status_code=400, detail="Invalid nonce")
 
         state['alice']['o_nonce'] = message[1]
 
-        final_data = models.asym_encrypt(state['alice']['o_p_key'],"d:"+state['alice']['o_nonce'])
+        final_data = models.asym_encrypt(state['alice']['o_p_key'], "d:" + state['alice']['o_nonce'])
 
         state['alice']['state'] = 2
 
@@ -53,11 +53,11 @@ def m6_alice(state,message):
     
         key = models.hash_message(state['alice']['my_nonce'] + state['alice']['o_nonce'])
 
-        message = models.parse_message(message,"d")
+        message = models.parse_message(message, "d")
        
-        message = models.decrypt_message(message[0],key,key[:24])
+        message = models.decrypt_message(message[0], key, key[:24])
 
-        message = models.parse_message(message,"t")
+        message = models.parse_message(message, "t")
         
         if message[0] == "DawgCTF{FORM3RLY_S3CUR3}":
             return (state,{})
@@ -81,13 +81,13 @@ def m6_bob(state,message):
 
     elif state['bob']['state'] == 1:
 
-        message = models.parse_message(message,f"d")
+        message = models.parse_message(message, f"d")
 
-        message = models.asym_decrypt(state['bob']['my_s_key'],message[0])
+        message = models.asym_decrypt(state['bob']['my_s_key'], message[0])
 
-        message = models.parse_message(message,f"d:64|k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}")
+        message = models.parse_message(message, f"d:64|k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}")
 
-        if not models.verify_cert(message[1],message[2],message[3]):
+        if not models.verify_cert(message[1], message[2], message[3]):
             raise fastapi.HTTPException(status_code=403, detail="Invalid cert")
 
         state['bob']['o_name'] = message[2]
@@ -107,11 +107,11 @@ def m6_bob(state,message):
 
     elif state['bob']['state'] == 2:
 
-        message = models.parse_message(message,"d")
+        message = models.parse_message(message, "d")
 
-        message = models.asym_decrypt(state['bob']['my_s_key'],message[0])
+        message = models.asym_decrypt(state['bob']['my_s_key'], message[0])
 
-        message = models.parse_message(message,"d:64")
+        message = models.parse_message(message, "d:64")
 
         if message[0] != state['bob']['my_nonce']:
             raise fastapi.HTTPException(status_code=400, detail="Invalid nonce")
@@ -121,7 +121,7 @@ def m6_bob(state,message):
 
         key = models.hash_message(state['bob']['o_nonce'] + state['bob']['my_nonce'])
         flag = "t:DawgCTF{FORM3RLY_S3CUR3}"
-        final_data = models.encrypt_message(flag,key,key[:24])
+        final_data = models.encrypt_message(flag, key, key[:24])
 
         return (state,{"content" : f"d:{final_data}"})
 
@@ -162,13 +162,13 @@ def m6_init_func():
 
     m6_init_dict["alice"]["my_p_key"] = p_key
     m6_init_dict["alice"]["my_s_key"] = s_key
-    m6_init_dict["alice"]["my_cert"] = models.get_cert(p_key,"sneed")
+    m6_init_dict["alice"]["my_cert"] = models.get_cert(p_key, "sneed")
        
     p_key,s_key = models.gen_rsa_key()
 
     m6_init_dict["bob"]["my_p_key"] = p_key
     m6_init_dict["bob"]["my_s_key"] = s_key
-    m6_init_dict["bob"]["my_cert"] = models.get_cert(p_key,"chuck")
+    m6_init_dict["bob"]["my_cert"] = models.get_cert(p_key, "chuck")
 
     return json.dumps(m6_init_dict)
 

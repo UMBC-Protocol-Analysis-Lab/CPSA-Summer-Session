@@ -18,9 +18,9 @@ def m7_alice(state,message):
 
     elif state['alice']['state'] == 1:
 
-        message = models.parse_message(message,f"k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}|d:64|d:{models.SIG_LEN}")
+        message = models.parse_message(message, f"k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}|d:64|d:{models.SIG_LEN}")
 
-        if not models.verify_cert(message[0],message[1],message[2]):
+        if not models.verify_cert(message[0], message[1], message[2]):
             raise fastapi.HTTPException(status_code=403, detail="Invalid cert")
 
         state['alice']['o_name'] = message[1]
@@ -66,9 +66,9 @@ def m7_bob(state,message):
     
     if state['bob']['state'] == 0:
 
-        message = models.parse_message(message,f"k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}|d:64")
+        message = models.parse_message(message, f"k:{models.PUBKEY_LEN}|n|d:{models.SIG_LEN}|d:64")
 
-        if not models.verify_cert(message[0],message[1],message[2]):
+        if not models.verify_cert(message[0], message[1], message[2]):
             raise fastapi.HTTPException(status_code=403, detail="Invalid cert")
 
         state['bob']['o_name'] = message[1]
@@ -93,7 +93,7 @@ def m7_bob(state,message):
 
     elif state['bob']['state'] == 1:
 
-        message = models.parse_message(message,"d")
+        message = models.parse_message(message, "d")
 
         o_name = state['bob']['o_name']
         o_nonce = state['bob']['o_nonce']
@@ -152,14 +152,14 @@ def m7_init_func():
 
     m7_init_dict["alice"]["my_p_key"] = p_key
     m7_init_dict["alice"]["my_s_key"] = s_key
-    m7_init_dict["alice"]["my_cert"] = models.get_cert(p_key,"alice")
+    m7_init_dict["alice"]["my_cert"] = models.get_cert(p_key, "alice")
     m7_init_dict["alice"]["my_nonce"]  = os.urandom(32).hex()
        
     p_key,s_key = models.gen_rsa_key()
 
     m7_init_dict["bob"]["my_p_key"] = p_key
     m7_init_dict["bob"]["my_s_key"] = s_key
-    m7_init_dict["bob"]["my_cert"] = models.get_cert(p_key,"bob")
+    m7_init_dict["bob"]["my_cert"] = models.get_cert(p_key, "bob")
     m7_init_dict["bob"]["my_nonce"]  = os.urandom(32).hex()
 
     return json.dumps(m7_init_dict)

@@ -9,7 +9,7 @@ def m2_alice(state,message):
         state['alice']['state'] = 1
         return (state,{"content" : f"t:Hello|n:bob|t:this is|n:alice|t:give me the flag"})
     if state['alice']['state'] == 1:
-        message = models.parse_message(message,"t|t")
+        message = models.parse_message(message, "t|t")
         if message[0] == "here it is" and message[1] == "DawgCTF{CH4NG3_0F_PL4N5}":
             state['alice']['state'] = 2
             return (state,{})
@@ -22,7 +22,7 @@ def m2_alice(state,message):
 def m2_bob(state,message):
     
     if state['bob']['state'] == 0:
-        message = models.parse_message(message,"t|n|t|n|t")
+        message = models.parse_message(message, "t|n|t|n|t")
         if (message[0] == "Hello" and 
            message[1] == "bob" and
            message[2] == "this is" and
