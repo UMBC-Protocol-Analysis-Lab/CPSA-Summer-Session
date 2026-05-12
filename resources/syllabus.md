@@ -77,13 +77,13 @@ There will be 5 homeworks assigned during this series to faciliate learning how 
 We recognize that this is a summer activity, and you probably don't want to do homework, but the best way to learn a new tool is practice, and we simply do not have time to code during synchronous meetings.
 
 For a detailed schedule of when there will be homeworks, see the [Schedule](#Schedule).
-Assignments themselves will be posted in the [Homeworks](homeworks) directory.
+Assignments themselves will be posted in the [Homeworks](../homeworks) directory.
 
 
 # Final Project
 There is a final project that will put all of your cybersecurity and CPSA skills to the test, and is a good metric of the kind of work we do in the lab.
 The final project will be given out at the end of week 3, and is to be presnted at the end of the series.
-Details on the final project can be found at the [Final project readme](final_project/final_project.md).
+Details on the final project can be found at the [Final project readme](../final_project/final_project.md).
 
 
 # Schedule
@@ -105,7 +105,7 @@ LO 1a: By the end of the first session, students will be able to explain and und
 - Dolev-Yao adversary
 - Adversary actions (crypto primitives)
 - Designing a meeting protocol on whiteboard
-- [Homework 1](homeworks/homework1.md): Design a protocol of your own (for another scenario)
+- [Homework 1](../homeworks/homework1.md): Design a protocol of your own (for another scenario)
 
 ### Session 2
 LO 1b: By the end of the second session, students will be able to reason about the assembly of protocol concepts into real protocols.
@@ -113,7 +113,7 @@ LO 1b: By the end of the second session, students will be able to reason about t
 - Needham-Schroeder protocol
 - Protocol analysis
 - CPSA tutorial for protocol analysis
-- [Homework 2](homeworks/homework2.md): Improve your protocol by using CPSA
+- [Homework 2](../homeworks/homework2.md): Improve your protocol by using CPSA
 
 ## Week 2
 
@@ -127,7 +127,7 @@ LO 2a: By the end of the third session, students will be able to identify an att
 - Fixing attacks in CPSA
 - Model example program in CPSA
 - Maybe something other than PAKE-0? (PAKE unless good alternative)
-- [Homework 3](homeworks/homework3.md): Model several “known-bad” protocols that we design, and use CPSA to identify the flaw(s)
+- [Homework 3](../homeworks/homework3.md): Model several “known-bad” protocols that we design, and use CPSA to identify the flaw(s)
 
 ### Session 2
 LO 2b: By the end of the fourth session, students will be able to model simple protocols in CPSA and identify the components of CPSA shapes.
@@ -135,7 +135,7 @@ LO 2b: By the end of the fourth session, students will be able to model simple p
 - Needham-Schroeder Key Exchange
 - Assumptions in CPSA
 - Channels in CPSA
-- [Homework 4](homeworks/homework4.md):
+- [Homework 4](../homeworks/homework4.md):
   - FIDO
 
 ## Week 3
@@ -149,14 +149,14 @@ LO 3a: By the end of the fifth session, students will be able to model more comp
 
 - Diffie-Hellman Key Exchange
 - Practical application, show SecureDNA and all the work needed both within and outside of CPSA
-- [Homework 5](homeworks/homework5.md): Model simplified SecureDNA
+- [Homework 5](../homeworks/homework5.md): Model simplified SecureDNA
 
 ### Session 2
 LO 3b: By the end of the sixth session, students will understand the use of CPSA goals to model protocols with specified security goals
 
 - Mathematical crypto
 - Real proofs for CPSA
-- Assign [final project](final_project/final_project.md)
+- Assign [final project](../final_project/final_project.md)
 
 
 ## Week 4
