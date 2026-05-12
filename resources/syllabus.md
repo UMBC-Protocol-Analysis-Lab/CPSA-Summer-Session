@@ -1,10 +1,6 @@
 # Preliminaries
 
-This is a workshop series on cryptography, proofs in cryptographic protocols, analysis of protocols, and adversarial thinking.
-This series does not cover cybersecurity in the conventional sense, we do not discuss implementations of protocols/coding or IT practices for cybersecurity, though those are equally important when considering secure systems.
-We use a programming language called [Cryptographic Protocols Shapes Analyzer (CPSA)](https://github.com/mitre/cpsa4) to model protocols.
-The goal of this workshop is to introduce participants to cybersecurity research, including the work done by the [UMBC Protocol Analysis Lab](https://github.com/UMBC-Protocol-Analysis-Lab).
-We introduce and discuss several real projects that the lab has worked on, many of which have resulted in publications at prestigious conferences and journals.
+This is a workshop series on cryptography, proofs in cryptographic protocols, analysis of protocols, and adversarial thinking. This series does not cover cybersecurity in the conventional sense, we do not discuss implementations of protocols/coding or IT practices for cybersecurity, though those are equally important when considering secure systems. We use a programming language called [Cryptographic Protocols Shapes Analyzer (CPSA)](https://github.com/mitre/cpsa4) to model protocols. The goal of this workshop is to introduce participants to cybersecurity research, including the work done by the [UMBC Protocol Analysis Lab](https://github.com/UMBC-Protocol-Analysis-Lab). We introduce and discuss several real projects that the lab has worked on, many of which have resulted in publications at prestigious conferences and journals.
 
 # Learning Objectives
 
