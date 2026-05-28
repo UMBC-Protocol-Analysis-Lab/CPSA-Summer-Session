@@ -65,6 +65,33 @@ d(c,k) = m
 Common symmetric key algorithms include 3DES, AES, and ChaCha20.
 \end{frame}
 
+\begin{frame}\frametitle{Symmetric Encryption Diagram}
+\begin{tikzpicture}
+    \node at (0,8) {Alice};
+    \node at (10,8) {Bob};
+    \node[shape=circle,draw=blue, fill=blue] at (1,0) {};
+    \node at (2.25,0) {= Reception};
+    \node[shape=circle,draw=black, fill=black] at (4,0) {};
+    \node at (5.5,0) {= Transmission};
+
+
+    \node[shape=circle,draw=black, fill=black] (1) at (0,7) {};
+    \node[shape=circle,draw=blue, fill=blue] (2) at (10,7) {};
+    \path [saiarrow](1) edge (2);
+    
+    \node at (5,7.25) {\(enc(\text{``Hello Bob.''}, \mathit{secret})\)};
+    
+    \node[shape=circle,draw=black, fill=black] (3) at (10,5.5) {};
+    \node[shape=circle,draw=blue, fill=blue] (4) at (0,5.5) {};
+    
+    \path [-,thick](3) edge (2);
+    \path [saiarrow](3) edge (4);
+    \path [-,thick](1) edge (4);
+    
+    \node at (5,5.7) {\(enc(\text{``Hello Alice.''},\mathit{secret})\)};
+\end{tikzpicture}
+\end{frame}
+
 \begin{frame}\frametitle{Asymmetric encryption}
 \pause
 Let \(m\) be a message, \(pub_k,priv_k\) be a public-private key pair, and \(c\) be ciphertext.
@@ -84,6 +111,33 @@ f(c,priv_k) = m
 \end{definition}
 \pause
 Common asymmetric key algorithms include RSA, ElGamal, and Elliptic Curve.
+\end{frame}
+
+\begin{frame}\frametitle{Asymmetric Encryption Diagram}
+\begin{tikzpicture}
+    \node at (0,8) {Alice};
+    \node at (10,8) {Bob};
+    \node[shape=circle,draw=blue, fill=blue] at (1,0) {};
+    \node at (2.25,0) {= Reception};
+    \node[shape=circle,draw=black, fill=black] at (4,0) {};
+    \node at (5.5,0) {= Transmission};
+
+
+    \node[shape=circle,draw=black, fill=black] (1) at (0,7) {};
+    \node[shape=circle,draw=blue, fill=blue] (2) at (10,7) {};
+    \path [saiarrow](1) edge (2);
+    
+    \node at (5,7.25) {\(enc(\text{``I am Alice sending a message to Bob.''}, pubk_{Bob})\)};
+    
+    \node[shape=circle,draw=black, fill=black] (3) at (10,5.5) {};
+    \node[shape=circle,draw=blue, fill=blue] (4) at (0,5.5) {};
+    
+    \path [-,thick](3) edge (2);
+    \path [saiarrow](3) edge (4);
+    \path [-,thick](1) edge (4);
+    
+    \node at (5,5.7) {\(enc(\text{``I Bob have received your message, Alice.''},pubk_{Alice})\)};
+\end{tikzpicture}
 \end{frame}
 
 \begin{frame}\frametitle{Signing}
@@ -107,6 +161,33 @@ f(c,pub_k) = m
 More or less the same as the asymmetric algorithms.
 \end{frame}
 
+\begin{frame}\frametitle{Signing Diagram}
+\begin{tikzpicture}
+    \node at (0,8) {Alice};
+    \node at (10,8) {Bob};
+    \node[shape=circle,draw=blue, fill=blue] at (1,0) {};
+    \node at (2.25,0) {= Reception};
+    \node[shape=circle,draw=black, fill=black] at (4,0) {};
+    \node at (5.5,0) {= Transmission};
+
+
+    \node[shape=circle,draw=black, fill=black] (1) at (0,7) {};
+    \node[shape=circle,draw=blue, fill=blue] (2) at (10,7) {};
+    \path [saiarrow](1) edge (2);
+    
+    \node at (5,7.25) {\(enc(\text{"Hello, I am Alice."}, privk_{Alice})\)};
+    
+    \node[shape=circle,draw=black, fill=black] (3) at (10,5.5) {};
+    \node[shape=circle,draw=blue, fill=blue] (4) at (0,5.5) {};
+    
+    \path [-,thick](3) edge (2);
+    \path [saiarrow](3) edge (4);
+    \path [-,thick](1) edge (4);
+    
+    \node at (5,5.7) {\(enc(\text{"Hello I am Bob"},privk_{Bob})\)};
+\end{tikzpicture}
+\end{frame}
+
 \begin{frame}\frametitle{Hashing}
 \pause
 Let \(m\) be a message, \(md\) be a message digest.
@@ -121,6 +202,51 @@ A function \(h\) is called an \emph{hash function} if:
 \end{definition}
 \pause
 Common hash functions include the MD family, SHA family, and Skein.
+\end{frame}
+
+\begin{frame}\frametitle{Hashing Diagram}
+\begin{tikzpicture}
+    \node at (0,8) {Alice};
+    \node at (10,8) {Bob};
+    \node[shape=circle,draw=blue, fill=blue] at (1,0) {};
+    \node at (2.25,0) {= Reception};
+    \node[shape=circle,draw=black, fill=black] at (4,0) {};
+    \node at (5.5,0) {= Transmission};
+
+
+    \node[shape=circle,draw=black, fill=black] (1) at (0,7) {};
+    \node[shape=circle,draw=blue, fill=blue] (2) at (10,7) {};
+    \path [saiarrow](1) edge (2);
+    
+    \node at (5,7.25) {\(cat(\text{``Here is my RPS move"}, hash(\text{``rock"}))\)};
+    
+    \node[shape=circle,draw=black, fill=black] (3) at (10,5.5) {};
+    \node[shape=circle,draw=blue, fill=blue] (4) at (0,5.5) {};
+    
+    \path [-,thick](3) edge (2);
+    \path [saiarrow](3) edge (4);
+    \path [-,thick](1) edge (4);
+    
+    \node at (5,5.7) {\(cat(\text{``Here is my RPS move"}, hash(\text{``paper"}))\)};
+
+    \node[shape=circle,draw=black, fill=black] (5) at (0,4) {};
+    \node[shape=circle,draw=blue, fill=blue] (6) at (10,4) {};
+    \path [saiarrow](5) edge (6);
+
+    \path [-,thick](3) edge (6);
+    \path [-,thick](4) edge (5);
+    
+    \node at (5,4.25) {\(\text{``I said rock"}\)};
+    
+    \node[shape=circle,draw=black, fill=black] (7) at (10,2.5) {};
+    \node[shape=circle,draw=blue, fill=blue] (8) at (0,2.5) {};
+    
+    \path [-,thick](7) edge (6);
+    \path [saiarrow](7) edge (8);
+    \path [-,thick](5) edge (8);
+    
+    \node at (5,2.7) {\(\text{``I said paper"}\)};
+\end{tikzpicture}
 \end{frame}
 
 \title{Security Goals}
