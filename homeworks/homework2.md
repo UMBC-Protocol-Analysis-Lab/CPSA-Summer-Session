@@ -14,3 +14,7 @@ Recreate your diagram to include the fixes that you've made, and write up why yo
 2. An updated diagram of your protocol with fixes implemented.
     1. Any format, as before, is fine
 3. An updated writeup of why your protocol (provably) resists the DY adversary.
+
+## Submission
+
+Please submit your protocol via this google form: https://docs.google.com/forms/d/1_eLZ4p-fCJO3jRIOx4lelm_9bwc5feg8sZGTRSyHdH8/edit
