@@ -1,0 +1,20 @@
+# Homework 2
+
+## Instructions
+Now that you've learned some CPSA, let's put your skills to the test.
+Take your meeting protocol from Homework 1 and try to model it using CPSA.
+Use CPSA to find problems with your protocol, and fix them.
+Recreate your diagram to include the fixes that you've made, and write up why your new protocol lets Alice and Bob agree on when to meet without the adversary finding out or modifying the time.
+
+
+
+## Deliverable
+1. An attempted CPSA model of your protocol, including role definitions and skeleton definitions.
+    1. Submit your `*.scm` file
+2. (OPTIONAL) An updated diagram of your protocol with fixes implemented.
+    1. Any format, as before, is fine
+3. (OPTIONAL) An updated writeup of why your protocol (provably) resists the DY adversary.
+
+## Submission
+
+Please submit your CPSA Code, as well as any updates to your diagram/writeup via this google form: https://docs.google.com/forms/d/1_eLZ4p-fCJO3jRIOx4lelm_9bwc5feg8sZGTRSyHdH8/edit

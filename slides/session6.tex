@@ -1,0 +1,193 @@
+\makeatletter\let\ifGm@compatii\relax\makeatother
+\documentclass[red]{beamer}
+
+%\usepackage{beamerthemesplit}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage{url}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes.symbols}
+
+\usepackage{hyperref} % has to be last
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdfpagemode=FullScreen,
+    }
+
+\tikzset{
+    saiarrow/.style={{-Latex}, thick}
+}
+
+\newcommand{\isred}[1]{{\color{red} {\bf #1}}} 
+\newcommand{\isblue}[1]{{\color{blue}{\bf #1}}} 
+\newcommand{\isgreen}[1]{{\color{green} {#1}}} 
+\newcommand{\isdarkgreen}[1]{{\color{darkgreen} {#1}}} 
+\newcommand{\isorange}[1]{{\color{orange} {#1}}} 
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+
+\begin{document}
+
+
+\setbeamercolor{alerted_text}{fg=cyan}
+\xdefinecolor{purplish}{cmyk}{0.75,0.75, 0, 0}
+\xdefinecolor{purple}{cmyk}{0.75,0.75, 0, 0}
+\colorlet{newred}{red!60!black}
+
+\title{Session 6: CPSA Goals}
+\author{Slides prepared by UMBC Protocol Analysis Lab}
+\date{Last edited \today}
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}\frametitle{What is a security goal?}
+\pause
+A \emph{security goal} is a goal that we assign for a given protocol to evaluate if it is sufficiently secure for application.
+
+\pause
+Security goals formalize our notion of ``secure''.
+
+\bigskip
+\pause
+Not every protocol has the same requirement for security.
+
+Common Security Goals
+\begin{itemize}
+\pause
+\item \textbf{Confidentiality:} In a two-party communication protocol, confidentiality holds if no third party is able to access the information sent.
+
+\pause
+\item \textbf{Agreement:} In a two-party communication protocol, agreement holds if both parties agree on some set of data values in the protocol.
+These values are then used to derive the key.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Other common security goals}
+\begin{enumerate}
+\item Aliveness
+\item Weak Agreement
+\item Non-injective Agreement
+\item A specific relay party cannot read the message
+\item The message must be timestamped
+\item Perfect forward secrecy
+\item Crypto primitives are resistant to a predefined attack
+\end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{Common protocol security goals}
+\pause
+\textbf{Authentication protocols:}
+\pause
+
+Want to ensure that the other person is who they say they are.
+What security goals?
+\pause
+
+Agreement needed.
+
+\pause
+\textbf{Network protocols:}
+\pause
+
+Need to send a lot of data quickly.
+What security goals?
+\pause
+
+Confidentiality needed.
+
+Note that the ``second'' party need not have agreement (in case packets dropped).
+
+\pause
+\textbf{Key Exchange protocols:}
+\pause
+
+Want to distribute keys to the appropriate participants on the network.
+What security goals?
+\pause
+
+Confidentiality and Agreement (on the secret) needed.
+
+
+\end{frame}
+
+
+\begin{frame}\frametitle{CPSA Goals}
+\begin{itemize}
+\item Protocol goals as mathematical statements
+\item Find strands that satisfy (or don't satisfy) some set of properties
+\item May reduce time taken to terminate
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Some more tips for reading specifications}
+
+\begin{itemize}
+\item FIND THE SECURITY GOALS
+\begin{itemize}
+\item Are additional SGs needed?
+\end{itemize}
+\item Modularize the spec into blocks of messages
+\begin{itemize}
+\item ``In the first set of exchanges''
+\item ``[party1] preshares [data] with [party2]''
+\end{itemize}
+\item Ignore nonsense
+\begin{itemize}
+\item ``[protocol] does not consider [niche usecase] because\dots''
+\item ``We assume clients have access to an ALU'' (structural vs.\ implementation)
+\item ``Our conformance program handles...''
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Needham-Schroeder}
+\begin{itemize}
+\item Exactly the same as before
+\pause
+\item We know about the fix, so we will check that too.
+\pause 
+\item Some defined security goals that we can model:
+\begin{enumerate}
+\pause
+\item (NS) Agree on name of Bob
+\pause
+\item (NSL) None of the nonces are revealed
+\pause
+\item (NSL) Do we get one-way authentication?
+\end{enumerate}
+\pause
+\item Let's try modeling it!
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Conclusion}
+\begin{itemize}
+\pause
+\item Does Needham-Schroeder work?
+\pause
+\begin{itemize}
+\item What does ``work'' mean?
+\end{itemize}
+\pause
+\item What about NSL?
+\pause
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Survey}
+Fill in details about the survey here!
+\end{frame}
+\end{document}

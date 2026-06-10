@@ -1,0 +1,551 @@
+\makeatletter\let\ifGm@compatii\relax\makeatother
+\documentclass[red]{beamer}
+
+%\usepackage{beamerthemesplit}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage{url}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes.symbols}
+
+\usepackage{hyperref} % has to be last
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdfpagemode=FullScreen,
+    }
+
+\tikzset{
+    saiarrow/.style={{-Latex}, thick}
+}
+
+\newcommand{\isred}[1]{{\color{red} {\bf #1}}} 
+\newcommand{\isblue}[1]{{\color{blue}{\bf #1}}} 
+\newcommand{\isgreen}[1]{{\color{green} {#1}}} 
+\newcommand{\isdarkgreen}[1]{{\color{darkgreen} {#1}}} 
+\newcommand{\isorange}[1]{{\color{orange} {#1}}} 
+
+\begin{document}
+
+
+\setbeamercolor{alerted_text}{fg=cyan}
+\xdefinecolor{purplish}{cmyk}{0.75,0.75, 0, 0}
+\xdefinecolor{purple}{cmyk}{0.75,0.75, 0, 0}
+\colorlet{newred}{red!60!black}
+
+\title{Session 1: Introduction to Cybersecurity}
+\author{Slides prepared by UMBC Protocol Analysis Lab}
+\date{Last edited May 25, 2026}
+\maketitle
+
+\begin{frame}\frametitle{What is the goal of this course}
+\pause
+To teach students about formal-methods used in cryptographic systems.
+
+\pause
+To collect data about the efficacy of teaching \textit{adversarial thinking} to students.
+
+\pause
+To introduce students to the work done in the UMBC Protocol Analysis Lab (PAL).
+
+\pause
+To teach students who are interested in PAL, or already members of PAL how to use CPSA.
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Meet your instructors}
+
+\begin{columns}
+\pause
+    \column{0.5\textwidth}
+    \vspace{-2em}
+    \begin{block}{Michael Barthel}
+        Rising Junior in PAL.
+        Digital provenance systems and protocols.
+
+        \includegraphics[height=0.25\textheight]{slide-images/michael}
+    \end{block}
+\pause
+    \column{0.5\textwidth}
+    \vspace{-2em}
+    \begin{block}{Sai Matukumalli}
+        Graduate from PAL.
+        Mathematical cryptography and complexity.
+
+        \includegraphics[height=0.25\textheight]{slide-images/sai}
+    \end{block}
+\end{columns}
+
+\vspace{0.25cm}
+
+% Second row
+\begin{columns}
+\pause
+    \column{0.5\textwidth}
+    \vspace{-1.5em}
+    \begin{block}{DeMarko Fulcher}
+        Graduate from PAL.
+        Formal verification.
+
+        \includegraphics[height=0.25\textheight]{slide-images/demarko}
+    \end{block}
+\pause
+    \column{0.5\textwidth}
+    \vspace{-1.5em}
+    \begin{block}{Jeremy Romano}
+        Graduate from PAL.
+        Implementation of attacks.
+        \includegraphics[height=0.25\textheight]{slide-images/jeremy}
+        \end{block}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}\frametitle{Meet your classmates}
+\pause
+Introduce yourselves!
+\pause
+We will start with people in person, and then go online.
+
+\pause
+These are your classmates for the entire month, you should try to learn everyone's names.
+
+\pause
+There will be a final project that you can work in groups on, so you should try and find some people that you are interested in working with.
+
+\pause
+
+\end{frame}
+
+\title{Why do we need cryptography?}
+\author{When do we need to take steps to protect communication between parties?}
+\date{and who are Alice and Bob?}
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}\frametitle{What is the problem space?}
+\pause
+We start with a simple problem.
+
+\pause
+\isred{Problem:} Alice and Bob want to set up a meeting without Charlie finding out, how do they do it?
+
+\pause
+Can you think of some na\"ive solutions?
+
+\pause
+\begin{enumerate}
+\item Alice can tell Bob about the meeting in another language, one that Charlie doesn't know?
+\pause
+\item Alice can hide information about the meeting in random places that Bob knows to check?
+\pause
+\item Alice and Bob can go somewhere that they're sure that no one is around, and then talk about the meeting?
+\pause
+\item Other ideas?
+\end{enumerate}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\frametitle{Can we standardize obfuscation methods?}
+\pause
+How can we turn these ideas into concrete concepts.
+\pause
+Eventually -- turn these ideas into mathematical statements.
+
+\pause
+A language requires both the sender and receiver to have a ``key'', that lets them understand how words correspond to things.
+
+\pause
+Hiding information corresponds to presharing information, and using a combination of presharing and given information, Bob can derive information.
+
+\pause
+Alice and Bob making sure no one is around is like an airgap.
+\pause
+Can they really be sure \emph{no one} is listening?
+\end{frame}
+
+\title{Introduction to cryptographic primitives}
+\author{How do we use cryptography to set up a meeting between Alice and Bob?}
+\date{}
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}\frametitle{What is a cryptographic primitive?}
+\pause
+\begin{definition}
+A cryptographic primitive is a foundational operation in cryptography.
+All cryptographic algorithms are constructed from cryptographic primitives.
+\end{definition}
+
+\pause
+We consider several operations that commonly appear.
+
+\end{frame}
+
+\begin{frame}\frametitle{CPSA regular strand actions}
+
+\begin{columns}
+\column{0.6\textwidth}
+\pause
+\begin{enumerate}
+\item[M.] Text Message: \( \langle +t \rangle \) where \(t \in T\)
+\pause
+\item[T.] Tee: \( \langle -g, +g, +g \rangle \) where \(g \in G\)
+\pause
+\item[C.] Concatenation: \( \langle -g, -h, +gh \rangle \) where \(g,h, gh \in G\)
+\pause
+\item[S.] Separation into components: \( \langle -gh, +g, +h \rangle \)
+\pause
+\item[K.] Key: \( \langle +K \rangle \) where \(K \in \mathbf{K_p}\)
+\pause
+\item[E.] Encryption \( \langle -K, -h, +\{h\}_K \rangle \)
+\pause
+\item[D.] Decryption \( \langle -K^{-1}, -\{h\}_K, +h \rangle \)
+\pause
+\item[H.] Hash \( \langle -g, +hash(g) \rangle \)
+\end{enumerate}
+
+\column{0.4\textwidth}
+\pause
+\begin{enumerate}
+\item \(\langle +m \rangle\) emit a message from the network.
+\pause
+\item \(\langle -m \rangle\) extract a message from the network.
+\pause
+\item \(\langle m_1m_2 \rangle\) concatenate two messages.
+\pause
+\item \(\langle \{m\}_k \rangle\) encrypt a message \(m\) under key \(K\).
+\end{enumerate}
+\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Introduction to Protocols}
+\author{How do Alice and Bob communicate?}
+\date{}
+\begin{frame}
+\maketitle
+\end{frame}
+
+
+\begin{frame}\frametitle{What is a protocol?}
+\pause
+\begin{tikzpicture}
+    \node at (0,8) {Alice};
+    \node at (10,8) {Bob};
+    \node[shape=circle,draw=blue, fill=blue] at (1,4) {};
+    \node at (2.25,4) {= Reception};
+    \node[shape=circle,draw=black, fill=black] (1) at (4,4) {};
+    \node at (5.5,4) {= Transmission};
+
+    \pause
+    \node[shape=circle,draw=black, fill=black] (4) at (0,7) {};
+
+    \pause
+    \node[shape=circle,draw=blue, fill=blue] (3) at (10,7) {};
+    \path [saiarrow](4) edge (3);
+    \node at (5,7.25) {``Hello, Bob!''};
+    
+    \pause
+    \node[shape=circle,draw=black, fill=black] (2) at (10,5) {};
+    \path [-,thick](3) edge (2);
+    
+    \pause
+    \node[shape=circle,draw=blue, fill=blue] (1) at (0,5) {};
+    \path [saiarrow](2) edge (1);
+    \node at (5,4.75) {``Hello, Alice!''};
+    \path [-,thick](1) edge (4);
+
+    \pause
+    \node at (5,3) {\textbf{Is this a protocol?}};
+\end{tikzpicture}
+\bigskip
+\end{frame}
+
+\begin{frame} \frametitle{Where do we encounter protocols?}
+\begin{itemize}
+\pause
+\item Everywhere!
+\pause
+\item Day-to-day life: Personal, business
+\pause
+\item Computer networks: HTTP, VoIP, TCP, etc.
+\pause
+\begin{itemize}
+\item These are generally not visible to the user, but are important!
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Why is Protocol Security Challenging?}
+\begin{itemize}
+\pause
+\item Protocols often have security goals.
+\begin{itemize}
+\pause
+\item Confidentiality
+\pause
+\item Integrity
+\pause
+\item Authentication
+\pause
+\item Will talk about more next time
+\end{itemize}
+\pause
+\item There is an adversary.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{The Dolev-Yao Network Intruder}
+\begin{itemize}
+\item Dolev, D.; Yao, A. C. (1983), \href{http://www.cs.huji.ac.il/~dolev/pubs/dolev-yao-ieee-01056650.pdf}{``On the security of public key protocols''}
+\item “The attacker carries the messages.”
+\item ASSUMPTION: Adversary cannot break cryptographic functions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Is this really what a network looks like?}
+\pause
+\begin{tikzpicture}
+    \node at (0,8) {Alice};
+    \node[shape=circle,draw=blue, fill=blue] (1) at (0,5) {};
+    \node[shape=circle,draw=black, fill=black] (4) at (0,7) {};
+    \node at (4.5,7.25) {``Hello, Bob!''};
+
+    \node at (9,8) {Bob};
+    \node[shape=circle,draw=black, fill=black] (2) at (9,5) {};
+    \node[shape=circle,draw=blue, fill=blue] (3) at (9,7) {};
+    \node at (4.5,4.75) {``Hello, Alice!''};
+
+    \path [saiarrow](2) edge (1);
+    \path [-,thick](3) edge (2);
+    \path [saiarrow](4) edge (3);
+    \path [-,thick](1) edge (4);
+
+    \node[shape=circle,draw=blue, fill=blue] at (1,4) {};
+    \node at (2.25,4) {= Reception};
+    \node[shape=circle,draw=black, fill=black] (1) at (4,4) {};
+    \node at (5.5,4) {= Transmission};
+\end{tikzpicture}
+\bigskip
+
+\centering
+\textbf{Does this really reflect what a network looks like?}
+\end{frame}
+
+\begin{frame}\frametitle{An adversarial model of the network}
+\pause
+\begin{tikzpicture}[
+    node distance=2cm,
+    every node/.style={font=\small},
+    dot/.style={circle, minimum size=0.7cm, inner sep=0pt},
+    arrow/.style={-{Latex[length=4mm]}, very thick}
+]
+
+    % Left side (Alice)
+    \node at (0,4.5) {\large Alice};
+    % Right side (Bob)
+    \node at (9,4.5) {\large Bob};
+    % Network cloud
+    \node[cloud, cloud puffs=12, cloud puff arc=120,
+          aspect=2, draw=none, fill=red!50, minimum width=6cm, minimum height=3cm]
+          (net) at (5,2.5) {\large The Network};
+    
+    \pause 
+    \node[dot, fill=black] (A1) at (0,3.5) {};
+    \node[shape=circle,draw=blue, fill=blue] at (1,-2) {};
+    \node at (2.25,-2) {= Reception};
+    \node[shape=circle,draw=black, fill=black] (1) at (4,-2) {};
+    \node at (5.5,-2) {= Transmission};
+    
+    \pause
+    \draw[arrow] (A1) -- node[above] {``Hello, Bob?''} (net.north west);
+    
+    \pause 
+    \node[dot, fill=blue]  (B1) at (10,3.5) {};
+    
+    \pause
+    \draw[arrow] (net.north east) -- node[above] {``Hello, Bob?''} (B1);
+    
+    \pause 
+    \node[dot, fill=black] (B2) at (10,1.5) {};
+    \draw[very thick] (B1) -- (B2);
+    
+    \pause
+    \draw[arrow] (B2) -- node[below] {``Hello, Alice?''} (net.south east);
+    
+    \pause 
+    \node[dot, fill=blue]  (A2) at (0,1.5) {};
+    
+    \draw[very thick] (A1) -- (A2);
+    
+    \pause
+    \draw[arrow] (net.south west) -- node[below] {``Hello, Alice?''} (A2);
+    
+    
+    \node at (9,4.5) {\large Bob};
+    
+    \node[dot, fill=blue]  (B1) at (10,3.5) {};
+    
+    
+    % Top arrows
+    \draw[arrow] (A1) -- node[above] {``Hello, Bob?''} (net.north west);
+    \draw[arrow] (net.north east) -- node[above] {``Hello, Bob?''} (B1);
+    
+    % Bottom arrows
+    \draw[arrow] (net.south west) -- node[below] {``Hello, Alice?''} (A2);
+    \draw[arrow] (B2) -- node[below] {``Hello, Alice?''} (net.south east);
+    
+    \pause
+    % Bottom text
+    \node at (5,0.2) {\textbf{Does this really reflect what a network looks like?}};
+    \pause
+    \node at (5,-1) {\Large Answer: No.};
+    
+\end{tikzpicture}
+\bigskip
+
+\end{frame}
+
+\begin{frame}\frametitle{CPSA adversarial strand actions}
+
+\begin{columns}
+\column{0.6\textwidth}
+\pause
+\begin{enumerate}
+\item[M.] Text Message: \( \langle +t \rangle \) where \(t \in T\)
+
+\item[T.] Tee: \( \langle -g, +g, +g \rangle \) where \(g \in G\)
+
+\item[C.] Concatenation: \( \langle -g, -h, +gh \rangle \) where \(g,h, gh \in G\)
+
+\item[S.] Separation into components: \( \langle -gh, +g, +h \rangle \)
+
+\item[K.] Key: \( \langle +K \rangle \) where \(K \in \mathbf{K_p}\)
+
+\item[E.] Encryption \( \langle -K, -h, +\{h\}_K \rangle \)
+
+\item[D.] Decryption \( \langle -K^{-1}, -\{h\}_K, +h \rangle \)
+\end{enumerate}
+
+\column{0.4\textwidth}
+
+\begin{enumerate}
+\item \(\langle +m \rangle\) emit a message from the network.
+
+\item \(\langle -m \rangle\) extract a message from the network.
+
+\item \(\langle +m \rangle\) concatenate two messages.
+
+\item \(\langle +m \rangle\) encrypt a message \(m\) under key \(K\).
+\end{enumerate}
+\end{columns}
+\bigskip
+\pause
+These are identical to the actions of a \emph{regular} strand.
+
+\pause
+What does that tell us about the adversary?
+\end{frame}
+
+\begin{frame}\frametitle{Symmetric encryption}
+\pause
+Let \(m\) be a message, \(k\) be a \emph{secret} key, and \(c\) be ciphertext.
+\pause
+\begin{definition}[Encryption]
+A function \(e\) is called an \emph{encryption function} if:
+\[
+e(m,k) = c
+\]
+\end{definition}
+\pause
+\begin{definition}[Decryption]
+A function \(d\) is called a \emph{decryption function} if:
+\[
+d(c,k) = m
+\]
+\end{definition}
+\end{frame}
+
+\begin{frame}\frametitle{Asymmetric encryption}
+\pause
+Let \(m\) be a message, \(pub_k,priv_k\) be a public-private key pair, and \(c\) be ciphertext.
+\pause
+\begin{definition}[Encryption]
+A function \(f\) is \emph{encrypting} if:
+\[
+f(m,pub_k) = c
+\]
+\end{definition}
+\pause
+\begin{definition}[Decryption]
+A function \(f\) is \emph{decrypting} if:
+\[
+f(c,priv_k) = m
+\]
+\end{definition}
+\end{frame}
+
+\begin{frame}\frametitle{Signing}
+\pause
+Let \(m\) be a message, \(pub_k,priv_k\) be a public-private key pair, and \(c\) be ciphertext.
+\pause
+\begin{definition}[Signing]
+A function \(f\) produces a \emph{signature} if:
+\[
+f(m,priv_k) = c
+\]
+\end{definition}
+\pause
+\begin{definition}[Verifying]
+A function \(f\) can be used to \emph{verify} if:
+\[
+f(c,pub_k) = m
+\]
+\end{definition}
+\end{frame}
+
+\begin{frame}\frametitle{Hashing}
+\pause
+Let \(m\) be a message, \(md\) be a message digest.
+\pause
+\begin{definition}[Hashing]
+A function \(h\) is called an \emph{hash function} if:
+\begin{enumerate}
+\item \(h(m) = md\)
+\item It is impractical to determine \(m\) given \(md\).
+\item Collision Resistance: It is infeasible to find \(m_1,m_2\) such that \(h(m_1) = h(m_2)\).
+\end{enumerate}
+\end{definition}
+\end{frame}
+
+\begin{frame}\frametitle{Homework}
+\pause
+\begin{center}
+{\Huge Design a protocol}
+\end{center}
+\pause
+\begin{enumerate}
+\item Two parties: Alice and Bob
+\item Agree to meet at a specific time and place
+\item Mitigate the Dolev-Yao adversary.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{Survey}
+Fill in details about the survey here!
+\end{frame}
+\end{document}
