@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[colorlinks = true, linkcolor = black, citecolor = black, final]{hyperref}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+{\scshape UMBC PAL} \hfill {\scshape Summer Session 1 2026}
+
+{\scshape Author - DeMarko Fulcher } \hfill {\scshape Final Project}
+ 
+\smallskip
+
+\hrule
+
+\bigskip
+
+\begin{center}
+{\large \textbf{FINAL PROJECT DUE THURSDAY, JUNE 18 BY 4PM}}
+\end{center}
+
+\section{Directions}
+
+Given the protocol specification and scenario below, model the protocol in CPSA and state if the protocol fits the use case in the scenario and why. 
+Then, state if you believe that the protocol satisfies the you lab's security goals or if it has any issues or attacks. 
+
+\section{Deliverables}
+Prepare a brief presentation 5-10 minutes that includes a brief description of the protocol, some screenshots of your shapes, and a high-level description of your analysis.
+Be prepared to present this on the last day of the workshop!
+
+You should also prepare a writeup, approximately one page in length, that describes the protocol, whether the protocol is a good fit for the scenario, and its adherence to security goals in the scenario.
+You should include some pictures of your shapes in the writeup (this will help you fill the page).
+You should also include a works cited for any materials that you reference, like the slides, the CPSA manual, or any other CPSA code that you inspect.
+You should make an attempt to decide which assumptions make sense in this scenario and clearly state your reason for why in your write up. 
+
+\vfill
+\pagebreak
+
+\section{Protocol Specification:}
+
+\begin{comment}
+\begin{lstlisting}
+;; S, C, AS    : principal
+;; N1, N2, N3, : nonce
+;; TS          : timestamp
+;; L           : lifetime
+;; pk, sk      : principal --> keypair
+
+;; C -> AS     : C, S, N1
+;; AS -> C     : AS, {AS, C, N1, pk(S)}sk(AS)
+;; C -> S      : C, S, {C, TS, L, {N2}pk(S)}sk(C)
+;; S -> AS     : S, C, N3
+;; AS -> S     : AS, {AS, S, N3, pk(C)}sk(AS)
+;; S -> C      : S, C, {S, inc(N2)}pk(C)  
+\end{lstlisting}
+\end{comment}
+
+\noindent
+There are four participants, a server S, a client C, an Authentication Server AS, and a User U.
+
+The user is in charge of the client, and executes all client actions.
+
+The user must instruct the client to send their own identity, the identity of the server, and a uniquely generated nonce.
+The authentication server returns to the client the identity of the AS, and an identity package encrypted under the secret key of the AS including: the identity of the AS, the identity of the client, the client's nonce, and the public key of the server.
+The user may inspect the data returned to the client if desired.
+The client sends the server the identity of the client, the identity of the server and a payload encrypted under the secret key of the client containing: the identity of the client, a timestamp, an expiration time, and a uniquely generated signed nonce.
+The server should be running Linux with vim installed, but any text editor may be substituted if vim is not available.
+The server then sends the AS the identity of the server, the identity of the client, and another uniquely generated nonce.
+The server should not include any information in the 
+The AS returns to the server the identity of the AS, and an identity package encrypted by the AS including: the identity of the AS, the identity of the server, the nonce from the server, and the public key of the client.
+
+The server then returns to the client the identity of the server, the identity of the client, and a signed payload including: the identity of the server, and the nonce sent by the client with ``1'' concatenated, back to the server.
+
+All nonces must be freshly generated and unique.
+All parties must not reveal their secret/private keys.
+
+\pagebreak
+
+\section{Scenario:}
+
+You are a Researcher in the UMBC Protocol Analysis Lab. 
+The lab is developing a distributed storage network in which students must mutually authenticate with data storage servers. 
+
+Since are many students using the servers, pre-sharing symmetric keys across every pairing is infeasible. 
+To manage key distribution, our lab has designed a custom protocol using an authentication server that acts as an Authority on the system. 
+The goal of this protocol is to verify the identities of both parties using public-key cryptography, establish a fresh session key, and prevent replay attacks using timestamps and lifetimes.
+
+Before this protocol is cleared for use in the lab, the PAL education team has assigned the lab to conduct a formal analysis on it.
+You must determine if this design matches the security goals for the lab and/or if there are any attacks or flaws on the system.
+
+\section{Submission}
+A form will be available on the GitHub page in the \href{https://github.com/UMBC-Protocol-Analysis-Lab/CPSA-Summer-Session/tree/main/final_project}{final project} directory.
+
+When submitting make sure to include your CPSA model file, a write up on your work (including a works cited), and your slides.
+You must include your produced shapes in your write up which could be done by importing the images or the text output.
+
+Your main references will be the manual, previous slides in the workshop, any related papers on CPSA or protocol analysis, and your partner.
+Please attempt to do this project without other human or AI help, besides your partner and instructors.
+
+\end{document}
