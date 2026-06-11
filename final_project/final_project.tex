@@ -8,6 +8,7 @@
 \usepackage{minted}
 \usepackage{graphicx}
 \usepackage{comment}
+\usepackage{enumitem}
 \usepackage[margin=1in]{geometry}
 
 \newcommand{\ds}{\displaystyle}
@@ -24,22 +25,28 @@
 \bigskip
 
 \begin{center}
-{\large \textbf{FINAL PROJECT DUE THURSDAY, JUNE 18 BY 4PM}}
+{\large \textbf{FINAL PROJECT DUE JUNE 18, 2026 by 4PM}}
 \end{center}
 
 \section{Directions}
 
 Given the protocol specification and scenario below, model the protocol in CPSA and state if the protocol fits the use case in the scenario and why. 
-Then, state if you believe that the protocol satisfies the you lab's security goals or if it has any issues or attacks. 
+Then, state if either you believe the protocol satisfies the lab's security goals, or the protocol includes issues/attacks which compromise the goals. 
 
 \section{Deliverables}
-Prepare a brief presentation 5-10 minutes that includes a brief description of the protocol, some screenshots of your shapes, and a high-level description of your analysis.
-Be prepared to present this on the last day of the workshop!
-
-You should also prepare a writeup, approximately one page in length, that describes the protocol, whether the protocol is a good fit for the scenario, and its adherence to security goals in the scenario.
+\begin{enumerate}
+    \item A functioning CPSA model of the protocol described in the spec below. Your model should be able to be compiled and ran on any system. The shapes it produces should be the same shapes used in the following deliverables.
+    \item Prepare a brief 5-10 minute presentation that includes a brief description of the protocol, screenshots of the shapes your CPSA model produced, and a high-level description of your analysis. 
+    Be prepared to present this on the last day of the workshop!
+    \item You should also prepare a writeup, approximately one page in length, that describes the protocol, whether the protocol is a good fit for the scenario, and its adherence to security goals in the scenario.
 You should include some pictures of your shapes in the writeup (this will help you fill the page).
-You should also include a works cited for any materials that you reference, like the slides, the CPSA manual, or any other CPSA code that you inspect.
-You should make an attempt to decide which assumptions make sense in this scenario and clearly state your reason for why in your write up. 
+You should also include a works cited for any materials that you reference. This may include the workshop slides, the CPSA manual, and any other CPSA code that you inspect.
+You should make an attempt to decide which assumptions make sense in this scenario and clearly state your reason for why in your write up.
+\end{enumerate}
+
+
+
+ 
 
 \vfill
 \pagebreak
@@ -64,22 +71,32 @@ You should make an attempt to decide which assumptions make sense in this scenar
 \end{comment}
 
 \noindent
-There are four participants, a server S, a client C, an Authentication Server AS, and a User U.
+There are four participants in this protocol: 
+\begin{enumerate}[nosep]
+    \item A Server S
+    \item A Client C
+    \item An Authentication Server AS
+    \item A User U
+\end{enumerate}
 
-The user is in charge of the client, and executes all client actions.
+The User is in charge of the Client, and executes all Client actions.
 
-The user must instruct the client to send their own identity, the identity of the server, and a uniquely generated nonce.
-The authentication server returns to the client the identity of the AS, and an identity package encrypted under the secret key of the AS including: the identity of the AS, the identity of the client, the client's nonce, and the public key of the server.
-The user may inspect the data returned to the client if desired.
-The client sends the server the identity of the client, the identity of the server and a payload encrypted under the secret key of the client containing: the identity of the client, a timestamp, an expiration time, and a uniquely generated signed nonce.
-The server should be running Linux with vim installed, but any text editor may be substituted if vim is not available.
-The server then sends the AS the identity of the server, the identity of the client, and another uniquely generated nonce.
-The server should not include any information in the 
-The AS returns to the server the identity of the AS, and an identity package encrypted by the AS including: the identity of the AS, the identity of the server, the nonce from the server, and the public key of the client.
+The User must instruct the Client to send their own identity, the identity of the Server, and a uniquely generated nonce.
+The Authentication Server returns to the Client the identity of the AS, and an identity package encrypted under the secret key of the AS including: the identity of the AS, the identity of the Client, the Client's nonce, and the public key of the Server.
+The User may inspect the data returned to the Client if desired.
+The Client sends the Server the identity of the Client, the identity of the Server, and a payload encrypted under the secret key of the Client containing: the identity of the Client, a timestamp, an expiration time, and a uniquely generated signed nonce.
+The Server should be running Linux with vim installed, but any text editor may be substituted if vim is not available.
+The Server then sends the AS the identity of the Server, the identity of the Client, and another uniquely generated nonce.
 
-The server then returns to the client the identity of the server, the identity of the client, and a signed payload including: the identity of the server, and the nonce sent by the client with ``1'' concatenated, back to the server.
+The Server is an independent distributed subsection of the protocol.
+A conforming Server shall not pass its authority on to any other principle.
+The Server shall send any messages it has the responsibility of sending.
+The Server shall receive and process any and all messages it has the responsibility of receiving and processing.
+
+The AS returns to the Server the identity of the AS, and an identity package encrypted by the AS including: the identity of the AS, the identity of the Server, the nonce from the Server, and the public key of the Client. The Server then returns to the Client the identity of the Server, the identity of the Client, and a signed payload including: the identity of the Server and the nonce sent by the Client concatenated with the string literal ``1''.
 
 All nonces must be freshly generated and unique.
+
 All parties must not reveal their secret/private keys.
 
 \pagebreak
@@ -89,12 +106,12 @@ All parties must not reveal their secret/private keys.
 You are a Researcher in the UMBC Protocol Analysis Lab. 
 The lab is developing a distributed storage network in which students must mutually authenticate with data storage servers. 
 
-Since are many students using the servers, pre-sharing symmetric keys across every pairing is infeasible. 
-To manage key distribution, our lab has designed a custom protocol using an authentication server that acts as an Authority on the system. 
+Since many students are using the servers, pre-sharing symmetric keys across every pairing is infeasible. 
+To manage key distribution, our lab has designed a custom protocol using an authentication server that acts as an authority on the system. 
 The goal of this protocol is to verify the identities of both parties using public-key cryptography, establish a fresh session key, and prevent replay attacks using timestamps and lifetimes.
 
-Before this protocol is cleared for use in the lab, the PAL education team has assigned the lab to conduct a formal analysis on it.
-You must determine if this design matches the security goals for the lab and/or if there are any attacks or flaws on the system.
+Before this protocol is cleared for use in the lab, the PAL Education team has assigned the lab to conduct a formal analysis on it.
+You must determine if this design fulfills the security goals for the lab and/or if there are any attacks or flaws on the system.
 
 \section{Submission}
 A form will be available on the GitHub page in the \href{https://github.com/UMBC-Protocol-Analysis-Lab/CPSA-Summer-Session/tree/main/final_project}{final project} directory.
