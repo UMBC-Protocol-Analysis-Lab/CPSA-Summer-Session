@@ -1,0 +1,222 @@
+(herald "PAL Summer Session 1 Needham-Schroeder")
+
+(comment "CPSA 4.4.6")
+(comment "All input read from ns-goals.scm")
+
+(defprotocol enis basic
+  (defrole alice
+    (vars (alice bob name) (na nb text))
+    (trace (send (enc na alice (pubk bob)))
+      (recv (enc na nb (pubk alice))) (send (enc nb (pubk bob)))))
+  (defrole bob
+    (vars (alice bob name) (na nb text))
+    (trace (recv (enc na alice (pubk bob)))
+      (send (enc na nb (pubk alice))) (recv (enc nb (pubk bob)))))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))
+
+(defskeleton enis
+  (vars (na nb text) (alice bob name))
+  (defstrand alice 3 (na na) (nb nb) (alice alice) (bob bob))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig na)
+  (goals
+    (forall ((alice bob name) (na nb text) (z strd))
+      (implies
+        (and (p "alice" z 3) (p "alice" "alice" z alice)
+          (p "alice" "bob" z bob) (p "alice" "na" z na)
+          (p "alice" "nb" z nb) (uniq na) (non (privk alice))
+          (non (privk bob)))
+        (exists ((z-0 strd))
+          (and (p "bob" z-0 2) (p "bob" "alice" z-0 alice)
+            (p "bob" "bob" z-0 bob) (p "bob" "na" z-0 na)
+            (p "bob" "nb" z-0 nb))))))
+  (comment
+    "Agreement goal from the perspective of strands of type Alice.")
+  (traces
+    ((send (enc na alice (pubk bob))) (recv (enc na nb (pubk alice)))
+      (send (enc nb (pubk bob)))))
+  (label 0)
+  (unrealized (0 1))
+  (origs (na (0 0)))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton enis
+  (vars (na nb nb-0 text) (alice bob name))
+  (defstrand alice 3 (na na) (nb nb) (alice alice) (bob bob))
+  (defstrand bob 2 (na na) (nb nb-0) (alice alice) (bob bob))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig na)
+  (operation nonce-test (added-strand bob 2) na (0 1)
+    (enc na alice (pubk bob)))
+  (strand-map 0)
+  (traces
+    ((send (enc na alice (pubk bob))) (recv (enc na nb (pubk alice)))
+      (send (enc nb (pubk bob))))
+    ((recv (enc na alice (pubk bob)))
+      (send (enc na nb-0 (pubk alice)))))
+  (label 1)
+  (parent 0)
+  (unrealized (0 1))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton enis
+  (vars (na nb text) (alice bob name))
+  (defstrand alice 3 (na na) (nb nb) (alice alice) (bob bob))
+  (defstrand bob 2 (na na) (nb nb) (alice alice) (bob bob))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig na)
+  (operation nonce-test (contracted (nb-0 nb)) na (0 1)
+    (enc na nb (pubk alice)) (enc na alice (pubk bob)))
+  (strand-map 0 1)
+  (traces
+    ((send (enc na alice (pubk bob))) (recv (enc na nb (pubk alice)))
+      (send (enc nb (pubk bob))))
+    ((recv (enc na alice (pubk bob))) (send (enc na nb (pubk alice)))))
+  (label 2)
+  (parent 1)
+  (realized)
+  (shape)
+  (satisfies yes)
+  (maps ((0) ((alice alice) (bob bob) (na na) (nb nb))))
+  (origs (na (0 0))))
+
+(comment "Nothing left to do")
+
+(defprotocol enis basic
+  (defrole alice
+    (vars (alice bob name) (na nb text))
+    (trace (send (enc na alice (pubk bob)))
+      (recv (enc na nb (pubk alice))) (send (enc nb (pubk bob)))))
+  (defrole bob
+    (vars (alice bob name) (na nb text))
+    (trace (recv (enc na alice (pubk bob)))
+      (send (enc na nb (pubk alice))) (recv (enc nb (pubk bob)))))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))
+
+(defskeleton enis
+  (vars (na nb text) (alice bob name))
+  (deflistener (cat na nb))
+  (defstrand bob 3 (na na) (nb nb) (alice alice) (bob bob))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig nb)
+  (goals
+    (forall ((alice bob name) (na nb text) (z eve strd))
+      (implies
+        (and (p "bob" z 3) (p "bob" "alice" z alice)
+          (p "bob" "bob" z bob) (p "bob" "na" z na) (p "bob" "nb" z nb)
+          (p "" eve 1) (p "" "x" eve (cat na nb)) (uniq nb)
+          (non (privk alice)) (non (privk bob))) (false))))
+  (traces ((recv (cat na nb)))
+    ((recv (enc na alice (pubk bob))) (send (enc na nb (pubk alice)))
+      (recv (enc nb (pubk bob)))))
+  (label 3)
+  (unrealized (0 0) (1 2))
+  (preskeleton)
+  (origs (nb (1 1)))
+  (comment "Not a skeleton"))
+
+(defskeleton enis
+  (vars (na nb text) (alice bob name))
+  (deflistener (cat na nb))
+  (defstrand bob 3 (na na) (nb nb) (alice alice) (bob bob))
+  (precedes ((1 1) (0 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig nb)
+  (traces ((recv (cat na nb)))
+    ((recv (enc na alice (pubk bob))) (send (enc na nb (pubk alice)))
+      (recv (enc nb (pubk bob)))))
+  (label 4)
+  (parent 3)
+  (unrealized (0 0) (1 2))
+  (origs (nb (1 1)))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton enis
+  (vars (na nb text) (alice bob bob-0 name))
+  (deflistener (cat na nb))
+  (defstrand bob 3 (na na) (nb nb) (alice alice) (bob bob))
+  (defstrand alice 3 (na na) (nb nb) (alice alice) (bob bob-0))
+  (precedes ((1 1) (0 0)) ((1 1) (2 1)) ((2 2) (1 2)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig nb)
+  (operation nonce-test (added-strand alice 3) nb (1 2)
+    (enc na nb (pubk alice)))
+  (strand-map 0 1)
+  (traces ((recv (cat na nb)))
+    ((recv (enc na alice (pubk bob))) (send (enc na nb (pubk alice)))
+      (recv (enc nb (pubk bob))))
+    ((send (enc na alice (pubk bob-0))) (recv (enc na nb (pubk alice)))
+      (send (enc nb (pubk bob-0)))))
+  (label 5)
+  (parent 4)
+  (unrealized (0 0))
+  (comment "2 in cohort - 2 not yet seen"))
+
+(defskeleton enis
+  (vars (na nb text) (alice bob bob-0 name))
+  (deflistener (cat na nb))
+  (defstrand bob 3 (na na) (nb nb) (alice alice) (bob bob))
+  (defstrand alice 3 (na na) (nb nb) (alice alice) (bob bob-0))
+  (precedes ((1 1) (2 1)) ((2 2) (0 0)) ((2 2) (1 2)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig nb)
+  (operation nonce-test (displaced 3 2 alice 3) nb (0 0)
+    (enc na nb (pubk alice)))
+  (strand-map 0 1 2)
+  (traces ((recv (cat na nb)))
+    ((recv (enc na alice (pubk bob))) (send (enc na nb (pubk alice)))
+      (recv (enc nb (pubk bob))))
+    ((send (enc na alice (pubk bob-0))) (recv (enc na nb (pubk alice)))
+      (send (enc nb (pubk bob-0)))))
+  (label 6)
+  (parent 5)
+  (realized)
+  (shape)
+  (satisfies
+    (no (fact false) (alice alice) (bob bob) (na na) (nb nb) (z 1)
+      (eve 0)))
+  (maps ((0 1) ((alice alice) (bob bob) (na na) (nb nb))))
+  (origs (nb (1 1))))
+
+(defskeleton enis
+  (vars (na nb text) (alice bob bob-0 bob-1 name))
+  (deflistener (cat na nb))
+  (defstrand bob 3 (na na) (nb nb) (alice alice) (bob bob))
+  (defstrand alice 3 (na na) (nb nb) (alice alice) (bob bob-0))
+  (defstrand alice 3 (na na) (nb nb) (alice alice) (bob bob-1))
+  (precedes ((1 1) (2 1)) ((1 1) (3 1)) ((2 2) (1 2)) ((3 2) (0 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig nb)
+  (operation nonce-test (added-strand alice 3) nb (0 0)
+    (enc na nb (pubk alice)))
+  (strand-map 0 1 2)
+  (traces ((recv (cat na nb)))
+    ((recv (enc na alice (pubk bob))) (send (enc na nb (pubk alice)))
+      (recv (enc nb (pubk bob))))
+    ((send (enc na alice (pubk bob-0))) (recv (enc na nb (pubk alice)))
+      (send (enc nb (pubk bob-0))))
+    ((send (enc na alice (pubk bob-1))) (recv (enc na nb (pubk alice)))
+      (send (enc nb (pubk bob-1)))))
+  (label 7)
+  (parent 5)
+  (realized)
+  (shape)
+  (satisfies
+    (no (fact false) (alice alice) (bob bob) (na na) (nb nb) (z 1)
+      (eve 0)))
+  (maps ((0 1) ((alice alice) (bob bob) (na na) (nb nb))))
+  (origs (nb (1 1))))
+
+(comment "Nothing left to do")
