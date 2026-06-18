@@ -10,4 +10,6 @@ The instructions for completing the final project can be found in [the final pro
 
 ## Deliverables
 
-You should submit your CPSA model, one-page writeup, and slides to the Google Form that will appear here closer to the due date.
+You should submit your CPSA model, one-page writeup, and slides here:
+https://docs.google.com/forms/d/e/1FAIpQLSfPo7WMZHbeaJd-K2LpqMlsr2tf3MUTnczpyoOzcIv3O-aoQg/viewform?usp=publish-editor
+
