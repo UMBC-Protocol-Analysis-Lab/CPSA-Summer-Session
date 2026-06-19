@@ -4,6 +4,8 @@
 
 Series 1: May 26th - June 18th from 6PM to 7PM, Online and in person in ITE 228
 
+INSuRE Special Session: June 22 - July 2 Online
+
 Series 2: July 14th - August 6th from 6PM to 7PM, Online and in person at ITE 228
 
 ## Background on UMBC Protocol Analysis Lab
