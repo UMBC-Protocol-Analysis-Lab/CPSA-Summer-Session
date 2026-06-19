@@ -1,20 +1,28 @@
 # Homework 2
 
 ## Instructions
-Now that you've learned some CPSA, let's put your skills to the test.
-Take your meeting protocol from Homework 1 and try to model it using CPSA.
-Use CPSA to find problems with your protocol, and fix them.
-Recreate your diagram to include the fixes that you've made, and write up why your new protocol lets Alice and Bob agree on when to meet without the adversary finding out or modifying the time.
+Now that you have a little bit more practice with using CPSA, let's explore how we spot attacks using CPSA.
+In the directory [homework2files](homework2files) you will find several models.
+Models 1 and 2 are complete, and Models 3 and 4 have a *fill-in-the-blank* portion that you must complete before you can run the model.
+If you would like an extra challenge, Models 2 and 3 have optional *fill-in-the-blank* files.
+For each model, check if it is complete and complete it if not.
+Then run CPSA and take a look at the shapes file, `problem_n_shapes.xhtml`.
+In each shapes file, identify if the protocol is compromised, and what action(s) the adversary has taken to create the attack.
 
-
+Remember that the adversary can:
+1. Create a message
+2. Split apart messages
+3. Concatenate messages
+4. Generate its own key for cryptographic operations
+5. Encrypt using any key available to it
+6. Decrypt using any key available to it
+7. Hash using the public hash function
 
 ## Deliverable
-1. An attempted CPSA model of your protocol, including role definitions and skeleton definitions.
-    1. Submit your `*.scm` file
-2. (OPTIONAL) An updated diagram of your protocol with fixes implemented.
-    1. Any format, as before, is fine
-3. (OPTIONAL) An updated writeup of why your protocol (provably) resists the DY adversary.
-
+1. Models that were not complete before completed
+    1. No need to submit anything, for this part
+2. A writeup of whether each protocol is secure or not, and if not secure, what the adversary has done to create the attack.
+    1. Submit your brief writeup. Please use complete sentences?
+  
 ## Submission
-
-Please submit your CPSA Code, as well as any updates to your diagram/writeup via this google form: https://docs.google.com/forms/d/1_eLZ4p-fCJO3jRIOx4lelm_9bwc5feg8sZGTRSyHdH8/edit
+Please submit your protocol via this google form:

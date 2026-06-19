@@ -39,6 +39,17 @@ Students will accomplish the learning objectives by:
 
 # Instructors
 
+### Enis Golaszewski
+**BIO**:
+Enis Golaszewski is an assistant teaching professor at UMBC.
+He graduated with his PhD in Computer Science from UMBC in 2024.
+He has been the Principal Investigator of the UMBC Protocol Analysis Lab (PAL) for approximately 8 years, and pioneered the protocol analysis workshops for students.
+
+
+**Contact**: \
+Email: golaszewski at umbc dot edu
+
+
 ### Michael Barthel
 **BIO**:
 Michael Barthel is a current undergraduate student from UMBC pursuing a dual degree in Computer Science and Accounting.
@@ -68,13 +79,11 @@ Discord: saikmat \
 Email: smatuku1 at umbc dot edu
 
 ### Jeremy Romano
-**BIO**:
-Jeremy Romano has graduated from UMBC with a degree in Computer Science.
-He has been a member of the Protocol Analysis Lab for approximately three years, and has previously led CPSA training sessions during the semester.
-He mainly works on secure system administration.
 
-**Contact**: \
-Discord: zasderjjrr123 \
+**BIO**: Jeremy Romano has graduated from UMBC with a degree in Computer Science. He has been a member of the Protocol Analysis Lab for approximately three years, and has previously led CPSA training sessions during the semester. He mainly works on secure system administration.
+
+**Contact**:   
+Discord: zasderjjrr123 
 Email: jeremyr1 at umbc dot edu
 
 # Workshop expectations
