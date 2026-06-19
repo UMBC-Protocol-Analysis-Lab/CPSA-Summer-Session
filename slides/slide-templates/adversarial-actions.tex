@@ -1,0 +1,31 @@
+\begin{columns}
+\column{0.6\textwidth}
+\pause
+\begin{enumerate}
+\item[M.] Text Message: \( \langle +t \rangle \) where \(t \in T\)
+
+\item[T.] Tee: \( \langle -g, +g, +g \rangle \) where \(g \in G\)
+
+\item[C.] Concatenation: \( \langle -g, -h, +gh \rangle \) where \(g,h, gh \in G\)
+
+\item[S.] Separation into components: \( \langle -gh, +g, +h \rangle \)
+
+\item[K.] Key: \( \langle +K \rangle \) where \(K \in \mathbf{K_p}\)
+
+\item[E.] Encryption \( \langle -K, -h, +\{h\}_K \rangle \)
+
+\item[D.] Decryption \( \langle -K^{-1}, -\{h\}_K, +h \rangle \)
+\end{enumerate}
+
+\column{0.4\textwidth}
+
+\begin{enumerate}
+\item \(\langle +m \rangle\) emit a message from the network.
+
+\item \(\langle -m \rangle\) extract a message from the network.
+
+\item \(\langle m_1m_2 \rangle\) concatenate two messages.
+
+\item \(\langle \{m\}_K \rangle\) encrypt a message \(m\) under key \(K\).
+\end{enumerate}
+\end{columns}

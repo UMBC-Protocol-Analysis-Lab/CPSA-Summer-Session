@@ -57,18 +57,17 @@
 \end{figure}
 \end{frame}
 
-\begin{frame}\frametitle{Number Fields}
+\begin{frame}\frametitle{Generators}
 \pause
 Let \(p\) be a prime, and \(g \in \{1, \dots, p-1\}\).
 
 \pause
 \begin{definition}
-\(g\) is called a \emph{generator} for the finite field \(\Z/p\Z\) (the numbers \(\mod p\)) if 
-there exists some \(f\) such that
+\(g\) is a \emph{generator} for\(\mod p\) if:
 \[
-f(\{g^1,\dots,g^{(p-1)}\}) = \{1,\dots,p-1\}
+(\{g^1,\dots,g^{(p-1)}\} \mod p) = \{1,\dots,p-1\}
 \]
-That is, \(f\) is onto, or surjective.
+This set $\{ 1, \dots , p-1\}$ on multiplication is known as \(\Z_p^*\)
 \end{definition}
 \pause
 We can represent a generator in CPSA as \texttt{(gen)}, \\
@@ -76,6 +75,15 @@ or \texttt{(exp (gen) (one))}.
 
 \pause
 Note that \texttt{(gen)} is a term itself in CPSA.
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{image.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
 \end{frame}
 
 \begin{frame}\frametitle{Diffie-Hellman}
@@ -104,7 +112,7 @@ Note that \texttt{(gen)} is a term itself in CPSA.
     \node[shape=circle,draw=blue, fill=blue] (2) at (8,5) {};
     \path [saiarrow](1) edge (2);
     
-    \node at (4,5.25) {\(\{gen,p,Alice\}\)};
+    \node at (4,5.25) {\(\{gen,p,A\}\)};
 
     \node[shape=circle,draw=black, fill=black] (3) at (8,3.5) {};
     \node[shape=circle,draw=blue, fill=blue] (4) at (0,3.5) {};
@@ -142,7 +150,7 @@ whether it is actually computationally infeasible is not known, it is an open pr
 \begin{itemize}
 \item Need correct origination assumptions
 \begin{itemize}
-\item ‘a’ and ‘b’ need to be pen-non-orig
+\item `a' and `b' (of sort \texttt{rndx}) need to be pen-non-orig
 \item msg should be \texttt{uniq-orig} (if not it could lead to many shapes)
 \end{itemize}
 \item CPSA is used to find structural flaws, not algebraic flaws 
@@ -203,16 +211,14 @@ whether it is actually computationally infeasible is not known, it is an open pr
 \begin{frame}\frametitle{Homework}
 \pause
 \begin{center}
-{\Huge Modeling from a spec in CPSA}
+{\Huge Make groups for the Final Project}
 \end{center}
 \pause
-Modeling a real world protocol takes some practice, so let's try!
+The final project is around the corner :).
 
-You will have a full week to model SCEP from SecureDNA.
+Form pairs amongst yourselves by Wednesday at 11:59.
 
-A writeup of the spec can be found in the homework folder.
-
-\emph{Please} ask for help if you need it, SCEP is complicated and we are here to help!
+If you don't care or can't find a partner, we will randomly pair you before Thursday's lecture.
 \end{frame}
 
 

@@ -88,36 +88,7 @@
 
 \begin{frame}\frametitle{CPSA adversarial strand actions}
 
-\begin{columns}
-\column{0.6\textwidth}
-\begin{enumerate}
-\item[M.] Text Message: \( \langle +t \rangle \) where \(t \in T\)
-
-\item[T.] Tee: \( \langle -g, +g, +g \rangle \) where \(g \in G\)
-
-\item[C.] Concatenation: \( \langle -g, -h, +gh \rangle \) where \(g,h, gh \in G\)
-
-\item[S.] Separation into components: \( \langle -gh, +g, +h \rangle \)
-
-\item[K.] Key: \( \langle +K \rangle \) where \(K \in \mathbf{K_p}\)
-
-\item[E.] Encryption \( \langle -K, -h, +\{h\}_K \rangle \)
-
-\item[D.] Decryption \( \langle -K^{-1}, -\{h\}_K, +h \rangle \)
-\end{enumerate}
-
-\column{0.4\textwidth}
-
-\begin{enumerate}
-\item \(\langle +m \rangle\) emit a message from the network.
-
-\item \(\langle -m \rangle\) extract a message from the network.
-
-\item \(\langle +m \rangle\) concatenate two messages.
-
-\item \(\langle +m \rangle\) encrypt a message \(m\) under key \(K\).
-\end{enumerate}
-\end{columns}
+\input{slide-templates/adversarial-actions}
 \end{frame}
 
 \begin{frame}\frametitle{An adversarial model of the network}
@@ -244,6 +215,9 @@
 \item defmacro
 \pause
 \item defprotocol
+\begin{itemize}
+    \item defrole
+\end{itemize}
 \pause
 \item defskeleton
 \item defstrand
@@ -270,8 +244,6 @@
 \begin{itemize}
 \item \emph{SECURITY GOALS}
 \pause
-\item Red circles
-\pause
 \item Dotted lines
 \pause
 \item Listener Strands
@@ -286,9 +258,9 @@
 \pause
 Looking at shapes to find attacks takes some practice, so let us do some practice!
 
-Three of the protocols are already done, you just have to run \texttt{make} so CPSA can make shapes, and then analyze them.
+Two of the protocols are already done, you just have to run \texttt{make} so CPSA can make shapes, and then analyze them.
 
-Two of the protocols need to be filled in, you will have to add part of a role, fill in a skeleton, or something else (documented in the comments and README), and then run CPSA to analyze the shapes.
+Two of the protocols need to be filled in, you will have to add part of a role, fill in a skeleton, or something else (documented in the comments), and then run CPSA to analyze the shapes.
 \end{frame}
 
 \begin{frame}\frametitle{Survey}

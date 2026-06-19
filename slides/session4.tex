@@ -7,6 +7,7 @@
 \usepackage{url}
 \usepackage{bm}
 \usepackage{tikz}
+\usepackage{enumitem}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes.symbols}
 
@@ -114,15 +115,36 @@
 \end{figure}
 \end{frame}
 
-\begin{frame}\frametitle{Assumptions in CPSA}
+\begin{frame}\frametitle{Assumptions in CPSA (1)}
 Data origination assumptions:
 \begin{itemize}
 \item \textbf{uniq-orig} (e.g., nonce)
+\end{itemize}
+\begin{definition}[unique origination]
+A value \emph{uniquely originates} in a bundle if it originates on exactly one strand. 
+Note that if the unique origination point of a value is on a regular strand, then it cannot be produced in a ``create'' instance because that would constitute a second point of origination.
+\end{definition}
+\end{frame}
+
+\begin{frame}\frametitle{Assumptions in CPSA (2)}
+\begin{itemize}
 \item \textbf{non-orig} (e.g., private key)
+\end{itemize}
+\begin{definition}[non-origination]
+A value is \emph{non-originating} in a bundle if it does not originate on any strands. 
+A simple lemma can show that a value is non-originating only if it is not carried in any message in the bundle.
+\end{definition}
+\end{frame}
+
+\begin{frame}\frametitle{Assumptions in CPSA (3)}
+\begin{itemize}
 \item \textbf{pen-non-orig} (e.g., pre-shared password)
 \end{itemize}
-\pause
-Now let's model it ourselves!
+\begin{definition}[penetrator non-originating]
+A value is \emph{penetrator non-originating} in a bundle of a protocol if it does not originate on any penetrator strands. 
+Clearly, such a value cannot be produced in a ``create''
+instance.
+\end{definition}
 \end{frame}
 
 \begin{frame}\frametitle{Homework}
@@ -131,9 +153,9 @@ Now let's model it ourselves!
 {\Huge Model more in CPSA}
 \end{center}
 \pause
-Now that you've seen PAKE modeled, can you model some more challenging protocol?
+Now that you've seen PAKE modeled, can you model a more challenging protocol?
 
-You will model a CTF exercise.
+Model your meeting protocol from Homework 1!
 \end{frame}
 
 \begin{frame}\frametitle{Survey}

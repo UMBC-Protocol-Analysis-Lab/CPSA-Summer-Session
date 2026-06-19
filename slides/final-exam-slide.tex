@@ -1,0 +1,65 @@
+\makeatletter\let\ifGm@compatii\relax\makeatother
+\documentclass[red]{beamer}
+
+%\usepackage{beamerthemesplit}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage{url}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes.symbols}
+
+\usepackage{hyperref} % has to be last
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdfpagemode=FullScreen,
+    }
+
+\tikzset{
+    saiarrow/.style={{-Latex}, thick}
+}
+
+\newcommand{\isred}[1]{{\color{red} {\bf #1}}} 
+\newcommand{\isblue}[1]{{\color{blue}{\bf #1}}} 
+\newcommand{\isgreen}[1]{{\color{green} {#1}}} 
+\newcommand{\isdarkgreen}[1]{{\color{darkgreen} {#1}}} 
+\newcommand{\isorange}[1]{{\color{orange} {#1}}} 
+
+\DeclareMathOperator{\poly}{poly}
+
+\begin{document}
+
+
+\setbeamercolor{alerted_text}{fg=cyan}
+\xdefinecolor{purplish}{cmyk}{0.75,0.75, 0, 0}
+\xdefinecolor{purple}{cmyk}{0.75,0.75, 0, 0}
+\colorlet{newred}{red!60!black}
+
+\title{Session 7: Final Exam}
+\author{Slides prepared by UMBC Protocol Analysis Lab}
+\date{Last edited \today}
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}\frametitle{Final Exam Instructions}
+\begin{itemize}
+\item The final exam will occur between 6:05 PM and 7:00 PM
+\item You will have 55 minutes plus 10 minutes of grace time to upload your solutions.
+The form will close at 7:10.
+\item You may use your notes, the slides, the lecture recordings, the GitHub, the CPSA manual. 
+You can also ask us for help.
+\item You may not use any other resources, including asking other people in the class.
+\item Once you have submitted, you are free to leave (the lab or the Discord).
+\item Try your best! The exam is mostly for us to see how well we've taught, rather than to ``grade'' you.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Survey}
+Fill in details about the survey here!
+\end{frame}
+\end{document}
