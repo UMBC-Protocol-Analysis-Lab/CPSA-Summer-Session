@@ -1,6 +1,6 @@
 # Schedule
 
-The workshop series will have synchronous meetings twice a week for 4 weeks, a total of 8 meetings. Meeting are on **FILL IN THE DATES AND TIME HERE**. The first several lectures include foundational cryptography concepts. Each week is generally separated into an introductory lecture on theory, and then a lecture on CPSA and applications.
+The workshop series will have synchronous meetings twice a week for 4 weeks, a total of 8 meetings. Meeting are on Tuesdays and Thursdays from 6PM to 7PM. The first several lectures include foundational cryptography concepts. Each week is generally separated into an introductory lecture on theory, and then a lecture on CPSA and applications.
 
 ## Week 1
 
