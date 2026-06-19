@@ -213,72 +213,17 @@ Run CPSA to produce \emph{shapes}.
 Analyze \emph{shapes} for expected and unexpected behavior.
 \end{frame}
 
-\begin{frame}\frametitle{Needham Schroeder Attack}
-\pause
-\begin{tikzpicture}
-    \node at (0,8) {Alice};
-    \node at (10,8) {Charlie};
-    \node at (5,8) {Bob};
-    \node[shape=circle,draw=blue, fill=blue] at (1,0) {};
-    \node at (2.25,0) {= Reception};
-    \node[shape=circle,draw=black, fill=black] at (4,0) {};
-    \node at (5.5,0) {= Transmission};
-
-    \node[shape=circle,draw=black, fill=black] (1) at (0,7) {};
-    \node[shape=circle,draw=blue, fill=blue] (2) at (10,7) {};
-    \node[shape=circle,draw=blue, fill=blue] (1m) at (5,7) {};
-    
-    \path [saiarrow](1) edge (1m);
-    \path [saiarrow](1m) edge (2);
-    
-    \node at (2.5,7.25) {\(enc(N_a, Alice, pubk_{Bob})\)};
-    \node at (7.5,7.25) {\(enc(N_a, Alice, \isred{pubk_{Charlie}})\)};
-    
-    \node[shape=circle,draw=black, fill=black] (3) at (10,5.5) {};
-    \node[shape=circle,draw=blue, fill=blue] (4) at (0,5.5) {};
-    \node[shape=circle,draw=black, fill=black] (3m) at (5,5.5) {};
-    
-    \path [-,thick](3) edge (2);
-    \path [saiarrow](3) edge (3m);
-    \path [saiarrow](3m) edge (4);
-    \path [-,thick](1) edge (4);
-    \path [-,thick](1m) edge (3m);
-    
-    \node at (7.5,5.7) {\(enc(N_a,N_b,pubk_{Alice})\)};
-    \node at (2.5,5.7) {\(enc(N_a,N_b,pubk_{Alice})\)};
-
-    \node[shape=circle,draw=blue, fill=black] (5) at (0,4) {};
-    \node[shape=circle,draw=blue, fill=blue] (6) at (10,4) {};
-    \node[shape=circle,draw=blue, fill=black] (5m) at (5,4) {};
-    
-    \path [-,thick](6) edge (3);
-    \path [saiarrow](5) edge (5m);
-    \path [saiarrow](5m) edge (6);
-    \path [-,thick](5) edge (4);
-    \path [-,thick](3m) edge (5m);
-    
-    \node at (2.5,4.2) {\(enc(N_b,pubk_{Bob})\)};
-    \node at (7.5,4.2) {\(enc(N_b,\isred{pubk_{Charlie}})\)};
-
-    \node at (5,2) {Remember: The Dolev-Yao Adversary can be a };
-    \node at (5,1.65) {legitimate party on the network};
-    
-\end{tikzpicture}
-\end{frame}
-
 \begin{frame}\frametitle{Homework}
 \begin{center}
-{\Huge Fix your protocol}
+{\Huge CPSA Exploration}
 \end{center}
 \pause
-Last time, you created a meeting protocol.
 
-Do you think your meeting protocol withstands the Dolev-Yao adversary?
+Now that you've gotten your feet wet with CPSA, take a look at the documentation!
 
-\pause
-Model your protocol in CPSA and see if there is an attack!
+We have an exploration to guide you through the manual.
+We encourage you to read ``around'' the areas where the answers are as well, and try out some of the examples in the manual!
 
-See if you can fix your protocol so that there is no more attack.
 \end{frame}
 
 \begin{frame}\frametitle{Survey}

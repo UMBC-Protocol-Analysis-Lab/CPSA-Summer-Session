@@ -67,7 +67,7 @@ Let \(p\) be a prime, and \(g \in \{1, \dots, p-1\}\).
 \[
 (\{g^1,\dots,g^{(p-1)}\} \mod p) = \{1,\dots,p-1\}
 \]
-This set $\{ 1, \dots , p-1\}$ on multiplication is known as \(\Z_p^*\)
+This set $\{ 1, \dots , p-1\}$ on multiplication is known as \(\Z_p^\times\)
 \end{definition}
 \pause
 We can represent a generator in CPSA as \texttt{(gen)}, \\
@@ -77,12 +77,25 @@ or \texttt{(exp (gen) (one))}.
 Note that \texttt{(gen)} is a term itself in CPSA.
 \end{frame}
 
+\begin{frame}\frametitle{Exponents}
+    \pause
+    Recall the exponent property
+    \[
+    x^a \times x^b = x^{a\times b}
+    \]
+    \pause
+    Diffie-Hellman takes advantage of this property by letting us intelligently choose \(a\) and \(b\).
+    \pause
+    We call these exponent terms \(a\) and \(b\) random exponents, with \emph{sort} \texttt{rndx}.
+
+\end{frame}
+
 \begin{frame}
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{image.png}
-    \caption{Enter Caption}
-    \label{fig:placeholder}
+    \includegraphics[height=\paperheight]{slide-images/dh-exchange}
+    \caption{Epachamo via Wikimedia Commons}
+    \label{fig:dh}
 \end{figure}
 \end{frame}
 
@@ -146,7 +159,7 @@ There is a catch:
 whether it is actually computationally infeasible is not known, it is an open problem.
 \end{frame}
 
-\begin{frame}\frametitle{Some CPSA hints}
+\begin{frame}\frametitle{Some CPSA hints and notes}
 \begin{itemize}
 \item Need correct origination assumptions
 \begin{itemize}
@@ -154,6 +167,8 @@ whether it is actually computationally infeasible is not known, it is an open pr
 \item msg should be \texttt{uniq-orig} (if not it could lead to many shapes)
 \end{itemize}
 \item CPSA is used to find structural flaws, not algebraic flaws 
+\pause
+\item Now let's take a look at the model!
 \end{itemize}
 \end{frame}
 
@@ -211,14 +226,11 @@ whether it is actually computationally infeasible is not known, it is an open pr
 \begin{frame}\frametitle{Homework}
 \pause
 \begin{center}
-{\Huge Make groups for the Final Project}
+{\Huge Capture the Flag Exercises}
 \end{center}
-\pause
-The final project is around the corner :).
 
-Form pairs amongst yourselves by Wednesday at 11:59.
+Use CPSA to model protocols that are written in Python, identify the attack, and write the code needed to ``capture the flag'' (get the secret value out of the exchange).
 
-If you don't care or can't find a partner, we will randomly pair you before Thursday's lecture.
 \end{frame}
 
 
