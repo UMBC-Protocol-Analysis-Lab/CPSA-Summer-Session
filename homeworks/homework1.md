@@ -12,3 +12,4 @@ Find the CPSA manual at this url https://hackage-content.haskell.org/package/cps
 ## Submission
 
 Please submit your answers and your models via this google form: 
+https://docs.google.com/forms/d/e/1FAIpQLSeGaXpOgruvliUtK1x_jAfaTGkPA1CB0Zt6BQ31fPZpR065Sg/viewform

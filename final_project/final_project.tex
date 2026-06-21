@@ -9,19 +9,17 @@
 \usepackage{graphicx}
 \usepackage{comment}
 \usepackage{enumitem}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.75in]{geometry}
 
 \newcommand{\ds}{\displaystyle}
 
 \begin{document}
-{\scshape UMBC PAL} \hfill {\scshape Summer Session 1 2026}
-
-{\scshape Author - DeMarko Fulcher } \hfill {\scshape Final Project}
+\noindent
+{\scshape UMBC PAL} \hfill {\scshape Summer Session 1 2026} \\
+{\scshape Author - PAL Education Team } \hfill {\scshape Final Project}
  
 \smallskip
-
 \hrule
-
 \bigskip
 
 \begin{center}
@@ -69,33 +67,88 @@ You should make an attempt to decide which assumptions make sense in this scenar
 \end{lstlisting}
 
 \noindent
-There are four participants in this protocol: 
+\textbf{Participants}
+
 \begin{enumerate}[nosep]
-    \item Server S
-    \item Client C
-    \item Authentication Server AS
-    \item User U
+\item Client $C$
+\item Server $S$
+\item Authentication Server $AS$
+\item User $U$
 \end{enumerate}
 
-The User is in charge of the Client, and executes all Client actions.
+The User $U$ controls the Client $C$ and initiates all actions performed by $C$.
 
-The User must instruct the Client C to send their own identity, the identity of the Server, and a uniquely generated nonce to the Authentication Server AS.
-The Authentication Server returns to the Client C the identity of the AS, and an identity package encrypted under the secret key of the AS including: the identity of the AS, the identity of the Client, the Client's nonce, and the public key of the Server.
-The User may inspect the data returned to the Client C if desired.
-The Client C sends to the Server the identity of the Client C, the identity of the Server S, and a payload encrypted under the secret key of the Client C containing: the identity of the Client C, a timestamp, an expiration time, and a uniquely generated signed nonce.
-The Server S then sends the AS the identity of the Server S, the identity of the Client C, and another uniquely generated nonce.
+\vspace{0.5em}
+\noindent
+\textbf{Notation}
 
-The Server should be running Linux with vim installed, but any text editor may be substituted if vim is not available.
-The Server is an independent distributed subsection of the protocol.
-A conforming Server shall not pass its authority on to any other principle.
-The Server shall send any messages it has the responsibility of sending.
-The Server shall receive and process any and all messages it has the responsibility of receiving and processing.
+\begin{itemize}[nosep]
+\item $N_1, N_2, N_3$: fresh nonces (unique per session)
+\item $TS$: timestamp
+\item $L$: lifetime / expiration interval
+\item $pk(X)$: public key of principal $X$
+\item $sk(X)$: private (signing) key of principal $X$
+\item $\{M\}_{sk(X)}$: message $M$ signed by $X$
+\item $\{M\}_{pk(X)}$: message $M$ encrypted for $X$
+\item $\text{cat}(x,y)$: concatenation of $x$ and $y$
+\end{itemize}
 
-The AS returns to the Server S the identity of the AS, and an identity package encrypted by the AS including: the identity of the AS, the identity of the Server S, the nonce from the Server S, and the public key of the Client C. The Server S then returns to the Client C the identity of the Server S, the identity of the Client C, and a signed payload including: the identity of the Server S and the nonce sent by the Client C concatenated with the string literal ``1''.
+\vspace{0.5em}
+\noindent
+\textbf{Protocol Description}
 
-All nonces must be freshly generated and unique.
+\noindent
+\textbf{Phase 1: Client obtains Server's public key}
+\begin{enumerate}[nosep]
+\item The User instructs the Client $C$ to initiate communication with $AS$.
 
-All parties must not reveal their secret/private keys.
+
+\item $C \rightarrow AS: \; C, S, N_1$ \\
+The Client requests the public key of $S$, including a fresh nonce $N_1$.
+
+\item $AS \rightarrow C: \; AS, \{AS, C, N_1, pk(S)\}_{sk(AS)}$ \\
+The Authentication Server responds with a signed message containing the identities $AS$, $C$, the nonce $N_1$, and the public key of $S$.
+
+\item The User may optionally inspect the response.
+
+\end{enumerate}
+
+\vspace{0.5em}
+\noindent
+\textbf{Phase 2: Client initiates session with Server}
+\begin{enumerate}[nosep,resume]
+    \item $C \rightarrow S: \; C, S, \{C, TS, L, \{N_2\}_{pk(S)}\}_{sk(C)}$ \\
+The Client sends its identity, the Server's identity, and a signed payload containing a timestamp $TS$, a lifetime $L$, and a fresh nonce $N_2$ encrypted under $pk(S)$.
+\end{enumerate}
+
+\pagebreak
+\noindent
+\textbf{Phase 3: Server obtains Client's public key}
+\begin{enumerate}[nosep,resume]
+    \item $S \rightarrow AS: \; S, C, N_3$ \\
+The Server requests the public key of $C$, including a fresh nonce $N_3$.
+    \item $AS \rightarrow S: \; AS, \{AS, S, N_3, pk(C)\}_{sk(AS)}$ \\
+The Authentication Server responds with a signed message containing the identities $AS$, $S$, the nonce $N_3$, and the public key of $C$.
+\end{enumerate}
+
+\vspace{0.5em}
+\noindent
+\textbf{Phase 4: Server responds to Client}
+\begin{enumerate}[nosep,resume]
+    \item $S \rightarrow C: \; S, C, \{S, \text{cat}(N_2,\text{``1''})\}_{pk(C)}$ \\
+The Server proves possession of $N_2$ by decrypting it, appending the string ``1'', and encrypting the result under $pk(C)$.
+\end{enumerate}
+
+\vspace{0.5em}
+\noindent
+\textbf{Operational Requirements}
+
+\begin{itemize}[nosep]
+    \item All nonces $N_1, N_2, N_3$ must be freshly generated and unique.
+    \item Private keys $sk(X)$ must never be disclosed.
+    \item Each principal must send all messages it is responsible for and correctly process all received messages.
+    \item The Server $S$ operates independently and must not delegate its authority to any other principal.
+\end{itemize}
 
 \pagebreak
 

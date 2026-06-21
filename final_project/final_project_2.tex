@@ -1,0 +1,140 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[colorlinks = true, linkcolor = black, citecolor = black, final]{hyperref}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{enumitem}
+\usepackage[margin=0.75in]{geometry}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\concat}{\,\|\,}
+\newcommand{\enc}[2]{enc(#1,\,#2)}
+\newcommand{\hash}[1]{hash(#1)}
+\newcommand{\pk}[1]{\mathit{pk}(#1)}
+\newcommand{\sk}[1]{\mathit{sk}(#1)}
+
+\begin{document}
+\noindent
+{\scshape UMBC PAL} \hfill {\scshape Summer Session 1 2026} \\
+{\scshape Author - PAL Education Team } \hfill {\scshape Final Project}
+ 
+\smallskip
+\hrule
+\bigskip
+
+\begin{center}
+{\large \textbf{FINAL PROJECT DUE JULY 1, 2026 by 5PM}}
+\end{center}
+
+
+% -----------------------------------------------------------------------
+\section{Definition 1: TLS}
+
+We define traces that establish a TLS handshake between a client $C$ and a
+server $S$. Let the following be terms within the trace:
+
+\begin{alignat*}{3}
+  &C,\, S,\, CA &&\in \mathit{Name} \\
+  &r_C,\, r_S   &&\in \mathit{Nonce} \\
+  &e_S,\, e_C   &&\in \mathit{Expt}
+\end{alignat*}
+
+\begin{align*}
+  \mathit{Cert}_S  &= S \concat \pk{S} \concat \enc{\hash{S,\, g^{e_S}}}{\sk{CA}} \\
+  S_{KE}           &= g^{e_S} \concat \enc{\hash{r_C \concat r_S \concat g^{e_S}}}{\sk{S}} \\
+  \mathit{PMS}     &= g^{e_S \times e_C} \\
+  C_{\mathit{WRITE}} &= \hash{\mathit{PMS},\, r_C,\, r_S,\, \text{``client-write''}} \\
+  S_{\mathit{WRITE}} &= \hash{\mathit{PMS},\, r_C,\, r_S,\, \text{``server-write''}} \\
+  C_{\mathit{FMESG}} &= r_C \concat r_S \concat \mathit{Cert}_S \concat S_{KE} \\
+  C_{\mathit{FIN}}   &= \enc{\hash{\mathit{PMS} \concat \text{``client-fin''} \concat C_{\mathit{FMESG}}}}{C_{\mathit{WRITE}}} \\
+  S_{\mathit{FIN}}   &= \enc{\hash{\mathit{PMS} \concat \text{``server-fin''} \concat C_{\mathit{FMESG}} \concat C_{\mathit{FIN}}}}{S_{\mathit{WRITE}}}
+\end{align*}
+
+Let trace $\mathit{Tr}_{\mathit{TLS\text{-}C}}(C, S, CA, r_C, r_S, e_S, e_C)$:
+
+\begin{enumerate}[label=\arabic*.]
+  \item $+\; r_C$
+  \item $-\; r_S \concat \mathit{Cert}_S \concat S_{KE}$
+  \item $+\; g^{e_C} \concat C_{\mathit{FIN}}$
+  \item $-\; S_{\mathit{FIN}}$
+\end{enumerate}
+
+Let the complementary trace $\mathit{Tr}_{\mathit{TLS\text{-}S}}(C, S, CA, r_C, r_S, e_S, e_C)$:
+
+\begin{enumerate}[label=\arabic*.]
+  \item $-\; r_C$
+  \item $+\; r_S \concat \mathit{Cert}_S \concat S_{KE}$
+  \item $-\; g^{e_C} \concat C_{\mathit{FIN}}$
+  \item $+\; S_{\mathit{FIN}}$
+\end{enumerate}
+
+% -----------------------------------------------------------------------
+\section{Definition 2: SCEP Token}
+
+Let
+\[
+  \mathit{Tok}_{X,Y} = \text{``Token''} \concat X \concat \pk{X} \concat Y \concat \pk{Y} \concat \mathit{data}
+\]
+be the actual token. We then define the actual SCEP token as:
+\[
+  T_{X,Y} = \mathit{Tok}_{X,Y} \concat \enc{\hash{\mathit{Tok}_{X,Y}}}{\sk{Y}}
+\]
+
+% -----------------------------------------------------------------------
+\section{Definition 3: SCEP}
+
+We define traces that carry out SCEP between $\mathcal{S}$ and a responding
+infrastructure server $K$ or $H$, which we define as $\mathcal{W}$. As
+before, we first define the terms that we use within the traces:
+
+\begin{alignat*}{3}
+  &\mathcal{S},\, \mathcal{W},\, M,\, CA &&\in \mathit{Name} \\
+  &r_\mathcal{S},\, r_\mathcal{W},\, r'_\mathcal{S},\, r'_\mathcal{W},\, \omega
+    &&\in \mathit{Nonce} \\
+  &e_\mathcal{S},\, e_\mathcal{W} &&\in \mathit{Expt}
+\end{alignat*}
+
+$T_{\mathcal{S},M}$ and $T_{\mathcal{W},CA}$ are as in Definition~2.
+
+\begin{align*}
+  \mathcal{S}_{\mathit{WRITE}} &= \hash{g^{e_\mathcal{S} \times e_\mathcal{W}},\, r'_\mathcal{S},\, r'_\mathcal{W},\, \text{``client-write''}} \\
+  \mathcal{W}_{\mathit{WRITE}} &= \hash{g^{e_\mathcal{S} \times e_\mathcal{W}},\, r'_\mathcal{S},\, r'_\mathcal{W},\, \text{``server-write''}}
+\end{align*}
+
+Let $\mathit{Tr}_{\mathit{SCEP\text{-}\mathcal{SW}}}(\mathcal{S}, \mathcal{W}, M, CA,
+r_\mathcal{S}, r_\mathcal{W}, r'_\mathcal{S}, r'_\mathcal{W}, \omega,
+e_\mathcal{S}, e_\mathcal{W})$:
+
+\begin{enumerate}[label=\arabic*.]
+  \item $\mathit{Tr}_{\mathit{TLS\text{-}C}}(\mathcal{S}, \mathcal{W}, CA,
+    r'_\mathcal{S}, r'_\mathcal{W}, e_\mathcal{S}, e_\mathcal{W})$
+    \hfill (Definition~1)
+
+  \item $+\; \enc{r_\mathcal{S} \concat T_{\mathcal{S},M}}{\mathcal{S}_{\mathit{WRITE}}}$
+
+  \item $-\; \enc{%
+    \omega \concat r_\mathcal{W} \concat T_{\mathcal{W},CA}
+    \concat \enc{\hash{\text{``server-mutauth''},\, r_\mathcal{S},\, r_\mathcal{W},\,
+      T_{\mathcal{W},CA}}}{\pk{\mathcal{W}}}%
+  }{\mathcal{W}_{\mathit{WRITE}}}$
+
+  \item $+\; \enc{%
+    \omega \concat
+    \enc{\hash{\text{``client-mutauth''},\, r_\mathcal{S},\, r_\mathcal{W},\,
+      T_{\mathcal{S},M}}}{\pk{\mathcal{S}}}%
+  }{\mathcal{S}_{\mathit{WRITE}}}$
+\end{enumerate}
+
+Let $\mathit{Tr}_{\mathit{SCEP\text{-}\mathcal{WS}}}$ be complementary to
+$\mathit{Tr}_{\mathit{SCEP\text{-}\mathcal{SW}}}$, such that
+$\mathit{Tr}_{\mathit{SCEP\text{-}\mathcal{WS}}}$
+(1) includes $\mathit{Tr}_{\mathit{TLS\text{-}S}}$ rather than
+$\mathit{Tr}_{\mathit{TLS\text{-}C}}$, and
+(2) inverts the directions of terms 2, 3, and 4.
+
+\end{document}
