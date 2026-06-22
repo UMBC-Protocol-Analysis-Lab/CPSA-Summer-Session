@@ -2,7 +2,7 @@
 
 ## Instructions
 Now that you've started learning some basics of CPSA, let's explore the documentation in the manual.
-Find the CPSA manual at this url https://hackage-content.haskell.org/package/cpsa-4.4.9/src/doc/cpsa4manual.pdf and the exploration at [homework1files/exploration.pdf](homework1files/exploration.scm).
+Find the CPSA manual at this url https://hackage-content.haskell.org/package/cpsa-4.4.9/src/doc/cpsa4manual.pdf and the exploration at [homework1files/exploration.pdf](homework1files/exploration.pdf).
 
 
 ## Deliverable
