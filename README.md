@@ -12,7 +12,7 @@ You are welcome to try and use AI, if you succeed please let us know, we're curi
 
 # Homework
 
-There will be 5 homeworks assigned during this series to facilitate learning how to write models in CPSA. 
+There will be 3 homeworks assigned during this series to facilitate learning how to write models in CPSA. 
 We recognize that this is a summer activity, and you probably don't want to do homework, but the best way to learn a new tool is practice, and we simply do not have time to code during synchronous meetings.
 
 Homework assignments will be posted in the [Homeworks](./homeworks) directory.
