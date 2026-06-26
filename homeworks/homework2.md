@@ -3,8 +3,8 @@
 ## Instructions
 Now that you have a little bit more practice with using CPSA, let's explore how we spot attacks using CPSA.
 In the directory [homework2files](homework2files) you will find several models.
-Models 1 and 2 are complete, and Models 3, 4, and 5 have a *fill-in-the-blank* portion that you must complete before you can run the model.
-If you would like an extra challenge, Models 2 and 3 have optional *fill-in-the-blank* files.
+Models 1 and 2 are complete, while Models 4 and 5 have a *fill-in-the-blank* portion that you must complete before you can run the model.
+If you would like an extra challenge, Models 2 and 3 have optional *fill-in-the-blank* files labelled as "challenges".
 For each model, check if it is complete and complete it if not.
 Then run CPSA and take a look at the shapes file, `problem_n_shapes.xhtml`.
 In each shapes file, identify if the protocol is compromised, and what action(s) the adversary has taken to create the attack.
