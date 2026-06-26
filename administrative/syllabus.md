@@ -139,7 +139,7 @@ The workshop series will have synchronous meetings twice a week for 4 weeks, a t
 - Fixing attacks in CPSA
 - Model example program in CPSA
 - Maybe something other than PAKE-0? (PAKE unless good alternative)
-- [Homework 3](../homeworks/homework3.md): Model several â€œknown-badâ€ protocols that we design, and use CPSA to identify the flaw(s)
+- [Homework 3](../homeworks/homework3.md): Model several ''known-bad'' protocols that we design, and use CPSA to identify the flaw(s)
 
 ### Session 2
 
