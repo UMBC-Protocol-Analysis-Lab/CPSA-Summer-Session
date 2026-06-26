@@ -6,7 +6,7 @@ Take your meeting protocol from Homework 1 and try to model it using CPSA.
 Use CPSA to find problems with your protocol, and fix them.
 Recreate your diagram to include the fixes that you've made, and write up why your new protocol lets Alice and Bob agree on when to meet without the adversary finding out or modifying the time.
 
-
+<img width="882" height="671" alt="image" src="https://github.com/user-attachments/assets/cd0a930e-8340-44b4-b373-d40fe3311af7" />
 
 ## Deliverable
 1. A CPSA model of your protocol, including role definitions and skeleton definitions.
