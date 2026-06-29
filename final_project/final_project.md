@@ -1,7 +1,7 @@
 # Final Project
 
 
-## THE FINAL PROJECT IS DUE ON Wednseday, July 1, BY 5PM
+## THE FINAL PROJECT IS DUE ON Thursday, July 2nd, BY 12PM
 
 ## Instructions
 The instructions for completing the final project can be found in either
