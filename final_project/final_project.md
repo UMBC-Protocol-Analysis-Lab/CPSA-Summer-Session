@@ -4,7 +4,10 @@
 ## THE FINAL PROJECT IS DUE ON Wednseday, July 1, BY 5PM
 
 ## Instructions
-The instructions for completing the final project can be found in [the final project instructions document](final_project.pdf).
+The instructions for completing the final project can be found in either
+[the first final project instructions document](final_project.pdf)
+or
+[the second final project instructions document](final_project_2.pdf).
 
 
 
