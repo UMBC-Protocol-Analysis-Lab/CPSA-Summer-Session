@@ -20,29 +20,52 @@
 
 \begin{document}
 \noindent
-{\scshape UMBC PAL} \hfill {\scshape Summer Session 1 2026} \\
+{\scshape UMBC PAL} \hfill {\scshape Summer INSuRE Session 2026} \\
 {\scshape Author - PAL Education Team } \hfill {\scshape Final Project}
+
  
 \smallskip
 \hrule
 \bigskip
 
 \begin{center}
-{\large \textbf{FINAL PROJECT DUE JULY 1, 2026 by 5PM}}
+{\large \textbf{FINAL PROJECT DUE July 2, 2026 by Noon EST}}
 \end{center}
 
+\section{Directions}
+
+Given the protocol specification and scenario below, model the protocol in CPSA and state if the protocol fits the use case in the scenario and why. 
+Then, state if either you believe the protocol satisfies the lab's security goals, or the protocol includes issues/attacks which compromise the goals. 
+
+\section{Deliverables}
+\begin{enumerate}
+    \item A functioning CPSA model of the protocol described in the spec below. Your model should be able to be compiled and ran on any system. The shapes it produces should be the same shapes used in the following deliverables.
+    \item Prepare a brief 5-10 minute presentation that includes a brief description of the protocol, screenshots of the shapes your CPSA model produced, and a high-level description of your analysis. 
+    Be prepared to present this on the last day of the workshop!
+    \item You should also prepare a writeup, approximately one page in length, that describes the protocol, whether the protocol is a good fit for the scenario, and its adherence to security goals in the scenario.
+You should include some pictures of your shapes in the writeup (this will help you fill the page).
+You should also include a works cited for any materials that you reference. This may include the workshop slides, the CPSA manual, and any other CPSA code that you inspect.
+You should make an attempt to decide which assumptions make sense in this scenario and clearly state your reason for why in your write up.
+\end{enumerate}
+
+\vfill
+\pagebreak
 
 % -----------------------------------------------------------------------
 \section{Definition 1: TLS}
+\label{def:tls}
 
-We define traces that establish a TLS handshake between a client $C$ and a
-server $S$. Let the following be terms within the trace:
+We define traces that establish a TLS handshake between a client $C$ and a server $S$.
+Let the following be terms within the trace:
 
 \begin{alignat*}{3}
   &C,\, S,\, CA &&\in \mathit{Name} \\
   &r_C,\, r_S   &&\in \mathit{Nonce} \\
   &e_S,\, e_C   &&\in \mathit{Expt}
 \end{alignat*}
+
+Let \(hash\) be an ideal hash function, \(enc\) be an ideal encryption function with secret key for a user \(U\) be called \(sk(U)\) and public key \(pk(U)\).
+Let the operator \(||\) represent concatenation between two variables.
 
 \begin{align*}
   \mathit{Cert}_S  &= S \concat \pk{S} \concat \enc{\hash{S,\, g^{e_S}}}{\sk{CA}} \\
@@ -57,7 +80,7 @@ server $S$. Let the following be terms within the trace:
 
 Let trace $\mathit{Tr}_{\mathit{TLS\text{-}C}}(C, S, CA, r_C, r_S, e_S, e_C)$:
 
-\begin{enumerate}[label=\arabic*.]
+\begin{enumerate}[label=\arabic*.,noitemsep]
   \item $+\; r_C$
   \item $-\; r_S \concat \mathit{Cert}_S \concat S_{KE}$
   \item $+\; g^{e_C} \concat C_{\mathit{FIN}}$
@@ -66,7 +89,7 @@ Let trace $\mathit{Tr}_{\mathit{TLS\text{-}C}}(C, S, CA, r_C, r_S, e_S, e_C)$:
 
 Let the complementary trace $\mathit{Tr}_{\mathit{TLS\text{-}S}}(C, S, CA, r_C, r_S, e_S, e_C)$:
 
-\begin{enumerate}[label=\arabic*.]
+\begin{enumerate}[label=\arabic*.,noitemsep]
   \item $-\; r_C$
   \item $+\; r_S \concat \mathit{Cert}_S \concat S_{KE}$
   \item $-\; g^{e_C} \concat C_{\mathit{FIN}}$
@@ -75,18 +98,20 @@ Let the complementary trace $\mathit{Tr}_{\mathit{TLS\text{-}S}}(C, S, CA, r_C, 
 
 % -----------------------------------------------------------------------
 \section{Definition 2: SCEP Token}
+\label{def:token}
 
 Let
 \[
   \mathit{Tok}_{X,Y} = \text{``Token''} \concat X \concat \pk{X} \concat Y \concat \pk{Y} \concat \mathit{data}
 \]
-be the actual token. We then define the actual SCEP token as:
+be the token. We then define the actual SCEP token as:
 \[
   T_{X,Y} = \mathit{Tok}_{X,Y} \concat \enc{\hash{\mathit{Tok}_{X,Y}}}{\sk{Y}}
 \]
 
 % -----------------------------------------------------------------------
-\section{Definition 3: SCEP}
+\section{Definition 3: Server Connection Establishment Protocol (SCEP)}
+\label{def:scep}
 
 We define traces that carry out SCEP between $\mathcal{S}$ and a responding
 infrastructure server $K$ or $H$, which we define as $\mathcal{W}$. As
@@ -136,5 +161,10 @@ $\mathit{Tr}_{\mathit{SCEP\text{-}\mathcal{WS}}}$
 (1) includes $\mathit{Tr}_{\mathit{TLS\text{-}S}}$ rather than
 $\mathit{Tr}_{\mathit{TLS\text{-}C}}$, and
 (2) inverts the directions of terms 2, 3, and 4.
+
+\section{Protocol}
+To negotiate the protocol, the Client C and the Server S will authenticate using TLS (Definition~\ref{def:tls}).
+Then they will negotiate SCEP (Definition~\ref{def:scep}) using the SCEP token (Definition~\ref{def:token}).
+
 
 \end{document}
