@@ -6,10 +6,9 @@ Your protocol should resist the Dolev-Yao adversary; the adversary should not le
 
 ## Deliverable
 1. A diagram of your protocol. This can be created many ways, some of our suggestions include:
-   1. Sketch it
-   2. [Mermaid](https://mermaid.js.org/)
-   3. [Ziteboard](https://ziteboard.com/)
-   4. Or just on paper and scan it
+   1. [Mermaid](https://mermaid.js.org/)
+   2. [Ziteboard](https://ziteboard.com/)
+   3. Or just on paper and scan it
 2. A brief writeup (a few sentences) describing how your protocol works, including why it definitely communicates when the meeting is, and why the adversary doesn't learn when the meeting is.
 
 ## Submission
