@@ -8,7 +8,9 @@ Be prepared to spend between one and three hours to complete the homework assign
 If you have questions, please feel free to reach out to one of us over Discord or email, we are here to help!
 
 **AI Policy:** ChatGPT does not have enough training data to write CPSA code, and you are here to learn anyway, so you will not need to use AI.
-You are welcome to try and use AI, if you succeed please let us know, we're curious too!
+We encourage you to not use AI for any assignments, but we ask specifically that you do not use AI for the lecture surveys, and the final exam.
+Please disclose if you have used AI to help you on any of the homeworks, and describe the nature of the AI assistance.
+We reserve the right to withhold certificates for students that are suspected of AI use on assignments where AI use is explicitly prohibited.
 
 **Certificate:** To earn a certificate, you must complete a satisfactory number of assignments (70%) to a satisfactory level (60%).
 If suffiently many assignments are not completed to a satisfactory degree, then a certificate will not be awarded.
