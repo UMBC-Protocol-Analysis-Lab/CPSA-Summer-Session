@@ -10,6 +10,10 @@ If you have questions, please feel free to reach out to one of us over Discord o
 **AI Policy:** ChatGPT does not have enough training data to write CPSA code, and you are here to learn anyway, so you will not need to use AI.
 You are welcome to try and use AI, if you succeed please let us know, we're curious too!
 
+**Certificate:** To earn a certificate, you must complete a satisfactory number of assignments (70%) to a satisfactory level (60%).
+If suffiently many assignments are not completed to a satisfactory degree, then a certificate will not be awarded.
+For more information see the [Administrative](./administrative) folder.
+
 # Homework
 
 There will be 5 homeworks assigned during this series to facilitate learning how to write models in CPSA. 
