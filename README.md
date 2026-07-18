@@ -12,7 +12,7 @@ You are welcome to try and use AI, if you succeed please let us know, we're curi
 
 **Certificate:** To earn a certificate, you must complete a satisfactory number of assignments (70%) to a satisfactory level (60%).
 If suffiently many assignments are not completed to a satisfactory degree, then a certificate will not be awarded.
-For more information see the [Administrative](./administrative) folder.
+For more information see the [weights](./administrative/weights.md) file.
 
 # Homework
 
