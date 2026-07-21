@@ -20,8 +20,7 @@ Remember that the adversary can:
 
 ## Deliverable
 1. Completed models 4 & 5
-2. A writeup of whether each protocol is secure or not, and if not secure, what the adversary has done to create the attack.
-    1. Submit your brief writeup. Please use complete sentences.
+2. A writeup of whether each protocol is secure or not, and if not secure, what the adversary has done to create the attack. Use complete sentences.
   
 ## Submission
 The submission form can be found [here](https://docs.google.com/forms/d/e/1FAIpQLScT-wwKUuiIOqz9NjtkG3XccR4h40zk24OzLTBH9e0OF9Jurg/viewform?usp=publish-editor)
