@@ -3,8 +3,8 @@
 ## Instructions
 Now that you have a little bit more practice with using CPSA, let's explore how we spot attacks using CPSA.
 In the directory [homework3files](homework3files) you will find several models.
-Models 1-3 are complete, and Models 4 and 5 have a *fill-in-the-blank* portion that you must complete before you can run the model.
-If you would like an extra challenge, Models 2 and 3 have optional *fill-in-the-blank* files.
+Models 1-3 are complete, and Model 4 has a *fill-in-the-blank* portion that you must complete before you can run the model.
+If you would like an extra challenge, Models 1-3 have optional *fill-in-the-blank* files.
 For each model, check if it is complete and complete it if not.
 Then run CPSA and take a look at the shapes file, `problem_n_shapes.xhtml`.
 In each shapes file, identify if the protocol is compromised, and what action(s) the adversary has taken to create the attack.
@@ -20,9 +20,8 @@ Remember that the adversary can:
 
 ## Deliverable
 1. Models that were not complete before completed
-    1. No need to submit anything, for this part
 2. A writeup of whether each protocol is secure or not, and if not secure, what the adversary has done to create the attack.
-    1. Submit your brief writeup. Please use complete sentences?
+    1. Submit your brief writeup. Please use complete sentences.
   
 ## Submission
-The submission form is in [instructions.md](homework3files/instructions.md)
+The submission form can be found [here](https://docs.google.com/forms/d/e/1FAIpQLScT-wwKUuiIOqz9NjtkG3XccR4h40zk24OzLTBH9e0OF9Jurg/viewform?usp=publish-editor)
