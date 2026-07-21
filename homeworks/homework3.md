@@ -19,7 +19,7 @@ Remember that the adversary can:
 7. Hash using the public hash function
 
 ## Deliverable
-1. Models that were not complete before completed
+1. Completed models 4 & 5
 2. A writeup of whether each protocol is secure or not, and if not secure, what the adversary has done to create the attack.
     1. Submit your brief writeup. Please use complete sentences.
   
