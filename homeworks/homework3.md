@@ -3,7 +3,7 @@
 ## Instructions
 Now that you have a little bit more practice with using CPSA, let's explore how we spot attacks using CPSA.
 In the directory [homework3files](homework3files) you will find several models.
-Models 1-3 are complete, and Model 4 has a *fill-in-the-blank* portion that you must complete before you can run the model.
+Models 1-3 are complete, and Models 4 and 5 have a *fill-in-the-blank* portion that you must complete before you can run the model.
 If you would like an extra challenge, Models 1-3 have optional *fill-in-the-blank* files labeled as `problem_n_challenge.scm`.
 For each model, check if it is complete and complete it if not.
 Then run CPSA and take a look at the shapes file, `problem_n_shapes.xhtml`.
