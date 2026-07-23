@@ -23,4 +23,4 @@ Remember that the adversary can:
 2. A writeup of whether each protocol is secure or not, and if not secure, what the adversary has done to create the attack. Use complete sentences.
   
 ## Submission
-The submission form can be found [here](https://docs.google.com/forms/d/e/1FAIpQLScT-wwKUuiIOqz9NjtkG3XccR4h40zk24OzLTBH9e0OF9Jurg/viewform?usp=publish-editor)
+The submission form can be found [here](https://docs.google.com/forms/d/e/1FAIpQLSfEYDxdfqEnassLVL6qYSQKdSUHIfDaShWi0Hvt8M_3B6_xlA/viewform)
