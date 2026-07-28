@@ -43,7 +43,7 @@
 \xdefinecolor{purple}{cmyk}{0.75,0.75, 0, 0}
 \colorlet{newred}{red!60!black}
 
-\title{Session 5: Diffie-Hellman}
+\title{Session 5: Diffie-Hellman and Specifications}
 \author{Slides prepared by UMBC Protocol Analysis Lab}
 \date{Last edited \today}
 \begin{frame}
@@ -57,17 +57,33 @@
 \end{figure}
 \end{frame}
 
+\begin{frame}\frametitle{Math Review}
+\begin{enumerate}
+\item[Pre] Let \(a,b,g \in \N\) (they are all natural numbers)
+\pause
+\item \(g^a = \underbrace{g \times g \times g \times \dots \times g}_{a \text{ times}} \)
+\pause
+\item \(g^a \times g^b = g^{a+b}\).
+\pause
+\item \((g^a)^b = \overbrace{g^a \times \dots \times g^a}^{b \text{ times}} = g^{ab} = g^{ba} = \overbrace{g^b \times \dots \times g^b}^{a \text{ times}} = (g^b)^a\)
+\pause
+\item[Note] \(g^{a^b} \neq g^{b^a}\) in general (power tower vs.\ commutativity of multiplying exponents).
+\end{enumerate}
+\end{frame}
+
 \begin{frame}\frametitle{Generators}
 \pause
 Let \(p\) be a prime, and \(g \in \{1, \dots, p-1\}\).
 
 \pause
-\begin{definition}
-\(g\) is a \emph{generator} for\(\mod p\) if:
+\begin{definition}[Generator]
+\(g\) is a \emph{generator} for some \(p\) if:
 \[
 (\{g^1,\dots,g^{(p-1)}\} \mod p) = \{1,\dots,p-1\}
 \]
-This set $\{ 1, \dots , p-1\}$ on multiplication is known as \(\Z_p^\times\)
+That is, \(g\) is a generator if the above function is \emph{surjective}.
+
+The set $\{ 1, \dots , p-1\}$ equipped with multiplication is known as \(\Z_p^\times\)
 \end{definition}
 \pause
 We can represent a generator in CPSA as \texttt{(gen)}, \\
@@ -79,18 +95,18 @@ Note that \texttt{(gen)} is a term itself in CPSA.
 
 \begin{frame}\frametitle{Exponents}
     \pause
-    Recall the exponent property
+    Recall the exponent property (2 from before)
     \[
     x^a \cdot x^b = x^{a + b}
     \]
     \pause
     Diffie-Hellman takes advantage of this property by letting us intelligently choose \(a\) and \(b\).
     \pause
-    We call these exponent terms \(a\) and \(b\) random exponents, with \emph{sort} \texttt{rndx}.
+    We call these exponent terms \(a\) and \(b\) random exponents, with sort \texttt{rndx}.
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}\frametitle{DH Exchange}
 \begin{figure}
     \centering
     \includegraphics[height=\textheight]{slide-images/dh-exchange}
@@ -226,15 +242,20 @@ whether it is actually computationally infeasible is not known, it is an open pr
 \begin{frame}\frametitle{Homework}
 \pause
 \begin{center}
-{\Huge Capture the Flag Exercises}
+{\Huge Fix your meeting protocol}
 \end{center}
 
-Use CPSA to model protocols that are written in Python, identify the attack, and write the code needed to ``capture the flag'' (get the secret value out of the exchange).
+Now that you have more experience in CPSA, see if you can fix your meeting protocol.
+
+You are going to model your meeting protocol in CPSA, see what flaws it has, and then try to fix it using some of the techniques we have discussed.
 
 \end{frame}
 
 
 \begin{frame}\frametitle{Survey}
-Fill in details about the survey here!
+\begin{figure}
+    \centering
+    \includegraphics[height=0.88\textheight]{qr-codes/Survey5.png}
+\end{figure}
 \end{frame}
 \end{document}

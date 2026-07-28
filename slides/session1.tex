@@ -6,6 +6,7 @@
 \usepackage{comment}
 \usepackage{url}
 \usepackage{bm}
+\usepackage{todonotes}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes.symbols}
@@ -37,48 +38,57 @@
 \xdefinecolor{purple}{cmyk}{0.75,0.75, 0, 0}
 \colorlet{newred}{red!60!black}
 
-\title{Session 1: Introduction to Cybersecurity}
+\title{Session 1: Introduction to Protocol Security}
 \author{Slides prepared by UMBC Protocol Analysis Lab}
-\date{Last edited May 25, 2026}
+\date{Last edited \today}
 \maketitle
 
 \begin{frame}\frametitle{What is the goal of this course}
 \pause
-To teach students about formal-methods used in cryptographic systems.
+To teach students how to verify cryptographic network protocols.
 
 \pause
-To introduce students to the work done in the UMBC Protocol Analysis Lab (PAL).
+To introduce students to the UMBC Protocol Analysis Lab (PAL).
 
 \pause
-To teach students who are interested in PAL, or already members of PAL how to use CPSA.
+To teach students how to use the Cryptographic Protocol Shapes analyzer (CPSA).
 
 \pause
-To collect data about the efficacy of teaching \textit{adversarial thinking} to students.
+To teach students adversarial thinking.
 
 \end{frame}
 
 
 \begin{frame}\frametitle{Meet your instructors}
-
+\vspace{1em}
 \begin{columns}
 \pause
-    \column{0.5\textwidth}
+    \column{0.3\textwidth}
     \vspace{-2em}
-    \begin{block}{Michael Barthel}
-        Rising Junior in PAL.
-        Digital provenance systems and protocols.
+    \begin{block}{\small Michael Barthel}
+        \small Rising Junior in PAL.
+        
+        \small Digital provenance \\ and fintech.
 
-        \includegraphics[height=0.25\textheight]{slide-images/michael}
+        \includegraphics[height=0.28\textheight]{slide-images/michael}
     \end{block}
 \pause
-    \column{0.5\textwidth}
+    \column{0.3\textwidth}
     \vspace{-2em}
-    \begin{block}{Sai Matukumalli}
-        Graduate from PAL.
-        Mathematical cryptography and complexity.
+    \begin{block}{\small Sai Matukumalli}
+        \small Graduate from PAL.
+        \small Mathematical cryptography and complexity.
 
-        \includegraphics[height=0.25\textheight]{slide-images/sai}
+        \includegraphics[height=0.22\textheight]{slide-images/sai}
     \end{block}
+\pause
+    \column{0.3\textwidth}
+    \vspace{-1.5em}
+    \begin{block}{\small Ceridwen Summerlot}
+        \small Rising Junior in PAL. \\
+        \small Education and website development. \\
+        \includegraphics[height=0.25\textheight]{slide-images/ceridwen.jpg}
+        \end{block}
 \end{columns}
 
 \vspace{0.25cm}
@@ -86,21 +96,30 @@ To collect data about the efficacy of teaching \textit{adversarial thinking} to 
 % Second row
 \begin{columns}
 \pause
-    \column{0.5\textwidth}
+    \column{0.3\textwidth}
     \vspace{-1.5em}
-    \begin{block}{DeMarko Fulcher}
-        Graduate from PAL.
-        Formal verification.
+    \begin{block}{\small DeMarko Fulcher}
+        \small Graduate from PAL.
+        
+        \small Formal verification.
 
         \includegraphics[height=0.25\textheight]{slide-images/demarko}
     \end{block}
 \pause
-    \column{0.5\textwidth}
+    \column{0.3\textwidth}
     \vspace{-1.5em}
-    \begin{block}{Jeremy Romano}
-        Graduate from PAL.
-        Implementation of attacks.
+    \begin{block}{\small Jeremy Romano}
+        \small Graduate from PAL. \\
+        \small Implementation of attacks. \\
         \includegraphics[height=0.25\textheight]{slide-images/jeremy}
+        \end{block}
+\pause
+    \column{0.3\textwidth}
+    \vspace{-1.5em}
+    \begin{block}{\small Dr.\ Enis Golaszewski}
+        \small PI of PAL. \\
+        \small Everything everyone else does and more. \\
+        \includegraphics[height=0.25\textheight]{slide-images/enis}
         \end{block}
 \end{columns}
 
@@ -132,13 +151,30 @@ There will be a final project that you can work in groups on, so you should try 
 
 \begin{frame}\frametitle{What is a protocol}
 \begin{itemize}
-\item Exchange of messages between two principles
-\item Uses primitives we discussed to form messages
-\item Follows a set of instructions, that we define
-\item 
+\pause
+\item Exchange of messages between two or more parties
+\pause
+\item Follows a set of well-defined instructions
+\pause
+\item Network communication occurs through protocols
 \end{itemize}
 \end{frame}
 
+
+\begin{frame} \frametitle{Where do we encounter protocols?}
+\begin{itemize}
+\pause
+\item Everywhere!
+\pause
+\item Day-to-day life: Personal, business
+\pause
+\item Computer networks: HTTP, VoIP, TCP, etc.
+\pause
+\begin{itemize}
+\item These are generally not visible to the user, but are important!
+\end{itemize}
+\end{itemize}
+\end{frame}
 
 \begin{frame}\frametitle{What does a protocol look like?}
 \pause
@@ -167,34 +203,18 @@ There will be a final project that you can work in groups on, so you should try 
     \path [saiarrow](2) edge (1);
     \node at (5,4.75) {``Hello, Alice!''};
     \path [-,thick](1) edge (4);
-
     \pause
-    \node at (5,3) {\textbf{Is this a protocol?}};
 \end{tikzpicture}
 \bigskip
 \end{frame}
 
-\begin{frame} \frametitle{Where do we encounter protocols?}
-\begin{itemize}
-\pause
-\item Everywhere!
-\pause
-\item Day-to-day life: Personal, business
-\pause
-\item Computer networks: HTTP, VoIP, TCP, etc.
-\pause
-\begin{itemize}
-\item These are generally not visible to the user, but are important!
-\end{itemize}
-\end{itemize}
-\end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Why do we need cryptography?}
+\title{Why cryptographic protocols?}
 \author{When do we need to take steps to protect communication between parties?}
-\date{and who are Alice and Bob?}
+\date{}
 \begin{frame}
 \maketitle
 \end{frame}
@@ -217,91 +237,35 @@ Can you think of some na\"ive solutions?
 \pause
 \item Alice and Bob can go somewhere that they're sure that no one is around, and then talk about the meeting?
 \pause
-\item Other ideas?
+\item [] Other ideas?
 \end{enumerate}
 \end{frame}
 
-\begin{frame}\frametitle{Can we standardize obfuscation methods?}
+\begin{frame}\frametitle{What can we do?}
 \pause
-How can we turn these ideas into concrete concepts.
+How can we turn these na\"ive solutions into concrete concepts.
 \pause
 Eventually -- turn these ideas into mathematical statements.
-
 \pause
-A language requires both the sender and receiver to have a ``key'', that lets them understand how words correspond to things.
-
-\pause
-Hiding information corresponds to presharing information, and using a combination of presharing and given information, Bob can derive information.
-
-\pause
-Alice and Bob making sure no one is around is like an airgap.
-\pause
-Can they really be sure \emph{no one} is listening?
-\end{frame}
-
-\title{Introduction to cryptographic primitives}
-\author{How do we use cryptography to set up a meeting between Alice and Bob?}
-\date{}
-\begin{frame}
-\maketitle
-\end{frame}
-
-\begin{frame}\frametitle{What is a cryptographic primitive?}
-\pause
-\begin{definition}
-A cryptographic primitive is a foundational operation in cryptography.
-All cryptographic algorithms are constructed from cryptographic primitives.
-\end{definition}
-
-\pause
-We consider several operations that commonly appear.
-
-\end{frame}
-
-\begin{frame}\frametitle{CPSA terms}
-
-\begin{columns}
-\column{0.6\textwidth}
-
 \begin{enumerate}
-\item[M.]<4-> Text Message: \( \langle +t \rangle \) where \(t \in T\) (the set of all text messages)
+\item A secret language requires both the sender and receiver to have a ``key'', that lets them understand how words correspond to things.
 
-\item[T.]<5-> Tee: \( \langle -g, +g, +g \rangle \) where \(g \in G\) (the set of all possible atoms, including text and anything else)
+\pause
+\item Hiding information corresponds to presharing information, and using a combination of presharing and given information, Bob can derive information.
 
-\item[C.]<6-> Concatenation: \( \langle -g, -h, +gh \rangle \) where \(g,h, gh \in G\)
+\pause
+\item Alice and Bob making sure no one is around is like an airgap. Can they really be sure \emph{no one} is listening?
 
-\item[S.]<7-> Separation into components: \( \langle -gh, +g, +h \rangle \)
-
-\item[K.]<8-> Key: \( \langle +K \rangle \) where \(K \in \mathbf{K_p}\)
-
-\item[E.]<10-> Encryption \( \langle -K, -h, +\{h\}_K \rangle \)
-
-\item[D.]<11-> Decryption \( \langle -K^{-1}, -\{h\}_K, +h \rangle \)
-
-\item[H.]<12-> Hash \( \langle -g, +hash(g) \rangle \)
+\pause
 \end{enumerate}
-
-\column{0.4\textwidth}
-
-\begin{enumerate}
-\item<1-> \(\langle +m \rangle\) emit a message from the network.
-
-\item<2-> \(\langle -m \rangle\) extract a message from the network.
-
-\item<3-> \(\langle m_1m_2 \rangle\) concatenate two messages.
-
-\item<9-> \(\langle \{m\}_k \rangle\) encrypt a message \(m\) under key \(K\).
-\end{enumerate}
-\end{columns}
 \end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\title{Why is Protocol Security Hard?}
+\title{Why is Protocol Security Challenging?}
 \author{If we can do all these actions, can't we make our protocol secure?}
-\date{Who is Eve?}
+\date{}
 \begin{frame}
 \maketitle
 \end{frame}
@@ -314,7 +278,7 @@ We consider several operations that commonly appear.
 \begin{itemize}
 \item Confidentiality
 \item Integrity
-\item Availability
+\item Authenticity
 \item[]
 \item We will talk about these next time
 \end{itemize}
@@ -435,15 +399,41 @@ We consider several operations that commonly appear.
 
 \end{frame}
 
-\begin{frame}\frametitle{CPSA adversarial strand actions}
+\title{Introduction to cryptographic primitives}
+\author{How do we use cryptography to set up a meeting between Alice and Bob?}
+\date{}
+\begin{frame}
+\maketitle
+\end{frame}
 
-\input{slide-templates/adversarial-actions}
-\bigskip
+\begin{frame}\frametitle{What is a cryptographic primitive?}
 \pause
-These are identical to the actions of a \emph{regular} strand.
+\begin{definition}
+A cryptographic primitive is a foundational operation in cryptography.
+Cryptographic algorithms incorporate cryptographic primitives.
+\end{definition}
 
 \pause
-What does that tell us about the adversary?
+We consider several common operations.
+
+\end{frame}
+
+\begin{frame}\frametitle{Formalizing Our Solutions}
+Recall our na\"ive solutions:
+\begin{enumerate}
+\item \textcolor{gray}{A secret language requires both the sender and receiver to have a ``key'', that lets them understand how words correspond to things.}
+\item[] We use encryption and decryption with \emph{asymmetric keys}. % fix wording
+
+\pause
+\item \textcolor{gray}{Hiding information corresponds to presharing information, and using a combination of presharing and given information, Bob can derive information.}
+\item[] \emph{Symmetric key} encryption and decryption is a common and effective implementation of preshared information. %fix this too
+
+\pause
+\item \textcolor{gray}{Alice and Bob making sure no one is around is like an airgap.}
+\item[] Hashing can be used to make sure that Alice and Bob both actually have the right time, without anyone else finding out what the time is.
+
+\pause
+\end{enumerate}
 \end{frame}
 
 \begin{frame}\frametitle{Symmetric encryption}
@@ -662,7 +652,7 @@ We can also use them to make sure that the hash property of invertibility is not
 
 \end{frame}
 
-\begin{frame}\frametitle{Hashing Diagram Fixed}
+\begin{frame}\frametitle{Hashing Diagram (fixed)}
 \begin{tikzpicture}
     \node at (0,8) {Alice};
     \node at (10,8) {Bob};
@@ -707,6 +697,25 @@ We can also use them to make sure that the hash property of invertibility is not
 \end{tikzpicture}
 \end{frame}
 
+\begin{frame}\frametitle{Cryptographic Primitives Summary}
+\begin{itemize}
+\item Asymmetric keys: Used for exchanging information where both parties do not have a shared secret. Also used for signatures. Can be time consuming to compute.
+\item Symmetric keys: Used for exchanging information where both parties can preshare a shared secret. Easier to compute.
+\item Hashing: Creates a fixed-length deterministic fingerprint of some information.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{CPSA Term Algebra}
+\begin{itemize}
+\item A term algebra consists of: 
+\begin{itemize}
+    \item  A set of elements called terms, built recursively from a base set of variables and constants by applying functions. % SM: can we talk about what these are in CPSA? (like say "the base set being an arbitrary message").  also is recursively correct? isnt it just a subtype relation? Maybe polymorphically
+    \item The application functions themselves, which are what make it an algebra rather than just a set.
+\end{itemize}
+\item The variables and constants within our term algebra fall into "sorts," similar to data types in programming languages.
+\item The actions we talked about (hashing, encryption, public keys) are functions in this term algebra.
+\end{itemize}
+\end{frame}
 
 \begin{frame}\frametitle{Homework}
 \pause
@@ -722,6 +731,18 @@ We can also use them to make sure that the hash property of invertibility is not
 \end{frame}
 
 \begin{frame}\frametitle{Survey}
-Fill in details about the survey here!
+\begin{itemize}
+\item A survey will be administered after each of these lectures.
+\item These surveys include objective questions about the lecture, as long as feedback about how us lecturers delivered it. 
+\item  Surveys are due by the start of the next session (in this case Thursday at 6:00pm). We encourage you to complete them as soon as possible while the information is fresh.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{qr-codes/surveyQuiz1.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+
 \end{frame}
 \end{document}
