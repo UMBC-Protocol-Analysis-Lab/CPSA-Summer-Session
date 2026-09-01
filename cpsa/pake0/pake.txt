@@ -1,0 +1,408 @@
+(herald "pake0")
+
+(comment "CPSA 4.4.9")
+(comment "All input read from pake.scm")
+
+(defprotocol pake basic
+  (defrole alice
+    (vars (na nb text) (pw data) (alice bob name))
+    (trace (send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb)))))
+  (defrole bob
+    (vars (na nb text) (pw data) (alice bob name))
+    (trace (recv na) (send nb) (recv (hash (hash pw alice bob na nb)))
+      (send
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb)))))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand alice 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (pen-non-orig pw)
+  (uniq-orig na)
+  (traces
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb)))))
+  (label 0)
+  (unrealized (0 3))
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (origs (na (0 0)))
+  (comment "2 in cohort - 2 not yet seen"))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand alice 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (defstrand bob 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (precedes ((0 0) (1 0)) ((1 3) (0 3)))
+  (pen-non-orig pw)
+  (uniq-orig na)
+  (operation encryption-test (added-strand bob 4)
+    (hash (hash (hash pw alice bob na nb)) (hash pw alice bob na nb))
+    (0 3))
+  (strand-map 0)
+  (traces
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv na) (send nb) (recv (hash (hash pw alice bob na nb)))
+      (send
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb)))))
+  (label 1)
+  (parent 0)
+  (unrealized (1 2))
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (comment "2 in cohort - 2 not yet seen"))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand alice 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (deflistener
+    (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+  (precedes ((1 1) (0 3)))
+  (pen-non-orig pw)
+  (uniq-orig na)
+  (operation encryption-test
+    (added-listener
+      (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+    (hash (hash (hash pw alice bob na nb)) (hash pw alice bob na nb))
+    (0 3))
+  (strand-map 0)
+  (traces
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv
+       (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+      (send
+        (cat (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb)))))
+  (label 2)
+  (parent 0)
+  (unrealized (1 0))
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (comment "2 in cohort - 2 not yet seen"))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand alice 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (defstrand bob 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (precedes ((0 0) (1 0)) ((0 2) (1 2)) ((1 3) (0 3)))
+  (pen-non-orig pw)
+  (uniq-orig na)
+  (operation encryption-test (displaced 2 0 alice 3)
+    (hash (hash pw alice bob na nb)) (1 2))
+  (strand-map 0 1)
+  (traces
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv na) (send nb) (recv (hash (hash pw alice bob na nb)))
+      (send
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb)))))
+  (label 3)
+  (parent 1)
+  (realized)
+  (shape)
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (origs (na (0 0))))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand alice 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (defstrand bob 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (deflistener (hash pw alice bob na nb))
+  (precedes ((0 0) (1 0)) ((1 3) (0 3)) ((2 1) (1 2)))
+  (pen-non-orig pw)
+  (uniq-orig na)
+  (operation encryption-test (added-listener (hash pw alice bob na nb))
+    (hash (hash pw alice bob na nb)) (1 2))
+  (strand-map 0 1)
+  (traces
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv na) (send nb) (recv (hash (hash pw alice bob na nb)))
+      (send
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv (hash pw alice bob na nb)) (send (hash pw alice bob na nb))))
+  (label 4)
+  (parent 1)
+  (unrealized (2 0))
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand alice 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (deflistener
+    (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+  (precedes ((0 2) (1 0)) ((1 1) (0 3)))
+  (pen-non-orig pw)
+  (uniq-orig na)
+  (operation encryption-test (displaced 2 0 alice 3)
+    (hash (hash pw alice bob na nb)) (1 0))
+  (strand-map 0 1)
+  (traces
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv
+       (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+      (send
+        (cat (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb)))))
+  (label 5)
+  (parent 2)
+  (unrealized (1 0))
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand alice 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (deflistener
+    (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+  (deflistener (hash pw alice bob na nb))
+  (precedes ((1 1) (0 3)) ((2 1) (1 0)))
+  (pen-non-orig pw)
+  (uniq-orig na)
+  (operation encryption-test (added-listener (hash pw alice bob na nb))
+    (hash (hash pw alice bob na nb)) (1 0))
+  (strand-map 0 1)
+  (traces
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv
+       (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+      (send
+        (cat (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv (hash pw alice bob na nb)) (send (hash pw alice bob na nb))))
+  (label 6)
+  (parent 2)
+  (unrealized (2 0))
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand alice 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (defstrand bob 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (deflistener (hash pw alice bob na nb))
+  (deflistener (cat pw alice bob na nb))
+  (precedes ((0 0) (1 0)) ((0 0) (3 0)) ((1 3) (0 3)) ((2 1) (1 2))
+    ((3 1) (2 0)))
+  (pen-non-orig pw)
+  (uniq-orig na)
+  (operation encryption-test (added-listener (cat pw alice bob na nb))
+    (hash pw alice bob na nb) (2 0))
+  (strand-map 0 1 2)
+  (traces
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv na) (send nb) (recv (hash (hash pw alice bob na nb)))
+      (send
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv (hash pw alice bob na nb)) (send (hash pw alice bob na nb)))
+    ((recv (cat pw alice bob na nb)) (send (cat pw alice bob na nb))))
+  (label 7)
+  (parent 4)
+  (unrealized (3 0))
+  (dead)
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (comment "empty cohort"))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand alice 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (deflistener
+    (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+  (deflistener (cat pw alice bob na nb))
+  (precedes ((0 0) (2 0)) ((0 2) (1 0)) ((1 1) (0 3)) ((2 1) (1 0)))
+  (pen-non-orig pw)
+  (uniq-orig na)
+  (operation encryption-test (added-listener (cat pw alice bob na nb))
+    (hash pw alice bob na nb) (1 0))
+  (strand-map 0 1)
+  (traces
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv
+       (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+      (send
+        (cat (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv (cat pw alice bob na nb)) (send (cat pw alice bob na nb))))
+  (label 8)
+  (parent 5)
+  (unrealized (2 0))
+  (dead)
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (comment "empty cohort"))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand alice 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (deflistener
+    (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+  (deflistener (hash pw alice bob na nb))
+  (deflistener (cat pw alice bob na nb))
+  (precedes ((0 0) (3 0)) ((1 1) (0 3)) ((2 1) (1 0)) ((3 1) (2 0)))
+  (pen-non-orig pw)
+  (uniq-orig na)
+  (operation encryption-test (added-listener (cat pw alice bob na nb))
+    (hash pw alice bob na nb) (2 0))
+  (strand-map 0 1 2)
+  (traces
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv
+       (cat (hash (hash pw alice bob na nb)) (hash pw alice bob na nb)))
+      (send
+        (cat (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv (hash pw alice bob na nb)) (send (hash pw alice bob na nb)))
+    ((recv (cat pw alice bob na nb)) (send (cat pw alice bob na nb))))
+  (label 9)
+  (parent 6)
+  (unrealized (3 0))
+  (dead)
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (comment "empty cohort"))
+
+(comment "Nothing left to do")
+
+(defprotocol pake basic
+  (defrole alice
+    (vars (na nb text) (pw data) (alice bob name))
+    (trace (send na) (recv nb) (send (hash (hash pw alice bob na nb)))
+      (recv
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb)))))
+  (defrole bob
+    (vars (na nb text) (pw data) (alice bob name))
+    (trace (recv na) (send nb) (recv (hash (hash pw alice bob na nb)))
+      (send
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb)))))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand bob 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (pen-non-orig pw)
+  (uniq-orig nb)
+  (traces
+    ((recv na) (send nb) (recv (hash (hash pw alice bob na nb)))
+      (send
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb)))))
+  (label 10)
+  (unrealized (0 2))
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (origs (nb (0 1)))
+  (comment "2 in cohort - 2 not yet seen"))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand bob 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (defstrand alice 3 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (precedes ((0 1) (1 1)) ((1 2) (0 2)))
+  (pen-non-orig pw)
+  (uniq-orig nb)
+  (operation encryption-test (added-strand alice 3)
+    (hash (hash pw alice bob na nb)) (0 2))
+  (strand-map 0)
+  (traces
+    ((recv na) (send nb) (recv (hash (hash pw alice bob na nb)))
+      (send
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((send na) (recv nb) (send (hash (hash pw alice bob na nb)))))
+  (label 11)
+  (parent 10)
+  (realized)
+  (shape)
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (origs (nb (0 1))))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand bob 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (deflistener (hash pw alice bob na nb))
+  (precedes ((1 1) (0 2)))
+  (pen-non-orig pw)
+  (uniq-orig nb)
+  (operation encryption-test (added-listener (hash pw alice bob na nb))
+    (hash (hash pw alice bob na nb)) (0 2))
+  (strand-map 0)
+  (traces
+    ((recv na) (send nb) (recv (hash (hash pw alice bob na nb)))
+      (send
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv (hash pw alice bob na nb)) (send (hash pw alice bob na nb))))
+  (label 12)
+  (parent 10)
+  (unrealized (1 0))
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton pake
+  (vars (pw data) (na nb text) (alice bob name))
+  (defstrand bob 4 (pw pw) (na na) (nb nb) (alice alice) (bob bob))
+  (deflistener (hash pw alice bob na nb))
+  (deflistener (cat pw alice bob na nb))
+  (precedes ((0 1) (2 0)) ((1 1) (0 2)) ((2 1) (1 0)))
+  (pen-non-orig pw)
+  (uniq-orig nb)
+  (operation encryption-test (added-listener (cat pw alice bob na nb))
+    (hash pw alice bob na nb) (1 0))
+  (strand-map 0 1)
+  (traces
+    ((recv na) (send nb) (recv (hash (hash pw alice bob na nb)))
+      (send
+        (hash (hash (hash pw alice bob na nb))
+          (hash pw alice bob na nb))))
+    ((recv (hash pw alice bob na nb)) (send (hash pw alice bob na nb)))
+    ((recv (cat pw alice bob na nb)) (send (cat pw alice bob na nb))))
+  (label 13)
+  (parent 12)
+  (unrealized (2 0))
+  (dead)
+  (maps ((0) ((na na) (nb nb) (pw pw) (alice alice) (bob bob))))
+  (comment "empty cohort"))
+
+(comment "Nothing left to do")
