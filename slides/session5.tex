@@ -35,6 +35,8 @@
 \newcommand{\Q}{\mathbb Q}
 \newcommand{\R}{\mathbb R}
 
+\DeclareMathOperator{\enc}{enc}
+
 \begin{document}
 
 
@@ -59,7 +61,7 @@
 
 \begin{frame}\frametitle{Math Review}
 \begin{enumerate}
-\item[Pre] Let \(a,b,g \in \N\) (they are all natural numbers)
+\item[Pre] Let \(g,a,b \in \N\) (they are all natural numbers)
 \pause
 \item \(g^a = \underbrace{g \times g \times g \times \dots \times g}_{a \text{ times}} \)
 \pause
@@ -141,7 +143,7 @@ Note that \texttt{(gen)} is a term itself in CPSA.
     \node[shape=circle,draw=blue, fill=blue] (2) at (8,5) {};
     \path [saiarrow](1) edge (2);
     
-    \node at (4,5.25) {\(\{gen,p,A\}\)};
+    \node at (4,5.25) {\(\{A\}\)};
 
     \node[shape=circle,draw=black, fill=black] (3) at (8,3.5) {};
     \node[shape=circle,draw=blue, fill=blue] (4) at (0,3.5) {};
@@ -179,13 +181,75 @@ whether it is actually computationally infeasible is not known, it is an open pr
 \begin{itemize}
 \item Need correct origination assumptions
 \begin{itemize}
-\item `a' and `b' (of sort \texttt{rndx}) need to be pen-non-orig
+\item `a' and `b' (of sort \texttt{rndx}) need to be uniq-gen
 \item msg should be \texttt{uniq-orig} (if not it could lead to many shapes)
 \end{itemize}
 \item CPSA is used to find structural flaws, not algebraic flaws 
 \pause
 \item Now let's take a look at the model!
 \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Diffie-Hellman Fix}
+\begin{tikzpicture}
+    \node at (0,8) {Alice};
+    \node at (8,8) {Bob};
+    \node[shape=circle,draw=blue, fill=blue] at (1,0) {};
+    \node at (2.25,0) {= Reception};
+    \node[shape=circle,draw=black, fill=black] at (4,0) {};
+    \node at (5.5,0) {= Transmission};
+
+    \pause
+    \node at (0,7) {Let Alice have};
+    \node at (0,6.6) {\(a \in \{1,\dots,p-1\}\)};
+    \node at (0,6.3) {and \(g,p\)};
+    \node at (0,5.9) {Let \(A = g^a \mod p\)};
+
+
+    \node at (8,7) {Let Bob have};
+    \node at (8,6.6) {\(b \in \{1,\dots,p-1\}\)};
+    \node at (8,6.3) {and \(g,p\)};
+    \node at (8,5.9) {Let \(B = g^b \mod p\)};
+    
+    \pause
+    \node[shape=circle,draw=black, fill=black] (1) at (0,5) {};
+    \node[shape=circle,draw=blue, fill=blue] (2) at (8,5) {};
+    \path [saiarrow](1) edge (2);
+    
+    \node at (4,5.25) {\(\enc(alice, bob, A, privk(alice))\)};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \node[shape=circle,draw=black, fill=black] (3) at (8,4) {};
+    \node[shape=circle,draw=blue, fill=blue] (4) at (0,4) {};
+    
+    \path [-,thick](3) edge (2);
+    \path [saiarrow](3) edge (4);
+    \path [-,thick](1) edge (4);
+    
+    \node at (4,4.22) {\(\enc(alice, bob, B, privk(bob))\)};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \node[shape=circle,draw=blue, fill=blue] (5) at (8,3) {};
+    \node[shape=circle,draw=black, fill=black] (6) at (0,3) {};
+
+    \path [-,thick](5) edge (3);
+    \path [saiarrow](6) edge (5);
+    \path [-,thick](6) edge (4);
+
+    \node at (4,3.22) {\(\enc(\text{``hello''}, B^a \mod p)\)};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \node[shape=circle,draw=black, fill=black] (7) at (8,2) {};
+    \node[shape=circle,draw=blue, fill=blue] (8) at (0,2) {};
+
+    \path [-,thick](6) edge (8);
+    \path [saiarrow](7) edge (8);
+    \path [-,thick](5) edge (7);
+
+    \node at (4,2.22) {\(\enc(\text{``hello''}, A^b \mod p)\)};
+    
+    
+\end{tikzpicture}
 \end{frame}
 
 \title{Reading Protocol Specifications}

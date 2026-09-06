@@ -189,26 +189,28 @@
 \pause
 \begin{tikzpicture}
     \node at (0,8) {Alice};
-    \node at (10,8) {Charlie};
-    \node at (5,8) {Bob};
-    \node[shape=circle,draw=blue, fill=blue] at (1,0) {};
-    \node at (2.25,0) {= Reception};
-    \node[shape=circle,draw=black, fill=black] at (4,0) {};
-    \node at (5.5,0) {= Transmission};
+    \node at (5,8) {Bob-0};
+    \node at (10,8) {Bob};
+    \node[shape=circle,draw=blue, fill=blue] at (0,0) {};
+    \node at (1.25,0) {= Reception};
+    \node[shape=circle,draw=black, fill=black] at (3,0) {};
+    \node at (4.5,0) {= Transmission};
+    \node[shape=circle, draw=black, fill=purple] at (6.25,0) {};
+    \node at (8.5,0) {= Forward (nonstandard)};
 
     \node[shape=circle,draw=black, fill=black] (1) at (0,7) {};
     \node[shape=circle,draw=blue, fill=blue] (2) at (10,7) {};
-    \node[shape=circle,draw=blue, fill=blue] (1m) at (5,7) {};
+    \node[shape=circle,draw=black, fill=purple] (1m) at (5,7) {};
     
     \path [saiarrow](1) edge (1m);
     \path [saiarrow](1m) edge (2);
     
-    \node at (2.5,7.25) {\(enc(N_a, Alice, pubk_{Bob})\)};
-    \node at (7.5,7.25) {\(enc(N_a, Alice, \isred{pubk_{Charlie}})\)};
+    \node at (2.5,7.25) {\(enc(N_a, Alice, pubk_{Bob-0})\)};
+    \node at (7.5,7.25) {\(enc(N_a, Alice, \isred{pubk_{Bob}})\)};
     
     \node[shape=circle,draw=black, fill=black] (3) at (10,5.5) {};
     \node[shape=circle,draw=blue, fill=blue] (4) at (0,5.5) {};
-    \node[shape=circle,draw=black, fill=black] (3m) at (5,5.5) {};
+    \node[shape=circle,draw=black, fill=purple] (3m) at (5,5.5) {};
     
     \path [-,thick](3) edge (2);
     \path [saiarrow](3) edge (3m);
@@ -221,7 +223,7 @@
 
     \node[shape=circle,draw=blue, fill=black] (5) at (0,4) {};
     \node[shape=circle,draw=blue, fill=blue] (6) at (10,4) {};
-    \node[shape=circle,draw=blue, fill=black] (5m) at (5,4) {};
+    \node[shape=circle,draw=black, fill=purple] (5m) at (5,4) {};
     
     \path [-,thick](6) edge (3);
     \path [saiarrow](5) edge (5m);
@@ -229,8 +231,8 @@
     \path [-,thick](5) edge (4);
     \path [-,thick](3m) edge (5m);
     
-    \node at (2.5,4.2) {\(enc(N_b,pubk_{Bob})\)};
-    \node at (7.5,4.2) {\(enc(N_b,\isred{pubk_{Charlie}})\)};
+    \node at (2.5,4.2) {\(enc(N_b,pubk_{Bob-0})\)};
+    \node at (7.5,4.2) {\(enc(N_b,\isred{pubk_{Bob}})\)};
 
     \node at (5,2) {Remember: The Dolev-Yao Adversary can be a };
     \node at (5,1.65) {legitimate party on the network};
