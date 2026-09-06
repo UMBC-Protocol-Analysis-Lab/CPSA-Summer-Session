@@ -1,0 +1,335 @@
+<?xml version="1.0"?>
+<!-- CPSA 4.4.8 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>PAL Module 2 Needham-Schroeder</title>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+ <style>
+  svg.diagram { border-width: 1px; border-style: solid }
+ </style>
+</head>
+<body>
+
+<pre>(comment &quot;CPSA 4.4.8&quot;)
+(comment &quot;Extracted shapes&quot;)
+(herald &quot;PAL Module 2 Needham-Schroeder&quot;)
+(comment &quot;CPSA 4.4.8&quot;)
+(comment &quot;All input read from ns.scm&quot;)</pre>
+
+<p id="top">Trees: <a href="#t0">0</a> <a href="#t3">3</a>.</p>
+
+<p id="t0">Tree <a href="#top">0</a>, POV <a href="#k0">0</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='129.840pt' height='79.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 129.840 79.920' font-size='12.000'>
+  <text
+   x='89.880' y='26.040'
+   style='font-weight: bold; text-anchor: middle; fill: blue;'
+   onclick='window.open(&quot;#k2&quot;, &quot;_self&quot;)'>2</text>
+  <line
+   x1='39.960' y1='39.960' x2='89.880' y2='39.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='39.960' y='26.040' style='text-anchor: middle; fill: black;'
+   onclick='window.open(&quot;#k0&quot;, &quot;_self&quot;)'>0</text>
+  </svg></div>
+
+<pre>(defprotocol enis basic
+  (defrole alice
+    (vars (a b name) (Na Nb text))
+    (trace (send (enc Na a (pubk b))) (recv (enc Na Nb (pubk a)))
+      (send (enc Nb (pubk b)))))
+  (defrole bob
+    (vars (a b name) (Na Nb text))
+    (trace (recv (enc Na a (pubk b))) (send (enc Na Nb (pubk a)))
+      (recv (enc Nb (pubk b)))))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))</pre>
+
+<p id="k0">Item <a href="#t0">0</a>, Child: <a href="#k2">2</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='79.920pt' height='304.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 79.920 304.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <g><title>(enc Nb_nonce (pubk b_name))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc Na_nonce Nb_nonce (pubk a_name))</title>
+   <circle style='fill: red;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <g><title>(enc Na_nonce a_name (pubk b_name))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b_name))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='39.960' y='39.960' style='text-anchor: middle;'>enis 0</text>
+  </svg></div>
+
+<pre>(defskeleton enis
+  (vars (Na_nonce Nb_nonce text) (a_name b_name name))
+  (defstrand alice 3 (Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b_name))
+  (non-orig (privk a_name) (privk b_name))
+  (uniq-orig Na_nonce)
+  (traces
+    ((send (enc Na_nonce a_name (pubk b_name)))
+      (recv (enc Na_nonce Nb_nonce (pubk a_name)))
+      (send (enc Nb_nonce (pubk b_name)))))
+  (label 0)
+  (unrealized (0 1))
+  (maps
+    ((0)
+      ((a_name a_name) (b_name b_name) (Na_nonce Na_nonce)
+        (Nb_nonce Nb_nonce))))
+  (origs (Na_nonce (0 0)))
+  (comment &quot;1 in cohort - 1 not yet seen&quot;))</pre>
+
+<p id="k2">Item <a href="#t0">2</a>, Parent: <a href="#k0">0</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='179.880pt' height='304.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 179.880 304.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc Na_nonce Nb (pubk a_name))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g><title>(enc Na_nonce a_name (pubk b_name))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc Nb (pubk b_name))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc Na_nonce Nb (pubk a_name))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 86.940 114.960 133.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc Na_nonce a_name (pubk b_name))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((Na Na_nonce) (Nb Nb) (a a_name) (b b_name))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g><title>((Na Na_nonce) (Nb Nb) (a a_name) (b b_name))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='89.940' y='39.960' style='text-anchor: middle;'>enis 2</text>
+  </svg></div>
+
+<pre>(defskeleton enis
+  (vars (Na_nonce Nb text) (a_name b_name name))
+  (defstrand alice 3 (Na Na_nonce) (Nb Nb) (a a_name) (b b_name))
+  (defstrand bob 2 (Na Na_nonce) (Nb Nb) (a a_name) (b b_name))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)))
+  (non-orig (privk a_name) (privk b_name))
+  (uniq-orig Na_nonce)
+  (operation nonce-test (contracted (Nb_nonce Nb)) Na_nonce (0 1)
+    (enc Na_nonce Nb (pubk a_name)) (enc Na_nonce a_name (pubk b_name)))
+  (strand-map 0 1)
+  (traces
+    ((send (enc Na_nonce a_name (pubk b_name)))
+      (recv (enc Na_nonce Nb (pubk a_name)))
+      (send (enc Nb (pubk b_name))))
+    ((recv (enc Na_nonce a_name (pubk b_name)))
+      (send (enc Na_nonce Nb (pubk a_name)))))
+  (label 2)
+  (parent 0)
+  (realized)
+  (shape)
+  (maps
+    ((0)
+      ((a_name a_name) (b_name b_name) (Na_nonce Na_nonce)
+        (Nb_nonce Nb))))
+  (origs (Na_nonce (0 0))))</pre>
+
+<p id="t3">Tree <a href="#top">3</a>, POV <a href="#k3">3</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='129.840pt' height='79.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 129.840 79.920' font-size='12.000'>
+  <text
+   x='89.880' y='26.040'
+   style='font-weight: bold; text-anchor: middle; fill: blue;'
+   onclick='window.open(&quot;#k4&quot;, &quot;_self&quot;)'>4</text>
+  <line
+   x1='39.960' y1='39.960' x2='89.880' y2='39.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='39.960' y='26.040' style='text-anchor: middle; fill: black;'
+   onclick='window.open(&quot;#k3&quot;, &quot;_self&quot;)'>3</text>
+  </svg></div>
+
+<pre>(defprotocol enis basic
+  (defrole alice
+    (vars (a b name) (Na Nb text))
+    (trace (send (enc Na a (pubk b))) (recv (enc Na Nb (pubk a)))
+      (send (enc Nb (pubk b)))))
+  (defrole bob
+    (vars (a b name) (Na Nb text))
+    (trace (recv (enc Na a (pubk b))) (send (enc Na Nb (pubk a)))
+      (recv (enc Nb (pubk b)))))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))</pre>
+
+<p id="k3">Item <a href="#t3">3</a>, Child: <a href="#k4">4</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='79.920pt' height='304.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 79.920 304.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <g><title>(enc Nb_nonce (pubk b_name))</title>
+   <circle style='fill: red;' cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc Na_nonce Nb_nonce (pubk a_name))</title>
+   <circle cx='39.960' cy='189.960' r='6.000'/></g>
+  <g><title>(enc Na_nonce a_name (pubk b_name))</title>
+   <circle style='fill: blue;' cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b_name))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <text x='39.960' y='39.960' style='text-anchor: middle;'>enis 3</text>
+  </svg></div>
+
+<pre>(defskeleton enis
+  (vars (Na_nonce Nb_nonce text) (a_name b_name name))
+  (defstrand bob 3 (Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b_name))
+  (non-orig (privk a_name) (privk b_name))
+  (uniq-orig Nb_nonce)
+  (traces
+    ((recv (enc Na_nonce a_name (pubk b_name)))
+      (send (enc Na_nonce Nb_nonce (pubk a_name)))
+      (recv (enc Nb_nonce (pubk b_name)))))
+  (label 3)
+  (unrealized (0 2))
+  (maps
+    ((0)
+      ((a_name a_name) (b_name b_name) (Na_nonce Na_nonce)
+        (Nb_nonce Nb_nonce))))
+  (origs (Nb_nonce (0 1)))
+  (comment &quot;1 in cohort - 1 not yet seen&quot;))</pre>
+
+<p id="k4">Item <a href="#t3">4</a>, Parent: <a href="#k3">3</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='179.880pt' height='304.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 179.880 304.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 139.920 264.960 Q 92.940 264.960 45.960 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc Nb_nonce (pubk b))</title>
+   <circle cx='139.920' cy='264.960' r='6.000'/></g>
+  <g><title>(enc Na_nonce Nb_nonce (pubk a_name))</title>
+   <circle style='fill: blue;' cx='139.920' cy='189.960' r='6.000'/></g>
+  <g><title>(enc Na_nonce a_name (pubk b))</title>
+   <circle cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc Nb_nonce (pubk b_name))</title>
+   <circle style='fill: blue;' cx='39.960' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 39.960 189.960 Q 86.940 189.960 133.920 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc Na_nonce Nb_nonce (pubk a_name))</title>
+   <circle cx='39.960' cy='189.960' r='6.000'/></g>
+  <g><title>(enc Na_nonce a_name (pubk b_name))</title>
+   <circle style='fill: blue;' cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b))</title>
+   <text
+    x='139.920' y='77.460' style='text-anchor: middle;'>alice</text></g>
+  <g><title>((Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b_name))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <text x='89.940' y='39.960' style='text-anchor: middle;'>enis 4</text>
+  </svg></div>
+
+<pre>(defskeleton enis
+  (vars (Na_nonce Nb_nonce text) (a_name b_name b name))
+  (defstrand bob 3 (Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b_name))
+  (defstrand alice 3 (Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b))
+  (precedes ((0 1) (1 1)) ((1 2) (0 2)))
+  (non-orig (privk a_name) (privk b_name))
+  (uniq-orig Nb_nonce)
+  (operation nonce-test (added-strand alice 3) Nb_nonce (0 2)
+    (enc Na_nonce Nb_nonce (pubk a_name)))
+  (strand-map 0)
+  (traces
+    ((recv (enc Na_nonce a_name (pubk b_name)))
+      (send (enc Na_nonce Nb_nonce (pubk a_name)))
+      (recv (enc Nb_nonce (pubk b_name))))
+    ((send (enc Na_nonce a_name (pubk b)))
+      (recv (enc Na_nonce Nb_nonce (pubk a_name)))
+      (send (enc Nb_nonce (pubk b)))))
+  (label 4)
+  (parent 3)
+  (realized)
+  (shape)
+  (maps
+    ((0)
+      ((a_name a_name) (b_name b_name) (Na_nonce Na_nonce)
+        (Nb_nonce Nb_nonce))))
+  (origs (Nb_nonce (0 1))))</pre>
+
+</body>
+</html>

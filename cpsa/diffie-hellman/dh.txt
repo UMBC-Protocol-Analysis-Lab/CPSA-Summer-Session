@@ -1,0 +1,60 @@
+(herald "diffie-hellman" (algebra diffie-hellman))
+
+(comment "CPSA 4.4.8")
+(comment "All input read from dh.scm")
+
+(defprotocol dh diffie-hellman
+  (defrole alice
+    (vars (a b rndx))
+    (trace (send (exp (gen) a)) (recv (exp (gen) b))))
+  (defrole bob
+    (vars (a b rndx))
+    (trace (recv (exp (gen) a)) (send (exp (gen) b))))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))
+
+(defskeleton dh
+  (vars (a b rndx))
+  (defstrand alice 2 (a a) (b b))
+  (uniq-gen a)
+  (traces ((send (exp (gen) a)) (recv (exp (gen) b))))
+  (label 0)
+  (realized)
+  (shape)
+  (maps ((0) ((a a) (b b))))
+  (origs)
+  (ugens (a (0 0))))
+
+(comment "Nothing left to do")
+
+(defprotocol dh diffie-hellman
+  (defrole alice
+    (vars (a b rndx))
+    (trace (send (exp (gen) a)) (recv (exp (gen) b))))
+  (defrole bob
+    (vars (a b rndx))
+    (trace (recv (exp (gen) a)) (send (exp (gen) b))))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))
+
+(defskeleton dh
+  (vars (a b rndx))
+  (defstrand bob 2 (a a) (b b))
+  (uniq-gen b)
+  (traces ((recv (exp (gen) a)) (send (exp (gen) b))))
+  (label 1)
+  (realized)
+  (shape)
+  (maps ((0) ((a a) (b b))))
+  (origs)
+  (ugens (b (0 1))))
+
+(comment "Nothing left to do")

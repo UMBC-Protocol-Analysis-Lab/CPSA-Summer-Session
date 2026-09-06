@@ -1,0 +1,165 @@
+(comment "CPSA 4.4.8")
+(comment "Extracted shapes")
+
+(herald "diffie-hellman" (algebra diffie-hellman))
+
+(comment "CPSA 4.4.8")
+
+(comment "All input read from dh_fix.scm")
+
+(defprotocol dh diffie-hellman
+  (defrole alice
+    (vars (a b rndx) (alice bob name) (msg1 msg2 text))
+    (trace
+      (send (enc "message 1" alice bob (exp (gen) a) (privk alice)))
+      (recv (enc alice bob (exp (gen) b) (privk bob)))
+      (send (enc "msg 1" msg1 (exp (gen) (mul a b))))
+      (recv (enc msg2 (exp (gen) (mul a b)))))
+    (uniq-gen a))
+  (defrole bob
+    (vars (a b rndx) (alice bob name) (msg1 msg2 text))
+    (trace
+      (recv (enc "message 1" alice bob (exp (gen) a) (privk alice)))
+      (send (enc alice bob (exp (gen) b) (privk bob)))
+      (recv (enc "msg 1" msg1 (exp (gen) (mul a b))))
+      (send (enc msg2 (exp (gen) (mul a b)))))
+    (uniq-gen b)
+    (absent (b a)))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))
+
+(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a)
+  (traces
+    ((send (enc "message 1" alice bob (exp (gen) a) (privk alice)))
+      (recv (enc alice bob (exp (gen) b) (privk bob)))
+      (send (enc "msg 1" msg1 (exp (gen) (mul a b))))
+      (recv (enc msg2 (exp (gen) (mul a b))))))
+  (label 0)
+  (unrealized (0 1))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (origs (msg1 (0 2)))
+  (ugens (a (0 0)))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a)
+    (b b))
+  (precedes ((0 0) (1 0)) ((0 2) (1 2)) ((1 1) (0 1)) ((1 3) (0 3)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b)
+  (absent (b a))
+  (operation encryption-test (displaced 2 0 alice 3)
+    (enc "msg 1" msg1-0 (exp (gen) (mul a b))) (1 2))
+  (strand-map 0 1)
+  (traces
+    ((send (enc "message 1" alice bob (exp (gen) a) (privk alice)))
+      (recv (enc alice bob (exp (gen) b) (privk bob)))
+      (send (enc "msg 1" msg1 (exp (gen) (mul a b))))
+      (recv (enc msg2 (exp (gen) (mul a b)))))
+    ((recv (enc "message 1" alice bob (exp (gen) a) (privk alice)))
+      (send (enc alice bob (exp (gen) b) (privk bob)))
+      (recv (enc "msg 1" msg1 (exp (gen) (mul a b))))
+      (send (enc msg2 (exp (gen) (mul a b))))))
+  (label 7)
+  (parent 0)
+  (realized)
+  (shape)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (origs (msg1 (0 2)))
+  (ugens (a (0 0)) (b (1 1))))
+
+(comment "Nothing left to do")
+
+(defprotocol dh diffie-hellman
+  (defrole alice
+    (vars (a b rndx) (alice bob name) (msg1 msg2 text))
+    (trace
+      (send (enc "message 1" alice bob (exp (gen) a) (privk alice)))
+      (recv (enc alice bob (exp (gen) b) (privk bob)))
+      (send (enc "msg 1" msg1 (exp (gen) (mul a b))))
+      (recv (enc msg2 (exp (gen) (mul a b)))))
+    (uniq-gen a))
+  (defrole bob
+    (vars (a b rndx) (alice bob name) (msg1 msg2 text))
+    (trace
+      (recv (enc "message 1" alice bob (exp (gen) a) (privk alice)))
+      (send (enc alice bob (exp (gen) b) (privk bob)))
+      (recv (enc "msg 1" msg1 (exp (gen) (mul a b))))
+      (send (enc msg2 (exp (gen) (mul a b)))))
+    (uniq-gen b)
+    (absent (b a)))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))
+
+(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b rndx))
+  (defstrand bob 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a)
+    (b b))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg2)
+  (uniq-gen b)
+  (absent (b a))
+  (traces
+    ((recv (enc "message 1" alice bob (exp (gen) a) (privk alice)))
+      (send (enc alice bob (exp (gen) b) (privk bob)))
+      (recv (enc "msg 1" msg1 (exp (gen) (mul a b))))
+      (send (enc msg2 (exp (gen) (mul a b))))))
+  (label 15)
+  (unrealized (0 0))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (origs (msg2 (0 3)))
+  (ugens (b (0 1)))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b rndx))
+  (defstrand bob 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a)
+    (b b))
+  (defstrand alice 3 (msg1 msg1) (alice alice) (bob bob) (a a) (b b))
+  (precedes ((0 1) (1 1)) ((1 0) (0 0)) ((1 2) (0 2)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg2)
+  (uniq-gen a b)
+  (absent (b a))
+  (operation encryption-test (displaced 1 2 alice 3)
+    (enc "msg 1" msg1 (exp (gen) (mul a b))) (0 2))
+  (strand-map 0 1)
+  (traces
+    ((recv (enc "message 1" alice bob (exp (gen) a) (privk alice)))
+      (send (enc alice bob (exp (gen) b) (privk bob)))
+      (recv (enc "msg 1" msg1 (exp (gen) (mul a b))))
+      (send (enc msg2 (exp (gen) (mul a b)))))
+    ((send (enc "message 1" alice bob (exp (gen) a) (privk alice)))
+      (recv (enc alice bob (exp (gen) b) (privk bob)))
+      (send (enc "msg 1" msg1 (exp (gen) (mul a b))))))
+  (label 17)
+  (parent 15)
+  (realized)
+  (shape)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (origs (msg2 (0 3)))
+  (ugens (a (1 0)) (b (0 1))))
+
+(comment "Nothing left to do")

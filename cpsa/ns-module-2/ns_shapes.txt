@@ -1,0 +1,133 @@
+(comment "CPSA 4.4.8")
+(comment "Extracted shapes")
+
+(herald "PAL Module 2 Needham-Schroeder")
+
+(comment "CPSA 4.4.8")
+
+(comment "All input read from ns.scm")
+
+(defprotocol enis basic
+  (defrole alice
+    (vars (a b name) (Na Nb text))
+    (trace (send (enc Na a (pubk b))) (recv (enc Na Nb (pubk a)))
+      (send (enc Nb (pubk b)))))
+  (defrole bob
+    (vars (a b name) (Na Nb text))
+    (trace (recv (enc Na a (pubk b))) (send (enc Na Nb (pubk a)))
+      (recv (enc Nb (pubk b)))))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))
+
+(defskeleton enis
+  (vars (Na_nonce Nb_nonce text) (a_name b_name name))
+  (defstrand alice 3 (Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b_name))
+  (non-orig (privk a_name) (privk b_name))
+  (uniq-orig Na_nonce)
+  (traces
+    ((send (enc Na_nonce a_name (pubk b_name)))
+      (recv (enc Na_nonce Nb_nonce (pubk a_name)))
+      (send (enc Nb_nonce (pubk b_name)))))
+  (label 0)
+  (unrealized (0 1))
+  (maps
+    ((0)
+      ((a_name a_name) (b_name b_name) (Na_nonce Na_nonce)
+        (Nb_nonce Nb_nonce))))
+  (origs (Na_nonce (0 0)))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton enis
+  (vars (Na_nonce Nb text) (a_name b_name name))
+  (defstrand alice 3 (Na Na_nonce) (Nb Nb) (a a_name) (b b_name))
+  (defstrand bob 2 (Na Na_nonce) (Nb Nb) (a a_name) (b b_name))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)))
+  (non-orig (privk a_name) (privk b_name))
+  (uniq-orig Na_nonce)
+  (operation nonce-test (contracted (Nb_nonce Nb)) Na_nonce (0 1)
+    (enc Na_nonce Nb (pubk a_name)) (enc Na_nonce a_name (pubk b_name)))
+  (strand-map 0 1)
+  (traces
+    ((send (enc Na_nonce a_name (pubk b_name)))
+      (recv (enc Na_nonce Nb (pubk a_name)))
+      (send (enc Nb (pubk b_name))))
+    ((recv (enc Na_nonce a_name (pubk b_name)))
+      (send (enc Na_nonce Nb (pubk a_name)))))
+  (label 2)
+  (parent 0)
+  (realized)
+  (shape)
+  (maps
+    ((0)
+      ((a_name a_name) (b_name b_name) (Na_nonce Na_nonce)
+        (Nb_nonce Nb))))
+  (origs (Na_nonce (0 0))))
+
+(comment "Nothing left to do")
+
+(defprotocol enis basic
+  (defrole alice
+    (vars (a b name) (Na Nb text))
+    (trace (send (enc Na a (pubk b))) (recv (enc Na Nb (pubk a)))
+      (send (enc Nb (pubk b)))))
+  (defrole bob
+    (vars (a b name) (Na Nb text))
+    (trace (recv (enc Na a (pubk b))) (send (enc Na Nb (pubk a)))
+      (recv (enc Nb (pubk b)))))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))
+
+(defskeleton enis
+  (vars (Na_nonce Nb_nonce text) (a_name b_name name))
+  (defstrand bob 3 (Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b_name))
+  (non-orig (privk a_name) (privk b_name))
+  (uniq-orig Nb_nonce)
+  (traces
+    ((recv (enc Na_nonce a_name (pubk b_name)))
+      (send (enc Na_nonce Nb_nonce (pubk a_name)))
+      (recv (enc Nb_nonce (pubk b_name)))))
+  (label 3)
+  (unrealized (0 2))
+  (maps
+    ((0)
+      ((a_name a_name) (b_name b_name) (Na_nonce Na_nonce)
+        (Nb_nonce Nb_nonce))))
+  (origs (Nb_nonce (0 1)))
+  (comment "1 in cohort - 1 not yet seen"))
+
+(defskeleton enis
+  (vars (Na_nonce Nb_nonce text) (a_name b_name b name))
+  (defstrand bob 3 (Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b_name))
+  (defstrand alice 3 (Na Na_nonce) (Nb Nb_nonce) (a a_name) (b b))
+  (precedes ((0 1) (1 1)) ((1 2) (0 2)))
+  (non-orig (privk a_name) (privk b_name))
+  (uniq-orig Nb_nonce)
+  (operation nonce-test (added-strand alice 3) Nb_nonce (0 2)
+    (enc Na_nonce Nb_nonce (pubk a_name)))
+  (strand-map 0)
+  (traces
+    ((recv (enc Na_nonce a_name (pubk b_name)))
+      (send (enc Na_nonce Nb_nonce (pubk a_name)))
+      (recv (enc Nb_nonce (pubk b_name))))
+    ((send (enc Na_nonce a_name (pubk b)))
+      (recv (enc Na_nonce Nb_nonce (pubk a_name)))
+      (send (enc Nb_nonce (pubk b)))))
+  (label 4)
+  (parent 3)
+  (realized)
+  (shape)
+  (maps
+    ((0)
+      ((a_name a_name) (b_name b_name) (Na_nonce Na_nonce)
+        (Nb_nonce Nb_nonce))))
+  (origs (Nb_nonce (0 1))))
+
+(comment "Nothing left to do")

@@ -1,0 +1,2013 @@
+<?xml version="1.0"?>
+<!-- CPSA 4.4.8 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>diffie-hellman</title>
+ <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+ <style>
+  svg.diagram { border-width: 1px; border-style: solid }
+ </style>
+</head>
+<body>
+
+<pre>(herald &quot;diffie-hellman&quot; (algebra diffie-hellman))
+(comment &quot;CPSA 4.4.8&quot;)
+(comment &quot;All input read from dh_fix.scm&quot;)</pre>
+
+<p id="top">Trees: <a href="#t0">0</a> <a href="#t15">15</a>.</p>
+
+<p id="t0">Tree <a href="#top">0</a>, POV <a href="#k0">0</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='329.520pt' height='529.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 329.520 529.920' font-size='12.000'>
+  <text
+   x='239.640' y='476.040' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k12&quot;, &quot;_self&quot;)'>12</text>
+  <line
+   x1='189.720' y1='452.460' x2='239.640' y2='489.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='239.640' y='401.040' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k11&quot;, &quot;_self&quot;)'>11</text>
+  <line
+   x1='189.720' y1='452.460' x2='239.640' y2='414.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='189.720' y='438.540' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k6&quot;, &quot;_self&quot;)'>6</text>
+  <line
+   x1='139.800' y1='452.460' x2='189.720' y2='452.460'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='139.800' y='438.540' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k3&quot;, &quot;_self&quot;)'>3</text>
+  <line
+   x1='89.880' y1='264.960' x2='139.800' y2='452.460'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='239.640' y='326.040' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k10&quot;, &quot;_self&quot;)'>10</text>
+  <line
+   x1='189.720' y1='302.460' x2='239.640' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='239.640' y='251.040' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k9&quot;, &quot;_self&quot;)'>9</text>
+  <line
+   x1='189.720' y1='302.460' x2='239.640' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='189.720' y='288.540' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k5&quot;, &quot;_self&quot;)'>5</text>
+  <line
+   x1='139.800' y1='189.960' x2='189.720' y2='302.460'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='289.560' y='176.040' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k14&quot;, &quot;_self&quot;)'>14</text>
+  <line
+   x1='239.640' y1='152.460' x2='289.560' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='289.560' y='101.040' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k13&quot;, &quot;_self&quot;)'>13</text>
+  <line
+   x1='239.640' y1='152.460' x2='289.560' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='239.640' y='138.540' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k8&quot;, &quot;_self&quot;)'>8</text>
+  <line
+   x1='189.720' y1='114.960' x2='239.640' y2='152.460'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='239.640' y='26.040'
+   style='font-weight: bold; text-anchor: middle; fill: blue;'
+   onclick='window.open(&quot;#k7&quot;, &quot;_self&quot;)'>7</text>
+  <line
+   x1='189.720' y1='114.960' x2='239.640' y2='39.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='189.720' y='101.040' style='text-anchor: middle; fill: black;'
+   onclick='window.open(&quot;#k4&quot;, &quot;_self&quot;)'>4</text>
+  <line
+   x1='139.800' y1='189.960' x2='189.720' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='139.800' y='176.040' style='text-anchor: middle; fill: black;'
+   onclick='window.open(&quot;#k2&quot;, &quot;_self&quot;)'>2</text>
+  <line
+   x1='89.880' y1='264.960' x2='139.800' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='89.880' y='251.040' style='text-anchor: middle; fill: black;'
+   onclick='window.open(&quot;#k1&quot;, &quot;_self&quot;)'>1</text>
+  <line
+   x1='39.960' y1='264.960' x2='89.880' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='39.960' y='251.040' style='text-anchor: middle; fill: black;'
+   onclick='window.open(&quot;#k0&quot;, &quot;_self&quot;)'>0</text>
+  </svg></div>
+
+<pre>(defprotocol dh diffie-hellman
+  (defrole alice
+    (vars (a b rndx) (alice bob name) (msg1 msg2 text))
+    (trace
+      (send (enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice)))
+      (recv (enc alice bob (exp (gen) b) (privk bob)))
+      (send (enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b))))
+      (recv (enc msg2 (exp (gen) (mul a b)))))
+    (uniq-gen a))
+  (defrole bob
+    (vars (a b rndx) (alice bob name) (msg1 msg2 text))
+    (trace
+      (recv (enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice)))
+      (send (enc alice bob (exp (gen) b) (privk bob)))
+      (recv (enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b))))
+      (send (enc msg2 (exp (gen) (mul a b)))))
+    (uniq-gen b)
+    (absent (b a)))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))</pre>
+
+<p id="k0">Item <a href="#t0">0</a>, Child: <a href="#k1">1</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='79.920pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 79.920 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: red;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='39.960' y='39.960' style='text-anchor: middle;'>dh 0</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a)
+  (label 0)
+  (unrealized (0 1))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (origs (msg1 (0 2)))
+  (ugens (a (0 0)))
+  (comment &quot;1 in cohort - 1 not yet seen&quot;))</pre>
+
+<p id="k1">Item <a href="#t0">1</a>, Parent: <a href="#k0">0</a>, Children: <a href="#k2">2</a> <a href="#k3">3</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='179.880pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 179.880 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice))</title>
+   <circle style='fill: red;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: red;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a-0) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='89.940' y='39.960' style='text-anchor: middle;'>dh 1</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a a-0 b rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 2 (alice alice) (bob bob) (a a-0) (b b))
+  (precedes ((1 1) (0 1)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b)
+  (absent (b a-0))
+  (operation encryption-test (added-strand bob 2)
+    (enc alice bob (exp (gen) b) (privk bob)) (0 1))
+  (strand-map 0)
+  (label 1)
+  (parent 0)
+  (unrealized (0 3) (1 0))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;2 in cohort - 2 not yet seen&quot;))</pre>
+
+<p id="k2">Item <a href="#t0">2</a>, Parent: <a href="#k1">1</a>, Children: <a href="#k4">4</a> <a href="#k5">5</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='179.880pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 179.880 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul b a)))</title>
+   <circle style='fill: red;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul b a)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 86.940 114.960 133.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='89.940' y='39.960' style='text-anchor: middle;'>dh 2</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (b a rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 2 (alice alice) (bob bob) (a a) (b b))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen b a)
+  (absent (b a))
+  (operation encryption-test (displaced 2 0 alice 1)
+    (enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice)) (1 0))
+  (strand-map 0 1)
+  (label 2)
+  (parent 1)
+  (unrealized (0 3))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;2 in cohort - 2 not yet seen&quot;))</pre>
+
+<p id="k3">Item <a href="#t0">3</a>, Parent: <a href="#k1">1</a>, Child: <a href="#k6">6</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='279.840pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 279.840 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='239.880' y1='114.960' x2='239.880' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 239.880 114.960 Q 192.900 114.960 145.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice))</title>
+   <circle cx='239.880' cy='114.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: red;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a-0))</title>
+   <text
+    x='239.880' y='77.460' style='text-anchor: middle;'>alice</text></g>
+  <g><title>((alice alice) (bob bob) (a a-0) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='139.920' y='39.960' style='text-anchor: middle;'>dh 3</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b a-0 rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 2 (alice alice) (bob bob) (a a-0) (b b))
+  (defstrand alice 1 (alice alice) (bob bob) (a a-0))
+  (precedes ((1 1) (0 1)) ((2 0) (1 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b a-0)
+  (absent (b a-0))
+  (operation encryption-test (added-strand alice 1)
+    (enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice)) (1 0))
+  (strand-map 0 1)
+  (label 3)
+  (parent 1)
+  (unrealized (0 3))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;1 in cohort - 1 not yet seen&quot;))</pre>
+
+<p id="k4">Item <a href="#t0">4</a>, Parent: <a href="#k2">2</a>, Children: <a href="#k7">7</a> <a href="#k8">8</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='179.880pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 179.880 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 139.920 339.960 Q 92.940 339.960 45.960 339.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle cx='139.920' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1-0 (exp (gen) (mul a b)))</title>
+   <circle style='fill: red;' cx='139.920' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 86.940 114.960 133.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g>
+   <title>((msg1 msg1-0) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='89.940' y='39.960' style='text-anchor: middle;'>dh 4</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 msg1-0 text) (alice bob name) (a b rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 4 (msg1 msg1-0) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)) ((1 3) (0 3)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b)
+  (absent (b a))
+  (operation encryption-test (displaced 1 2 bob 4)
+    (enc msg2 (exp (gen) (mul a b))) (0 3))
+  (strand-map 0 1)
+  (label 4)
+  (parent 2)
+  (unrealized (1 2))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;2 in cohort - 2 not yet seen&quot;))</pre>
+
+<p id="k5">Item <a href="#t0">5</a>, Parent: <a href="#k2">2</a>, Children: <a href="#k9">9</a> <a href="#k10">10</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='279.840pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 279.840 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='239.880' y1='189.960' x2='239.880' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 239.880 264.960 Q 142.729 263.906 45.578 337.852'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle cx='239.880' cy='264.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle style='fill: red;' cx='239.880' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <path
+   d='M 139.920 189.960 Q 186.900 189.960 233.880 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul b a)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul b a)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 86.940 114.960 133.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='139.920' y='39.960' style='text-anchor: middle;'>dh 5</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (b a rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 2 (alice alice) (bob bob) (a a) (b b))
+  (deflistener (exp (gen) (mul b a)))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)) ((1 1) (2 0)) ((2 1) (0 3)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen b a)
+  (absent (b a))
+  (operation encryption-test (added-listener (exp (gen) (mul b a)))
+    (enc msg2 (exp (gen) (mul b a))) (0 3))
+  (strand-map 0 1)
+  (label 5)
+  (parent 2)
+  (unrealized (2 0))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;2 in cohort - 2 not yet seen&quot;))</pre>
+
+<p id="k6">Item <a href="#t0">6</a>, Parent: <a href="#k3">3</a>, Children: <a href="#k11">11</a> <a href="#k12">12</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='379.800pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 379.800 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='339.840' y1='189.960' x2='339.840' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='239.880' y1='114.960' x2='239.880' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 339.840 264.960 Q 192.810 264.232 45.781 338.504'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle cx='339.840' cy='264.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle style='fill: red;' cx='339.840' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 239.880 114.960 Q 192.900 114.960 145.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice))</title>
+   <circle cx='239.880' cy='114.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <path
+   d='M 139.920 189.960 Q 236.880 152.460 333.840 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 186.990 114.232 334.019 188.504'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a-0))</title>
+   <text
+    x='239.880' y='77.460' style='text-anchor: middle;'>alice</text></g>
+  <g><title>((alice alice) (bob bob) (a a-0) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='189.900' y='39.960' style='text-anchor: middle;'>dh 6</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b a-0 rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 2 (alice alice) (bob bob) (a a-0) (b b))
+  (defstrand alice 1 (alice alice) (bob bob) (a a-0))
+  (deflistener (exp (gen) (mul a b)))
+  (precedes ((0 0) (3 0)) ((1 1) (0 1)) ((1 1) (3 0)) ((2 0) (1 0))
+    ((3 1) (0 3)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b a-0)
+  (absent (b a-0))
+  (operation encryption-test (added-listener (exp (gen) (mul a b)))
+    (enc msg2 (exp (gen) (mul a b))) (0 3))
+  (strand-map 0 1 2)
+  (label 6)
+  (parent 3)
+  (unrealized (3 0))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;2 in cohort - 2 not yet seen&quot;))</pre>
+
+<p id="k7">Item <a href="#t0">7</a>, Parent: <a href="#k4">4</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='179.880pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 179.880 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 139.920 339.960 Q 92.940 339.960 45.960 339.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle cx='139.920' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='139.920' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <path
+   d='M 39.960 264.960 Q 86.940 264.960 133.920 264.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 86.940 114.960 133.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='89.940' y='39.960' style='text-anchor: middle;'>dh 7</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a)
+    (b b))
+  (precedes ((0 0) (1 0)) ((0 2) (1 2)) ((1 1) (0 1)) ((1 3) (0 3)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b)
+  (absent (b a))
+  (operation encryption-test (displaced 2 0 alice 3)
+    (enc &quot;msg 1&quot; msg1-0 (exp (gen) (mul a b))) (1 2))
+  (strand-map 0 1)
+  (label 7)
+  (parent 4)
+  (realized)
+  (shape)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (origs (msg1 (0 2)))
+  (ugens (a (0 0)) (b (1 1))))</pre>
+
+<p id="k8">Item <a href="#t0">8</a>, Parent: <a href="#k4">4</a>, Children: <a href="#k13">13</a> <a href="#k14">14</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='279.840pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 279.840 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='239.880' y1='189.960' x2='239.880' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 239.880 264.960 Q 192.900 264.960 145.920 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle cx='239.880' cy='264.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle style='fill: red;' cx='239.880' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 139.920 339.960 Q 92.940 339.960 45.960 339.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle cx='139.920' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1-0 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='139.920' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <path
+   d='M 139.920 189.960 Q 186.900 189.960 233.880 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 86.940 114.960 133.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g>
+   <title>((msg1 msg1-0) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='139.920' y='39.960' style='text-anchor: middle;'>dh 8</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 msg1-0 text) (alice bob name) (a b rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 4 (msg1 msg1-0) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (deflistener (exp (gen) (mul a b)))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)) ((1 1) (2 0)) ((1 3) (0 3))
+    ((2 1) (1 2)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b)
+  (absent (b a))
+  (operation encryption-test (added-listener (exp (gen) (mul a b)))
+    (enc &quot;msg 1&quot; msg1-0 (exp (gen) (mul a b))) (1 2))
+  (strand-map 0 1)
+  (label 8)
+  (parent 4)
+  (unrealized (2 0))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;2 in cohort - 2 not yet seen&quot;))</pre>
+
+<p id="k9">Item <a href="#t0">9</a>, Parent: <a href="#k5">5</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='379.800pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 379.800 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='339.840' y1='189.960' x2='339.840' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='239.880' y1='264.960' x2='239.880' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 339.840 264.960 Q 292.860 264.960 245.880 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(cat (exp (gen) b) a)</title>
+   <circle cx='339.840' cy='264.960' r='6.000'/></g>
+  <g><title>(cat (exp (gen) b) a)</title>
+   <circle style='fill: red;' cx='339.840' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 239.880 339.960 Q 142.920 302.460 45.960 339.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle cx='239.880' cy='339.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle style='fill: blue;' cx='239.880' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <path
+   d='M 139.920 189.960 Q 236.880 152.460 333.840 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul b a)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul b a)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 86.940 114.960 133.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='189.900' y='39.960' style='text-anchor: middle;'>dh 9</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (b a rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 2 (alice alice) (bob bob) (a a) (b b))
+  (deflistener (exp (gen) (mul b a)))
+  (deflistener (cat (exp (gen) b) a))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)) ((1 1) (3 0)) ((2 1) (0 3))
+    ((3 1) (2 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen b a)
+  (absent (b a))
+  (operation nonce-test (added-listener (cat (exp (gen) b) a))
+    (exp (gen) (mul b a)) (2 0))
+  (strand-map 0 1 2)
+  (label 9)
+  (parent 5)
+  (unrealized (3 0))
+  (dead)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;empty cohort&quot;))</pre>
+
+<p id="k10">Item <a href="#t0">10</a>, Parent: <a href="#k5">5</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='379.800pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 379.800 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='339.840' y1='189.960' x2='339.840' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='239.880' y1='264.960' x2='239.880' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 339.840 264.960 Q 292.860 264.960 245.880 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(cat (exp (gen) a) b)</title>
+   <circle cx='339.840' cy='264.960' r='6.000'/></g>
+  <g><title>(cat (exp (gen) a) b)</title>
+   <circle style='fill: red;' cx='339.840' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 239.880 339.960 Q 142.920 302.460 45.960 339.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle cx='239.880' cy='339.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle style='fill: blue;' cx='239.880' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <path
+   d='M 139.920 189.960 Q 236.880 152.460 333.840 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul b a)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul b a)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 86.940 114.960 133.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='189.900' y='39.960' style='text-anchor: middle;'>dh 10</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (b a rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 2 (alice alice) (bob bob) (a a) (b b))
+  (deflistener (exp (gen) (mul b a)))
+  (deflistener (cat (exp (gen) a) b))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)) ((1 1) (3 0)) ((2 1) (0 3))
+    ((3 1) (2 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen b a)
+  (absent (b a))
+  (operation nonce-test (added-listener (cat (exp (gen) a) b))
+    (exp (gen) (mul b a)) (2 0))
+  (strand-map 0 1 2)
+  (label 10)
+  (parent 5)
+  (unrealized (3 0))
+  (dead)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;empty cohort&quot;))</pre>
+
+<p id="k11">Item <a href="#t0">11</a>, Parent: <a href="#k6">6</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='479.760pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 479.760 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='439.800' y1='189.960' x2='439.800' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='339.840' y1='264.960' x2='339.840' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='239.880' y1='114.960' x2='239.880' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 439.800 264.960 Q 392.820 264.960 345.840 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(cat (exp (gen) a) b)</title>
+   <circle cx='439.800' cy='264.960' r='6.000'/></g>
+  <g><title>(cat (exp (gen) a) b)</title>
+   <circle style='fill: red;' cx='439.800' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 339.840 339.960 Q 192.900 302.460 45.960 339.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle cx='339.840' cy='339.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle style='fill: blue;' cx='339.840' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 239.880 114.960 Q 192.900 114.960 145.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice))</title>
+   <circle cx='239.880' cy='114.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <path
+   d='M 139.920 189.960 Q 286.860 152.460 433.800 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 236.931 114.407 433.903 188.854'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a-0))</title>
+   <text
+    x='239.880' y='77.460' style='text-anchor: middle;'>alice</text></g>
+  <g><title>((alice alice) (bob bob) (a a-0) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='239.880' y='39.960' style='text-anchor: middle;'>dh 11</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b a-0 rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 2 (alice alice) (bob bob) (a a-0) (b b))
+  (defstrand alice 1 (alice alice) (bob bob) (a a-0))
+  (deflistener (exp (gen) (mul a b)))
+  (deflistener (cat (exp (gen) a) b))
+  (precedes ((0 0) (4 0)) ((1 1) (0 1)) ((1 1) (4 0)) ((2 0) (1 0))
+    ((3 1) (0 3)) ((4 1) (3 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b a-0)
+  (absent (b a-0))
+  (operation nonce-test (added-listener (cat (exp (gen) a) b))
+    (exp (gen) (mul a b)) (3 0))
+  (strand-map 0 1 2 3)
+  (label 11)
+  (parent 6)
+  (unrealized (4 0))
+  (dead)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;empty cohort&quot;))</pre>
+
+<p id="k12">Item <a href="#t0">12</a>, Parent: <a href="#k6">6</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='479.760pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 479.760 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='439.800' y1='189.960' x2='439.800' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='339.840' y1='264.960' x2='339.840' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='239.880' y1='114.960' x2='239.880' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 439.800 264.960 Q 392.820 264.960 345.840 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(cat (exp (gen) b) a)</title>
+   <circle cx='439.800' cy='264.960' r='6.000'/></g>
+  <g><title>(cat (exp (gen) b) a)</title>
+   <circle style='fill: red;' cx='439.800' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 339.840 339.960 Q 192.900 302.460 45.960 339.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle cx='339.840' cy='339.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle style='fill: blue;' cx='339.840' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 239.880 114.960 Q 192.900 114.960 145.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice))</title>
+   <circle cx='239.880' cy='114.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.940 189.960 45.960 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <path
+   d='M 139.920 189.960 Q 286.860 152.460 433.800 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a-0) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 236.931 114.407 433.903 188.854'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a-0))</title>
+   <text
+    x='239.880' y='77.460' style='text-anchor: middle;'>alice</text></g>
+  <g><title>((alice alice) (bob bob) (a a-0) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='239.880' y='39.960' style='text-anchor: middle;'>dh 12</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b a-0 rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 2 (alice alice) (bob bob) (a a-0) (b b))
+  (defstrand alice 1 (alice alice) (bob bob) (a a-0))
+  (deflistener (exp (gen) (mul a b)))
+  (deflistener (cat (exp (gen) b) a))
+  (precedes ((0 0) (4 0)) ((1 1) (0 1)) ((1 1) (4 0)) ((2 0) (1 0))
+    ((3 1) (0 3)) ((4 1) (3 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b a-0)
+  (absent (b a-0))
+  (operation nonce-test (added-listener (cat (exp (gen) b) a))
+    (exp (gen) (mul a b)) (3 0))
+  (strand-map 0 1 2 3)
+  (label 12)
+  (parent 6)
+  (unrealized (4 0))
+  (dead)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;empty cohort&quot;))</pre>
+
+<p id="k13">Item <a href="#t0">13</a>, Parent: <a href="#k8">8</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='379.800pt' height='454.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 379.800 454.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='339.840' y1='189.960' x2='339.840' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='239.880' y1='264.960' x2='239.880' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='414.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='414.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 339.840 264.960 Q 292.860 264.960 245.880 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(cat (exp (gen) a) b)</title>
+   <circle cx='339.840' cy='264.960' r='6.000'/></g>
+  <g><title>(cat (exp (gen) a) b)</title>
+   <circle style='fill: red;' cx='339.840' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 239.880 339.960 Q 192.900 339.960 145.920 339.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle cx='239.880' cy='339.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle style='fill: blue;' cx='239.880' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 139.920 414.960 Q 92.940 414.960 45.960 414.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle cx='139.920' cy='414.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1-0 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='139.920' cy='339.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.340 225.660 44.759 261.359'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <path
+   d='M 139.920 189.960 Q 236.880 152.460 333.840 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='414.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 86.940 114.960 133.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g>
+   <title>((msg1 msg1-0) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='189.900' y='39.960' style='text-anchor: middle;'>dh 13</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 msg1-0 text) (alice bob name) (a b rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 4 (msg1 msg1-0) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (deflistener (exp (gen) (mul a b)))
+  (deflistener (cat (exp (gen) a) b))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)) ((1 1) (3 0)) ((1 3) (0 3))
+    ((2 1) (1 2)) ((3 1) (2 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b)
+  (absent (b a))
+  (operation nonce-test (added-listener (cat (exp (gen) a) b))
+    (exp (gen) (mul a b)) (2 0))
+  (strand-map 0 1 2)
+  (label 13)
+  (parent 8)
+  (unrealized (3 0))
+  (dead)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;empty cohort&quot;))</pre>
+
+<p id="k14">Item <a href="#t0">14</a>, Parent: <a href="#k8">8</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='379.800pt' height='454.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 379.800 454.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='339.840' y1='189.960' x2='339.840' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='239.880' y1='264.960' x2='239.880' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='414.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='414.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 339.840 264.960 Q 292.860 264.960 245.880 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(cat (exp (gen) b) a)</title>
+   <circle cx='339.840' cy='264.960' r='6.000'/></g>
+  <g><title>(cat (exp (gen) b) a)</title>
+   <circle style='fill: red;' cx='339.840' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 239.880 339.960 Q 192.900 339.960 145.920 339.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle cx='239.880' cy='339.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul a b))</title>
+   <circle style='fill: blue;' cx='239.880' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 139.920 414.960 Q 92.940 414.960 45.960 414.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle cx='139.920' cy='414.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1-0 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='139.920' cy='339.960' r='6.000'/></g>
+  <path
+   d='M 139.920 189.960 Q 92.340 225.660 44.759 261.359'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <path
+   d='M 139.920 189.960 Q 236.880 152.460 333.840 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='139.920' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='414.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='39.960' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 39.960 114.960 Q 86.940 114.960 133.920 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='39.960' cy='114.960' r='6.000'/></g>
+  <g>
+   <title>((msg1 msg1-0) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='139.920' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>alice</text>
+   </g>
+  <text x='189.900' y='39.960' style='text-anchor: middle;'>dh 14</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 msg1-0 text) (alice bob name) (a b rndx))
+  (defstrand alice 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (defstrand bob 4 (msg1 msg1-0) (msg2 msg2) (alice alice) (bob bob)
+    (a a) (b b))
+  (deflistener (exp (gen) (mul a b)))
+  (deflistener (cat (exp (gen) b) a))
+  (precedes ((0 0) (1 0)) ((1 1) (0 1)) ((1 1) (3 0)) ((1 3) (0 3))
+    ((2 1) (1 2)) ((3 1) (2 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg1)
+  (uniq-gen a b)
+  (absent (b a))
+  (operation nonce-test (added-listener (cat (exp (gen) b) a))
+    (exp (gen) (mul a b)) (2 0))
+  (strand-map 0 1 2)
+  (label 14)
+  (parent 8)
+  (unrealized (3 0))
+  (dead)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;empty cohort&quot;))</pre>
+
+<p id="t15">Tree <a href="#top">15</a>, POV <a href="#k15">15</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='229.680pt' height='229.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 229.680 229.920' font-size='12.000'>
+  <text
+   x='189.720' y='176.040' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k20&quot;, &quot;_self&quot;)'>20</text>
+  <line
+   x1='139.800' y1='152.460' x2='189.720' y2='189.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='189.720' y='101.040' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k19&quot;, &quot;_self&quot;)'>19</text>
+  <line
+   x1='139.800' y1='152.460' x2='189.720' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='139.800' y='138.540' style='text-anchor: middle; fill: red;'
+   onclick='window.open(&quot;#k18&quot;, &quot;_self&quot;)'>18</text>
+  <line
+   x1='89.880' y1='114.960' x2='139.800' y2='152.460'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='139.800' y='26.040'
+   style='font-weight: bold; text-anchor: middle; fill: blue;'
+   onclick='window.open(&quot;#k17&quot;, &quot;_self&quot;)'>17</text>
+  <line
+   x1='89.880' y1='114.960' x2='139.800' y2='39.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='89.880' y='101.040' style='text-anchor: middle; fill: black;'
+   onclick='window.open(&quot;#k16&quot;, &quot;_self&quot;)'>16</text>
+  <line
+   x1='39.960' y1='114.960' x2='89.880' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <text
+   x='39.960' y='101.040' style='text-anchor: middle; fill: black;'
+   onclick='window.open(&quot;#k15&quot;, &quot;_self&quot;)'>15</text>
+  </svg></div>
+
+<pre>(defprotocol dh diffie-hellman
+  (defrole alice
+    (vars (a b rndx) (alice bob name) (msg1 msg2 text))
+    (trace
+      (send (enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice)))
+      (recv (enc alice bob (exp (gen) b) (privk bob)))
+      (send (enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b))))
+      (recv (enc msg2 (exp (gen) (mul a b)))))
+    (uniq-gen a))
+  (defrole bob
+    (vars (a b rndx) (alice bob name) (msg1 msg2 text))
+    (trace
+      (recv (enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice)))
+      (send (enc alice bob (exp (gen) b) (privk bob)))
+      (recv (enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b))))
+      (send (enc msg2 (exp (gen) (mul a b)))))
+    (uniq-gen b)
+    (absent (b a)))
+  (defgenrule neqRl_indx
+    (forall ((x indx)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_strd
+    (forall ((x strd)) (implies (fact neq x x) (false))))
+  (defgenrule neqRl_mesg
+    (forall ((x mesg)) (implies (fact neq x x) (false)))))</pre>
+
+<p id="k15">Item <a href="#t15">15</a>, Child: <a href="#k16">16</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='79.920pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 79.920 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='39.960' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: red;' cx='39.960' cy='114.960' r='6.000'/></g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <text x='39.960' y='39.960' style='text-anchor: middle;'>dh 15</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b rndx))
+  (defstrand bob 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a)
+    (b b))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg2)
+  (uniq-gen b)
+  (absent (b a))
+  (label 15)
+  (unrealized (0 0))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (origs (msg2 (0 3)))
+  (ugens (b (0 1)))
+  (comment &quot;1 in cohort - 1 not yet seen&quot;))</pre>
+
+<p id="k16">Item <a href="#t15">16</a>, Parent: <a href="#k15">15</a>, Children: <a href="#k17">17</a> <a href="#k18">18</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='179.880pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 179.880 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 139.920 114.960 Q 92.940 114.960 45.960 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul b a)))</title>
+   <circle cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul b a)))</title>
+   <circle style='fill: red;' cx='39.960' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='39.960' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a))</title>
+   <text
+    x='139.920' y='77.460' style='text-anchor: middle;'>alice</text></g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <text x='89.940' y='39.960' style='text-anchor: middle;'>dh 16</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (b a rndx))
+  (defstrand bob 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a)
+    (b b))
+  (defstrand alice 1 (alice alice) (bob bob) (a a))
+  (precedes ((1 0) (0 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg2)
+  (uniq-gen b a)
+  (absent (b a))
+  (operation encryption-test (added-strand alice 1)
+    (enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice)) (0 0))
+  (strand-map 0)
+  (label 16)
+  (parent 15)
+  (unrealized (0 2))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;2 in cohort - 2 not yet seen&quot;))</pre>
+
+<p id="k17">Item <a href="#t15">17</a>, Parent: <a href="#k16">16</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='179.880pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 179.880 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 139.920 264.960 Q 92.940 264.960 45.960 264.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle cx='139.920' cy='264.960' r='6.000'/></g>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle style='fill: blue;' cx='139.920' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 139.920 114.960 Q 92.940 114.960 45.960 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul a b)))</title>
+   <circle cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 39.960 189.960 Q 86.940 189.960 133.920 189.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='39.960' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((msg1 msg1) (alice alice) (bob bob) (a a) (b b))</title>
+   <text
+    x='139.920' y='77.460' style='text-anchor: middle;'>alice</text></g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <text x='89.940' y='39.960' style='text-anchor: middle;'>dh 17</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (a b rndx))
+  (defstrand bob 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a)
+    (b b))
+  (defstrand alice 3 (msg1 msg1) (alice alice) (bob bob) (a a) (b b))
+  (precedes ((0 1) (1 1)) ((1 0) (0 0)) ((1 2) (0 2)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg2)
+  (uniq-gen a b)
+  (absent (b a))
+  (operation encryption-test (displaced 1 2 alice 3)
+    (enc &quot;msg 1&quot; msg1 (exp (gen) (mul a b))) (0 2))
+  (strand-map 0 1)
+  (label 17)
+  (parent 16)
+  (realized)
+  (shape)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (origs (msg2 (0 3)))
+  (ugens (a (1 0)) (b (0 1))))</pre>
+
+<p id="k18">Item <a href="#t15">18</a>, Parent: <a href="#k16">16</a>, Children: <a href="#k19">19</a> <a href="#k20">20</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='279.840pt' height='379.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 279.840 379.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='239.880' y1='189.960' x2='239.880' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 239.880 264.960 Q 142.920 227.460 45.960 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle cx='239.880' cy='264.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle style='fill: red;' cx='239.880' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 139.920 114.960 Q 92.940 114.960 45.960 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul b a)))</title>
+   <circle cx='39.960' cy='339.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul b a)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 39.960 189.960 Q 136.920 152.460 233.880 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='39.960' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a))</title>
+   <text
+    x='139.920' y='77.460' style='text-anchor: middle;'>alice</text></g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <text x='139.920' y='39.960' style='text-anchor: middle;'>dh 18</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (b a rndx))
+  (defstrand bob 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a)
+    (b b))
+  (defstrand alice 1 (alice alice) (bob bob) (a a))
+  (deflistener (exp (gen) (mul b a)))
+  (precedes ((0 1) (2 0)) ((1 0) (0 0)) ((2 1) (0 2)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg2)
+  (uniq-gen b a)
+  (absent (b a))
+  (operation encryption-test (added-listener (exp (gen) (mul b a)))
+    (enc &quot;msg 1&quot; msg1 (exp (gen) (mul b a))) (0 2))
+  (strand-map 0 1)
+  (label 18)
+  (parent 16)
+  (unrealized (2 0))
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;2 in cohort - 2 not yet seen&quot;))</pre>
+
+<p id="k19">Item <a href="#t15">19</a>, Parent: <a href="#k18">18</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='379.800pt' height='454.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 379.800 454.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='339.840' y1='189.960' x2='339.840' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='239.880' y1='264.960' x2='239.880' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='414.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 339.840 264.960 Q 292.860 264.960 245.880 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(cat (exp (gen) b) a)</title>
+   <circle cx='339.840' cy='264.960' r='6.000'/></g>
+  <g><title>(cat (exp (gen) b) a)</title>
+   <circle style='fill: red;' cx='339.840' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 239.880 339.960 Q 142.920 302.460 45.960 339.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle cx='239.880' cy='339.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle style='fill: blue;' cx='239.880' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 139.920 114.960 Q 92.940 114.960 45.960 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul b a)))</title>
+   <circle cx='39.960' cy='414.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul b a)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <path
+   d='M 39.960 189.960 Q 186.900 152.460 333.840 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='39.960' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a))</title>
+   <text
+    x='139.920' y='77.460' style='text-anchor: middle;'>alice</text></g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <text x='189.900' y='39.960' style='text-anchor: middle;'>dh 19</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (b a rndx))
+  (defstrand bob 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a)
+    (b b))
+  (defstrand alice 1 (alice alice) (bob bob) (a a))
+  (deflistener (exp (gen) (mul b a)))
+  (deflistener (cat (exp (gen) b) a))
+  (precedes ((0 1) (3 0)) ((1 0) (0 0)) ((2 1) (0 2)) ((3 1) (2 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg2)
+  (uniq-gen b a)
+  (absent (b a))
+  (operation nonce-test (added-listener (cat (exp (gen) b) a))
+    (exp (gen) (mul b a)) (2 0))
+  (strand-map 0 1 2)
+  (label 19)
+  (parent 18)
+  (unrealized (3 0))
+  (dead)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;empty cohort&quot;))</pre>
+
+<p id="k20">Item <a href="#t15">20</a>, Parent: <a href="#k18">18</a>.</p>
+
+<div>
+ <svg
+  class='diagram' width='379.800pt' height='454.920pt'
+  xmlns='http://www.w3.org/2000/svg' version='1.1'
+  viewBox='0 0 379.800 454.920' font-size='12.000'>
+  <defs>
+   <marker
+    id='arrow' orient='auto' markerWidth='5' markerHeight='10' refX='5'
+    refY='5'>
+    <path
+     d='M 0 0 5 5 0 10'
+     style='stroke-width: 2; fill: none; stroke: black;'/></marker>
+   </defs>
+  <line
+   x1='339.840' y1='189.960' x2='339.840' y2='264.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='239.880' y1='264.960' x2='239.880' y2='339.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='139.920' y1='114.960' x2='139.920' y2='114.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <line
+   x1='39.960' y1='114.960' x2='39.960' y2='414.960'
+   style='stroke-width: 0.960; stroke: gray;'/>
+  <path
+   d='M 339.840 264.960 Q 292.860 264.960 245.880 264.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(cat (exp (gen) a) b)</title>
+   <circle cx='339.840' cy='264.960' r='6.000'/></g>
+  <g><title>(cat (exp (gen) a) b)</title>
+   <circle style='fill: red;' cx='339.840' cy='189.960' r='6.000'/></g>
+  <path
+   d='M 239.880 339.960 Q 142.920 302.460 45.960 339.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle cx='239.880' cy='339.960' r='6.000'/></g>
+  <g><title>(exp (gen) (mul b a))</title>
+   <circle style='fill: blue;' cx='239.880' cy='264.960' r='6.000'/></g>
+  <path
+   d='M 139.920 114.960 Q 92.940 114.960 45.960 114.960'
+   style='stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle cx='139.920' cy='114.960' r='6.000'/></g>
+  <g><title>(enc msg2 (exp (gen) (mul b a)))</title>
+   <circle cx='39.960' cy='414.960' r='6.000'/></g>
+  <g><title>(enc &quot;msg 1&quot; msg1 (exp (gen) (mul b a)))</title>
+   <circle style='fill: blue;' cx='39.960' cy='339.960' r='6.000'/></g>
+  <path
+   d='M 39.960 189.960 Q 186.900 152.460 333.840 189.960'
+   style='stroke-dasharray: 6.000,2.400; stroke-width: 0.960; stroke: black; marker-end: url(#arrow); fill: none;'/>
+  <g><title>(enc alice bob (exp (gen) b) (privk bob))</title>
+   <circle cx='39.960' cy='189.960' r='6.000'/></g>
+  <g>
+   <title>(enc &quot;message 1&quot; alice bob (exp (gen) a) (privk alice))</title>
+   <circle style='fill: blue;' cx='39.960' cy='114.960' r='6.000'/></g>
+  <g><title>((alice alice) (bob bob) (a a))</title>
+   <text
+    x='139.920' y='77.460' style='text-anchor: middle;'>alice</text></g>
+  <g>
+   <title>((msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a) (b b))</title>
+   <text x='39.960' y='77.460' style='text-anchor: middle;'>bob</text>
+   </g>
+  <text x='189.900' y='39.960' style='text-anchor: middle;'>dh 20</text>
+  </svg></div>
+
+<pre>(defskeleton dh
+  (vars (msg1 msg2 text) (alice bob name) (b a rndx))
+  (defstrand bob 4 (msg1 msg1) (msg2 msg2) (alice alice) (bob bob) (a a)
+    (b b))
+  (defstrand alice 1 (alice alice) (bob bob) (a a))
+  (deflistener (exp (gen) (mul b a)))
+  (deflistener (cat (exp (gen) a) b))
+  (precedes ((0 1) (3 0)) ((1 0) (0 0)) ((2 1) (0 2)) ((3 1) (2 0)))
+  (non-orig (privk alice) (privk bob))
+  (uniq-orig msg2)
+  (uniq-gen b a)
+  (absent (b a))
+  (operation nonce-test (added-listener (cat (exp (gen) a) b))
+    (exp (gen) (mul b a)) (2 0))
+  (strand-map 0 1 2)
+  (label 20)
+  (parent 18)
+  (unrealized (3 0))
+  (dead)
+  (maps
+    ((0) ((a a) (b b) (alice alice) (bob bob) (msg1 msg1) (msg2 msg2))))
+  (comment &quot;empty cohort&quot;))</pre>
+
+</body>
+</html>
